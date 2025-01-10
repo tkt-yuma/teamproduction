@@ -1,10 +1,254 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<html lang="ja">
 
+<head>
+	<link rel="stylesheet" type="text/css" href="datails.css">
+	<meta charset="UTF-8">
+	<title>book</title>
+</head>
+
+<body>
+	<header class="header">
+		<div class="menu-container">
+			<img src="https://konpure.com/wp-content/uploads/2019/04/humberger01.png" alt="メニュー" class="img header-img"
+				id="menuToggle">
+		</div>
+		<div class="book-container">
+			<p class="book">book Super Market</p>
+		</div>
+		<nav class="menu-list" id="menuList">
+			<ul>
+				<li><a href="#">マイページ</a></li>
+				<li><a href="#">履歴</a></li>
+				<li><a href="#">ほしいものリスト</a></li>
+				<li><a href="#">登録情報の変更・修正</a></li>
+				<li><a href="#">カート</a></li>
+				<li><a href="#">ログアウト</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="search-container">
+		<form>
+			<input type="search" name="q" placeholder="キーワードを入力">
+			<input type="submit" value="検索">
+		</form>
+	</div>
+
+	<!--top画面で押した商品を表示するように変更-->
+	<div class="center-container">
+		<div class="book-details">
+			<h2 class="book-title">ごんぎつね</h2>
+			<img src="			https://th.bing.com/th/id/OIP.Xi6nAT_M0Hr-UyDqNh_taAHaIw?w=170&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+								alt="本の表紙" class="book-image">
+			<p class="book-price">\500円</p>
+			<div class="book-description">
+				<h4 class="description-title">詳細</h4>
+				<p class="description-content">				山の中に住む一匹狐のごんは、いたずら好きで村人に迷惑をかけていました。ある日、ごんは兵十が捕まえた魚やうなぎを逃がしてしまいます。
+				数日後、ごんは兵十の母親の葬式を目撃します。ごんは自分のいたずらが原因で兵十の母親が十分な栄養を取れずに亡くなったのではないかと後悔します。
+				償いの気持ちから、ごんは毎日こっそりと兵十の家に栗や松茸などの食べ物を届けるようになります。
+				ある日、ごんが兵十の家に忍び込むのを見た兵十は、またいたずらをしに来たと勘違いし、火縄銃でごんを撃ってしまいます。
+				土間に置かれた栗を見て、食べ物を毎日届けてくれていたのがごんだったことに気づいた兵十は、「ごん、お前だったのか。」とつぶやきます123。
+				この物語は、誤解や気持ちを伝えることの難しさ、そして償いの気持ちを描いた悲劇的な結末を持つ作品です。</p>
+			</div>
+		</div>
+	</div>
+	<div class="product-actions">
+		<div class="quantity-container">
+			<div class="quantity-display">
+				<span class="quantity-label">数量</span>
+				<span id="quantity-value">1</span>
+			</div>
+			<div class="quantity-buttons">
+				<button class="quantity-up">▲</button>
+				<button class="quantity-down">▼</button>
+			</div>
+		</div>
+		<button class="action-button add-to-cart">カートに追加</button>
+		<button class="action-button add-to-wishlist">ほしいものリスト</button>
+	</div>
+	
+	<!-- 新しく追加するレビューセクション -->
+<div class="review-section">
+  <div class="review-icon">レビュー</div>
+  <a href="#" class="write-review-btn">＋ レビューを書く</a>
+</div>
+
+<div class="reviews-container">
+  <div class="review">
+    <h4 class="reviewer-name">山田太郎</h4>
+    <h3 class="review-title">素晴らしい絵本です！</h3>
+    <p class="review-content">子供と一緒に読みましたが、とても楽しめました。絵も美しく、ストーリーも心温まるものでした。おすすめです。</p>
+  </div>
+  
+  <div class="review">
+    <h4 class="reviewer-name">佐藤花子</h4>
+    <h3 class="review-title">教育的で面白い</h3>
+    <p class="review-content">子供の想像力を刺激する素晴らしい絵本です。読み聞かせにも最適で、毎晩楽しく読んでいます。</p>
+  </div>
+  
+  <div class="review">
+    <h4 class="reviewer-name">鈴木一郎</h4>
+    <h3 class="review-title">大人も楽しめる</h3>
+    <p class="review-content">子供向けの絵本ですが、大人が読んでも十分楽しめる内容です。メッセージ性も強く、考えさせられる部分が多いです。</p>
+  </div>
+</div>
+
+	<footer>
+		<div class="footer-categories">
+			<h3>カテゴリ</h3>
+			<ul>
+				<li><a href="#">ビジネス</a></li>
+				<li><a href="#">経済</a></li>
+				<li><a href="#">自己啓発</a></li>
+				<li><a href="#">歴史</a></li>
+				<li><a href="#">地理</a></li>
+				<li><a href="#">科学</a></li>
+				<li><a href="#">技術</a></li>
+				<li><a href="#">芸術</a></li>
+				<li><a href="#">音楽</a></li>
+				<li><a href="#">料理</a></li>
+				<li><a href="#">グルメ</a></li>
+				<li><a href="#">旅行</a></li>
+				<li><a href="#">アウトドア</a></li>
+				<li><a href="#">スポーツ</a></li>
+				<li><a href="#">健康</a></li>
+				<li><a href="#">趣味</a></li>
+				<li><a href="#">実用</a></li>
+				<li><a href="#">語学</a></li>
+				<li><a href="#">辞書</a></li>
+				<li><a href="#">哲学</a></li>
+				<li><a href="#">思想</a></li>
+				<li><a href="#">宗教</a></li>
+				<li><a href="#">スピリチュアル</a></li>
+				<li><a href="#">政治</a></li>
+				<li><a href="#">社会</a></li>
+				<li><a href="#">医学</a></li>
+				<li><a href="#">看護</a></li>
+				<li><a href="#">コンピューター</a></li>
+				<li><a href="#">IT</a></li>
+				<li><a href="#">法律</a></li>
+				<li><a href="#">外国語書籍</a></li>
+				<!--href属性は"#"に設定されていますが、実際のリンク先を設定する際は適切なURLに変更してください。-->
+			</ul>
+		</div>
+		<!-- 他のフッターコンテンツ -->
+	</footer>
+	
+	<div id="cartDialog" class="dialog">
+  <div class="dialog-content">
+	<p class="dialog-message">カートに追加しました</p>
+    <button id="closeDialog" class="close-button">閉じる</button>
+  </div>
+</div>
+
+<div id="wishlistDialog" class="wdialog">
+  <div class="wdialog-content">
+    <p class="wdialog-message">ほしいものリストに追加しました</p>
+    <button id="closeWishlistDialog" class="wclose-button">閉じる</button>
+  </div>
+</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const menuToggle = document.getElementById('menuToggle');
+			const menuList = document.getElementById('menuList');
+
+			menuToggle.addEventListener('click', function () {
+				menuList.classList.toggle('show');
+			});
+		});
+	</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const quantityValue = document.getElementById('quantity-value');
+			const upButton = document.querySelector('.quantity-up');
+			const downButton = document.querySelector('.quantity-down');
+			let quantity = 1;
+
+			upButton.addEventListener('click', function () {
+				if (quantity < 99) {
+					quantity++;
+					quantityValue.textContent = quantity;
+				}
+			});
+
+			downButton.addEventListener('click', function () {
+				if (quantity > 1) {
+					quantity--;
+					quantityValue.textContent = quantity;
+				}
+			});
+		});
+	</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const menuToggle = document.getElementById('menuToggle');
+			const menuList = document.getElementById('menuList');
+
+			menuToggle.addEventListener('click', function () {
+				menuList.classList.Toggle('show');
+			});
+		});
+	</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+		  const writeReviewBtn = document.querySelector('.write-review-btn');
+		  writeReviewBtn.addEventListener('click', function(e) {
+		    e.preventDefault();
+		    // ここにレビューを書くページへのリンクを追加します
+		    // 例: window.location.href = 'write-review.html';
+		    alert('レビューを書くページは現在準備中です。');
+		  });
+		});
+	</script>
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+  const addToCartButton = document.querySelector('.add-to-cart');
+  const cartDialog = document.getElementById('cartDialog');
+  const closeDialogButton = document.getElementById('closeDialog');
+
+  addToCartButton.addEventListener('click', function() {
+    cartDialog.style.display = "block";
+  });
+
+  closeDialogButton.addEventListener('click', function() {
+    cartDialog.style.display = "none";
+  });
+
+  window.addEventListener('click', function(event) {
+    if (event.target == cartDialog) {
+      cartDialog.style.display = "none";
+    }
+  });
+});
+	</script>
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+		  const addToWishlistButton = document.querySelector('.add-to-wishlist');
+		  const wishlistDialog = document.getElementById('wishlistDialog');
+		  const closeWishlistDialogButton = document.getElementById('closeWishlistDialog');
+
+		  addToWishlistButton.addEventListener('click', function() {
+		    wishlistDialog.style.display = "block";
+		  });
+
+		  closeWishlistDialogButton.addEventListener('click', function() {
+		    wishlistDialog.style.display = "none";
+		  });
+
+		  window.addEventListener('click', function(event) {
+		    if (event.target == wishlistDialog) {
+		      wishlistDialog.style.display = "none";
+		    }
+		  });
+		});
+	</script>
 </body>
+
 </html>
