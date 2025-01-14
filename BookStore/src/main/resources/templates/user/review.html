@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--レビュー画面-->
+<html lang="ja">
+
+
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/review.css}">
+	<meta charset="UTF-8">
+	<title>book</title>
+</head>
+
+<body>
+	<header class="header">
+		<div class="book-container">
+			<p class="book">book Super Market</p>
+		</div>
+
+	</header>
+
+	<main class="main-content">
+	        <h1 class="review-title">レビューを書く</h1>
+	        
+	        <div class="review-form">
+	            <div class="book-title-container">
+	                <label for="book-title">本のタイトル</label>
+	                <input type="text" id="book-title" name="book-title" class="bordered-input">
+	            </div>
+	            
+	            <div class="review-title-container">
+	                <label for="review-title">レビュータイトル(20字)</label>
+	                <input type="text" id="review-title" name="review-title" maxlength="20" class="bordered-input">
+	            </div>
+
+	            <div class="review-content-container">
+	                <label for="review-content">レビュー本文(500字)</label>
+	                <textarea id="review-content" name="review-content" maxlength="500" rows="10"></textarea>
+	            </div>
+	        </div>
+	    </main>
+
+
+	<div class="purchase-container">
+		<button class="purchase-button cancel-button">キャンセル</button>
+		<button class="purchase-button">登録</button>
+	</div>
+
+</body>
+
+</html>
