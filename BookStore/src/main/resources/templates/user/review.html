@@ -4,17 +4,30 @@
 
 
 <head>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/review.css}">
+	<link rel="stylesheet" type="text/css" href="">
 	<meta charset="UTF-8">
 	<title>book</title>
 </head>
 
 <body>
 	<header class="header">
-		<div class="book-container">
-			<p class="book">book Super Market</p>
+		<div class="menu-container">
+			<img src="https://konpure.com/wp-content/uploads/2019/04/humberger01.png" alt="メニュー" class="img header-img"
+				id="menuToggle">
 		</div>
-
+		<div class="book-container">
+			<p class="book">Book Super Market</p>
+		</div>
+		<nav class="menu-list" id="menuList">
+			<ul>
+				<li><a href="#">マイページ</a></li>
+				<li><a href="#">履歴</a></li>
+				<li><a href="#">ほしいものリスト</a></li>
+				<li><a href="#">登録情報の変更・修正</a></li>
+				<li><a href="#">カート</a></li>
+				<li><a href="#">ログアウト</a></li>
+			</ul>
+		</nav>
 	</header>
 
 	<main class="main-content">
@@ -43,6 +56,17 @@
 		<button class="purchase-button cancel-button">キャンセル</button>
 		<button class="purchase-button">登録</button>
 	</div>
+	
+	<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const menuToggle = document.getElementById('menuToggle');
+				const menuList = document.getElementById('menuList');
+
+				menuToggle.addEventListener('click', function () {
+					menuList.classList.toggle('show');
+				});
+			});
+		</script>
 
 </body>
 
