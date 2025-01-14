@@ -1,0 +1,525 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 20px;
+}
+
+.book-container {
+	flex-grow: 1;
+	background-color: skyblue;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15px 0;
+	margin-bottom: 40px;
+}
+
+.book {
+	margin: 0;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 50px;
+	color: white;
+}
+
+
+.center-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.book-details {
+	text-align: center;
+	max-width: 600px;
+	width: 100%;
+}
+
+.book-title {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+.book-image {
+	max-width: 300px;
+	height: auto;
+}
+
+.book-description {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.description-title {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.description-content {
+  text-align: left;
+  line-height: 1.6;
+}
+
+
+
+.product-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 20px;
+	margin: 0 20px;
+	flex-wrap: nowrap;
+}
+
+.product-container {
+	flex: 0 0 calc(25% - 15px);
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.left-img,
+.right-img {
+	flex-shrink: 0;
+}
+
+.small-img {
+	width: 50px;
+	height: auto;
+	align-self: center;
+	fill: #808080;
+	/* グレーの色 */
+	transition: all 0.3s ease;
+}
+
+.small-img:hover {
+	fill: blue;
+	/* ホバー時の色 */
+}
+
+
+
+.img {
+	max-width: 100%;
+	height: auto;
+
+}
+
+
+.product-title,
+.product-price {
+	margin: 5px 0;
+	text-align: center;
+	font-size: 14px;
+}
+
+.product-price {
+	font-weight: bold;
+}
+
+.more-container {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.more-link {
+	background: none;
+	border: none;
+	color: blue;
+	text-decoration: underline;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.search-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+form {
+	display: flex;
+	gap: 10px;
+}
+
+input[type="search"] {
+	padding: 5px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+input[type="submit"] {
+	padding: 5px 10px;
+	font-size: 16px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #45a049;
+}
+
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+}
+
+
+.header-img {
+	width: 100px;
+	height: auto;
+	margin: 0px;
+	padding: 10px
+}
+
+.menu-container {
+	cursor: pointer;
+}
+
+.menu-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+
+}
+
+.menu-list.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu-list ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.menu-list li {
+	padding: 5px 0;
+
+
+}
+
+.menu-list li a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.1s ease;
+}
+
+.menu-list li a:hover {
+  color: rgb(0, 128, 255);
+  cursor: pointer;
+  }
+
+  
+  /*  「book Super Market」の下に、チェックボックスと本の画像が横並びで配置されます。
+  その下に本のタイトルが中央揃えで表示されます。
+  さらにその下に、数量変更ボタン、数量表示（四角で囲まれ、右側に「個」）、小計が配置されます。
+  */
+  
+  .book-item {
+  display: flex;
+  align-items: column;
+  margin-bottom: 20px;
+}
+  
+  .book-header {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+	margin-left: 30px;
+  }
+
+  .book-checkbox {
+    margin-right: 10px;
+}
+
+.checkbox-label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+	 margin-right: 20px; /* この行を追加または調整 */
+}
+
+.checkbox-label.checked::after {
+    content: '\2714';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+}
+
+  .book-image {
+    width: 120px; /* 本の画像を小さくする */
+    height: auto;
+	margin-right: 15px;
+  }
+  
+  .book-details {
+    margin-left: 105px;
+  }
+
+  .book-title {
+    margin-top: 0;
+    font-size: 18px;
+  }
+
+  .book-quantity-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .quantity-container {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-buttons {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.quantity-btn {
+  width: 25px;
+  height: 25px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background-color: #f8f8f8;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quantity-display {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  min-width: 30px;
+  text-align: center;
+}
+
+#quantity-value {
+  font-size: 16px;
+}
+
+.quantity-unit {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.dialog {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.dialog-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 40px;
+  border: 1px solid #888;
+  width: 500px;
+  text-align: center;
+  position: relative;
+  border-radius: 8px; /* 角を少し丸くする */
+   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* シャドウを追加してより目立たせる */
+}
+
+.dialog-message {
+ font-size: 32px;  /* フォントサイズを大きくする */
+  margin-bottom: 40px;  /* 下のマージンを増やして、閉じるボタンとの間隔を広げる */
+  font-weight: bold;  /* テキストを太字にして目立たせる */
+   color: #333; /* テキストの色を少し濃くする */
+}
+
+
+.close-button {
+ background-color: rgb(128, 128, 128); /* ボタンの色を変更 */
+  color: white;
+  padding: 12px 24px; /* パディングを増やしてボタンを大きくする */
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px; /* 下端からの距離を増やす */
+  right: 20px; /* 右端からの距離を増やす */
+  border-radius: 4px; /* ボタンの角を丸くする */
+  font-size: 16px; /* フォントサイズを大きくする */
+  transition: background-color 0.3s; /* ホバー効果のためのトランジション */
+
+}
+
+.wdialog {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.wdialog-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 40px;
+  border: 1px solid #888;
+  width: 500px;
+  text-align: center;
+  position: relative;
+  border-radius: 8px; /* 角を少し丸くする */
+   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* シャドウを追加してより目立たせる */
+}
+
+.wdialog-message {
+ font-size: 32px;  /* フォントサイズを大きくする */
+  margin-bottom: 40px;  /* 下のマージンを増やして、閉じるボタンとの間隔を広げる */
+  font-weight: bold;  /* テキストを太字にして目立たせる */
+   color: #333; /* テキストの色を少し濃くする */
+}
+
+
+.wclose-button {
+ background-color: rgb(128, 128, 128); /* ボタンの色を変更 */
+  color: white;
+  padding: 12px 24px; /* パディングを増やしてボタンを大きくする */
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px; /* 下端からの距離を増やす */
+  right: 20px; /* 右端からの距離を増やす */
+  border-radius: 4px; /* ボタンの角を丸くする */
+  font-size: 16px; /* フォントサイズを大きくする */
+  transition: background-color 0.3s; /* ホバー効果のためのトランジション */
+
+}
+
+
+.book-item {
+    display: flex;
+    align-items: column;
+    margin-bottom: 20px;
+}
+
+.book-header {
+    display: flex;
+    align-items: center;
+    margin-right: 50px;
+    margin-left: 30px;
+    width: 100%;
+}
+
+.book-subtotal {
+    margin-left: auto;
+}
+
+.total-container {
+    text-align: right;
+    margin-right: 50px;
+    margin-top: 20px;
+    width: 80%;
+    max-width: 600px;
+    margin-left: auto;
+}
+
+.total-price {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.purchase-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.purchase-button {
+    background-color: orange;
+    color: white;
+    padding: 15px 50px;
+    font-size: 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+}
+
+.purchase-button:hover {
+    background-color: darkorange;
+    transform: scale(1.05);
+}
+
+.purchase-button:active {
+    transform: scale(0.98);
+}
+
+.book-item {
+    max-width: 800px;
+    margin: 0 auto 20px;
+	 display: flex;
+	    align-items: column;
+	    margin-bottom: 40px;  /* この値を20pxから40pxに増やす */
+	    padding-bottom: 20px; /* 下部に20pxのパディングを追加 */
+	    border-bottom: 1px solid #e0e0e0; /* 区切り線を追加 */
+	
+}
+
+.book-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.total-container {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: right;
+}
+
+.purchase-container {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.purchase-button {
+    width: 300px;
+}

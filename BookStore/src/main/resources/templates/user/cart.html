@@ -1,13 +1,247 @@
 <!DOCTYPE html>
-<!-- カート画面-->
-<!-- @date 2025/01/08-->
-<!-- @member てすと-->
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<html lang="ja">
 
+<head>
+	<link rel="stylesheet" type="text/css" href="cart.css">
+	<meta charset="UTF-8">
+	<title>book</title>
+</head>
+
+<body>
+	<header class="header">
+		<div class="menu-container">
+			<img src="https://konpure.com/wp-content/uploads/2019/04/humberger01.png" alt="メニュー" class="img header-img"
+				id="menuToggle">
+		</div>
+		<div class="book-container">
+			<p class="book">book Super Market</p>
+		</div>
+		<nav class="menu-list" id="menuList">
+			<ul>
+				<li><a href="#">マイページ</a></li>
+				<li><a href="#">履歴</a></li>
+				<li><a href="#">ほしいものリスト</a></li>
+				<li><a href="#">登録情報の変更・修正</a></li>
+				<li><a href="#">カート</a></li>
+				<li><a href="#">ログアウト</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="book-item">
+		<div class="book-header">
+			<label for="bookCheckbox" class="checkbox-label"></label>
+			<img src="https://th.bing.com/th/id/OIP.Xi6nAT_M0Hr-UyDqNh_taAHaIw?w=170&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+				alt="本の画像" class="book-image">
+			<div class="book-info">
+				<h2 class="book-title">ごんぎつね</h2>
+				<div class="book-quantity">
+					<div class="quantity-container">
+						<div class="quantity-buttons">
+							<button class="quantity-btn quantity-up">▲</button>
+							<button class="quantity-btn quantity-down">▼</button>
+						</div>
+						<div class="quantity-display">
+							<span id="quantity-value">1</span>
+						</div>
+
+						<span class="quantity-unit">個</span>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="book-subtotal">小計 ￥500円</div>
+		</div>
+	</div>
+	
+	<div class="book-item">
+	        <div class="book-header">
+	            <label for="bookCheckbox2" class="checkbox-label"></label>
+	            <img src="https://th.bing.com/th/id/OIP.Xi6nAT_M0Hr-UyDqNh_taAHaIw?w=170&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+	                alt="本の画像" class="book-image">
+	            <div class="book-info">
+	                <h2 class="book-title">銀河鉄道の夜</h2>
+	                <div class="book-quantity">
+	                    <div class="quantity-container">
+	                        <div class="quantity-buttons">
+	                            <button class="quantity-btn quantity-up">▲</button>
+	                            <button class="quantity-btn quantity-down">▼</button>
+	                        </div>
+	                        <div class="quantity-display">
+	                            <span id="quantity-value2">1</span>
+	                        </div>
+	                        <span class="quantity-unit">個</span>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="book-subtotal">小計 ￥600円</div>
+	        </div>
+	    </div>
+
+	    <div class="total-container">
+	        <p class="total-price">合計: ￥1,100円</p>
+	    </div>
+
+	    <div class="purchase-container">
+	        <button class="purchase-button">購入</button>
+	    </div>
+
+	
+	
+	
+	
+	
+	
+	<!--メニューリスト-->
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const menuToggle = document.getElementById('menuToggle');
+			const menuList = document.getElementById('menuList');
+
+			menuToggle.addEventListener('click', function () {
+				menuList.classList.toggle('show');
+			});
+		});
+	</script>
+
+	<!--チェックボックス、本の画像、タイトル、数量変更ボタン、
+		個数表示、そして小計が適切に配置され、数量の変更に応じて小計が更新-->
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const quantityValue = document.getElementById('quantity-value');
+			const upButton = document.querySelector('.quantity-up');
+			const downButton = document.querySelector('.quantity-down');
+			let quantity = 1;
+
+			upButton.addEventListener('click', function () {
+				if (quantity < 99) {
+					quantity++;
+					quantityValue.textContent = quantity;
+				}
+			});
+
+			downButton.addEventListener('click', function () {
+				if (quantity > 1) {
+					quantity--;
+					quantityValue.textContent = quantity;
+				}
+			});
+		});
+
+
+	</script>
+
+	<!--数量ボタン-->
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const quantityValue = document.getElementById('quantity-value');
+			const upButton = document.querySelector('.quantity-up');
+			const downButton = document.querySelector('.quantity-down');
+			const subtotal = document.querySelector('.book-subtotal');
+			let quantity = 1;
+			const price = 500;
+
+			function updateQuantity(newQuantity) {
+				quantity = newQuantity;
+				quantityValue.textContent = quantity;
+				subtotal.textContent = `小計 ￥${quantity * price}円`;
+			}
+
+			upButton.addEventListener('click', function () {
+				if (quantity < 99) {
+					updateQuantity(quantity + 1);
+				}
+			});
+
+			downButton.addEventListener('click', function () {
+				if (quantity > 1) {
+					updateQuantity(quantity - 1);
+				}
+			});
+		});
+	</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const checkbox = document.querySelector('.checkbox-label');
+			let isChecked = false;
+
+			checkbox.addEventListener('click', function () {
+				isChecked = !isChecked;
+				if (isChecked) {
+					checkbox.classList.add('checked');
+				} else {
+					checkbox.classList.remove('checked');
+				}
+			});
+		});
+	</script>
+	
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+		    const bookItems = document.querySelectorAll('.book-item');
+		    let total = 0;
+
+		    bookItems.forEach((item, index) => {
+		        const quantityValue = item.querySelector(`#quantity-value${index === 0 ? '' : (index + 1)}`);
+		        const upButton = item.querySelector('.quantity-up');
+		        const downButton = item.querySelector('.quantity-down');
+		        const subtotal = item.querySelector('.book-subtotal');
+		        let quantity = 1;
+		        const price = index === 0 ? 500 : 600;
+
+		        function updateQuantity(newQuantity) {
+		            quantity = newQuantity;
+		            quantityValue.textContent = quantity;
+		            subtotal.textContent = `小計 ￥${quantity * price}円`;
+		            updateTotal();
+		        }
+
+		        upButton.addEventListener('click', function () {
+		            if (quantity < 99) {
+		                updateQuantity(quantity + 1);
+		            }
+		        });
+
+		        downButton.addEventListener('click', function () {
+		            if (quantity > 1) {
+		                updateQuantity(quantity - 1);
+		            }
+		        });
+
+		        // チェックボックスの動作
+		        const checkbox = item.querySelector('.checkbox-label');
+		        let isChecked = false;
+
+		        checkbox.addEventListener('click', function () {
+		            isChecked = !isChecked;
+		            if (isChecked) {
+		                checkbox.classList.add('checked');
+		            } else {
+		                checkbox.classList.remove('checked');
+		            }
+		        });
+		    });
+
+		    function updateTotal() {
+		        total = 0;
+		        bookItems.forEach((item) => {
+		            const subtotalText = item.querySelector('.book-subtotal').textContent;
+		            const subtotalValue = parseInt(subtotalText.replace(/[^0-9]/g, ''));
+		            total += subtotalValue;
+		        });
+		        document.querySelector('.total-price').textContent = `合計: ￥${total}円`;
+		    }
+
+		    updateTotal();
+		});
+	       
+	    </script>
+		
+		
 </body>
+
 </html>
