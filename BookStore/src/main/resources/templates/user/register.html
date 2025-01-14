@@ -1,27 +1,73 @@
 <!DOCTYPE html>
 <!-- ユーザー新規登録画面-->
-<!-- @date 2025/01/08-->
-<!-- @member 髙田-->
-<html>
+
+<html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>新規登録</title>
+	<link rel="stylesheet" type="text/css" href="register.css">
+	<meta charset="UTF-8">
+	<title>book</title>
 </head>
+
 <body>
-	<h1>新規登録</h1>
-	   <form action="/register" method="post">
-	       <label for="username">ユーザー名:</label>
-	       <input type="text" id="username" name="username" required>
-	       <br>
-	       <label for="email">メールアドレス:</label>
-	       <input type="email" id="email" name="email" required>
-	       <br>
-	       <label for="password">パスワード:</label>
-	       <input type="password" id="password" name="password" required>
-	       <br>
-	       <button type="submit">登録</button>
-	   </form>
-	   <a href="login.html">ログインはこちら</a>
+
+
+	<header class="header">
+
+		<div class="book-container">
+			<p class="book">Book Super Market</p>
+		</div>
+
+	</header>
+
+	<div class="content-container">
+		<h1>ユーザー新規登録</h1>
+		<form action="/login" method="post">
+			<div class="form-group">
+				<label for="username">名前</label>
+				<input type="text" id="username" name="username" required>
+			</div>
+
+			<div class="form-group">
+				<label for="password">パスワード</label>
+				<input type="password" id="password" name="password" required>
+			</div>
+
+			<div class="form-group">
+				<label for="email">メールアドレス</label>
+				<input type="email" id="email" name="email" required>
+			</div>
+
+			<div class="form-group">
+				<label for="address">住所</label>
+				<input type="text" id="address" name="address" required>
+			</div>
+
+			<div class="form-group">
+				<label for="birthdate">生年月日</label>
+				<input type="date" id="birthdate" name="birthdate" required>
+			</div>
+
+			<div class="form-group">
+				<label for="phone">電話番号</label>
+				<input type="tel" id="phone" name="phone" required>
+			</div>
+
+			<div class="form-group">
+				<label for="creditcard">クレジットカード番号</label>
+				<input type="text" id="creditcard" name="creditcard" required>
+			</div>
+
+
+			<div class="button-container">
+				<button type="button" id="cancel-button">キャンセル</button>
+				<button type="submit" id="submit-button">登録</button>
+			</div>
+
+		</form>
+
+	</div>
+
 </body>
+
 </html>
