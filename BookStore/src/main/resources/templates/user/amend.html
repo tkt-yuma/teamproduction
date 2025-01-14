@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--登録内容変更・修正画面-->
+<html lang="ja">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="amend.css">
+	<meta charset="UTF-8">
+	<title>book</title>
+</head>
+
+<body>
+
+
+	<header class="header">
+
+		<div class="book-container">
+			<p class="book">Book Super Market</p>
+		</div>
+
+	</header>
+
+	<div class="content-container">
+		<h1>登録内容変更・修正</h1>
+		<form action="/login" method="post">
+			<div class="form-group">
+				<label for="username">名前</label>
+				<input type="text" id="username" name="username" required>
+			</div>
+
+			<div class="form-group">
+				<label for="password">パスワード</label>
+				<input type="password" id="password" name="password" required>
+			</div>
+
+			<div class="form-group">
+				<label for="email">メールアドレス</label>
+				<input type="email" id="email" name="email" required>
+			</div>
+
+			<div class="form-group">
+				<label for="address">住所</label>
+				<input type="text" id="address" name="address" required>
+			</div>
+
+
+			<div class="form-group">
+				<label for="phone">電話番号</label>
+				<input type="tel" id="phone" name="phone" required>
+			</div>
+
+			<div class="form-group">
+				<label for="creditcard">クレジットカード番号</label>
+				<input type="text" id="creditcard" name="creditcard" required>
+			</div>
+
+
+			<div class="button-container">
+				<button type="button" id="cancel-button">キャンセル</button>
+				<button type="submit" id="submit-button">変更内容を保存</button>
+			</div>
+
+		</form>
+
+	</div>
+
+</body>
+
+</html>

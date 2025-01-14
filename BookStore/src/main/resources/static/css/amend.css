@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+/*タイトル*/
+.book-container {
+	flex-grow: 1;
+	background-color: skyblue;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15px 0;
+	margin-bottom: 40px;
+}
+
+.book {
+	margin: 0;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 50px;
+	color: white;
+}
+
+
+.content-container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
+
+button {
+	margin-top: 10px;
+	padding: 5px 15px;
+}
+
+.form-group {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+	width: 100%;
+	max-width: 500px;
+	/* フォームグループの最大幅を設定 */
+}
+
+.form-group label {
+	width: 180px;
+	/* ラベルの幅を増やして、長いラベルも1行に収める */
+	text-align: right;
+	margin-right: 10px;
+	white-space: nowrap;
+	/* ラベルのテキストを改行しない */
+}
+
+.form-group input {
+	flex: 1;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	width: calc(100% - 160px);
+	/* ラベルの幅+マージンを引いた幅 */
+	box-sizing: border-box;
+	/* パディングとボーダーを幅に含める */
+}
+
+/* 誕生日入力欄の調整 */
+#birthdate {
+	width: calc(100% - 160px);
+}
+
+/* ボタンコンテナのスタイル */
+.button-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 300px;
+	/* ボタンの最大幅を設定 */
+	margin-top: 20px;
+}
+
+.button-container button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#cancel-button {
+	background-color: #f44336;
+	color: white;
+}
+
+#submit-button {
+	background-color: #4CAF50;
+	color: white;
+}
+
+input,
+button {
+	margin: 10px 0;
+}
