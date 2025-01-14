@@ -1,0 +1,236 @@
+@charset "UTF-8";
+
+/*変えない*/
+body {
+	margin: 0;
+	padding: 20px;
+}
+
+/*タイトル*/
+.book-container {
+	flex-grow: 1;
+	background-color: skyblue;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 15px 0;
+	margin-bottom: 40px;
+}
+
+.book {
+	margin: 0;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 50px;
+	color: white;
+}
+
+
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+}
+
+
+.header-img {
+	width: 100px;
+	height: auto;
+	margin: 0px;
+	padding: 10px
+}
+
+.menu-container {
+	cursor: pointer;
+}
+
+.menu-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+
+}
+
+.menu-list.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu-list ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.menu-list li {
+	padding: 5px 0;
+
+
+}
+
+.menu-list li a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.1s ease;
+}
+
+.menu-list li a:hover {
+  color: rgb(0, 128, 255);
+  cursor: pointer;
+
+
+}
+
+.review-title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.review-form {
+    margin-bottom: 30px;
+}
+
+.book-title-container,
+.review-title-container,
+.review-content-container {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+.bordered-input {
+    border: 1px solid #000;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+}
+
+textarea {
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #000;
+    resize: vertical;
+}
+
+
+
+
+.purchase-container {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.purchase-button {
+	background-color: orange;
+	color: white;
+	padding: 15px 50px;
+	font-size: 24px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	width: 300px;
+}
+
+.purchase-button:hover {
+	background-color: darkorange;
+	transform: scale(1.05);
+}
+
+.purchase-button:active {
+	transform: scale(0.98);
+}
+
+
+.purchase-container {
+	text-align: center;
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+}
+
+.purchase-button {
+	background-color: orange;
+	color: white;
+	padding: 15px 50px;
+	font-size: 24px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	width: 300px;
+	flex-shrink: 0;
+}
+
+.cancel-button {
+	background-color: #007bff;
+}
+
+.cancel-button:hover {
+	background-color: #0056b3;
+}
+
+
+.main-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.review-form {
+    margin-bottom: 30px;
+}
+
+.book-title-container,
+.review-title-container,
+.review-content-container {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.bordered-input {
+    border: 1px solid #000;
+    width: 100%;
+    max-width: 400px;
+    padding: 5px;
+    font-size: 16px;
+    margin: 0 auto;
+    display: block;
+}
+
+textarea {
+    width: 100%;
+    max-width: 400px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #000;
+    resize: vertical;
+    margin: 0 auto;
+    display: block;
+}

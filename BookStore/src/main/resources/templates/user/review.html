@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--レビュー画面-->
+<html lang="ja">
+
+
+<head>
+	<link rel="stylesheet" type="text/css" href="">
+	<meta charset="UTF-8">
+	<title>book</title>
+</head>
+
+<body>
+	<header class="header">
+		<div class="menu-container">
+			<img src="https://konpure.com/wp-content/uploads/2019/04/humberger01.png" alt="メニュー" class="img header-img"
+				id="menuToggle">
+		</div>
+		<div class="book-container">
+			<p class="book">Book Super Market</p>
+		</div>
+		<nav class="menu-list" id="menuList">
+			<ul>
+				<li><a href="#">マイページ</a></li>
+				<li><a href="#">履歴</a></li>
+				<li><a href="#">ほしいものリスト</a></li>
+				<li><a href="#">登録情報の変更・修正</a></li>
+				<li><a href="#">カート</a></li>
+				<li><a href="#">ログアウト</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main-content">
+	        <h1 class="review-title">レビューを書く</h1>
+	        
+	        <div class="review-form">
+	            <div class="book-title-container">
+	                <label for="book-title">本のタイトル</label>
+	                <input type="text" id="book-title" name="book-title" class="bordered-input">
+	            </div>
+	            
+	            <div class="review-title-container">
+	                <label for="review-title">レビュータイトル(20字)</label>
+	                <input type="text" id="review-title" name="review-title" maxlength="20" class="bordered-input">
+	            </div>
+
+	            <div class="review-content-container">
+	                <label for="review-content">レビュー本文(500字)</label>
+	                <textarea id="review-content" name="review-content" maxlength="500" rows="10"></textarea>
+	            </div>
+	        </div>
+	    </main>
+
+
+	<div class="purchase-container">
+		<button class="purchase-button cancel-button">キャンセル</button>
+		<button class="purchase-button">登録</button>
+	</div>
+	
+	<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const menuToggle = document.getElementById('menuToggle');
+				const menuList = document.getElementById('menuList');
+
+				menuToggle.addEventListener('click', function () {
+					menuList.classList.toggle('show');
+				});
+			});
+		</script>
+
+</body>
+
+</html>
