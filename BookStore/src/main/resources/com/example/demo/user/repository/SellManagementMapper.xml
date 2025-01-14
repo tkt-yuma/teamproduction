@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.user.repository.SellManagementMapper">
+
+	<resultMap id = "SellManagementMap" type="com.example.demo.user.entity.SellManagement">
+		<result column="sale_num"         jdbcType="INTEGER"   property="saleNum"      />
+		<result column="item_id"          jdbcType="INTEGER"   property="itemId"       />
+		<result column="item_name"        jdbcType="VARCHAR"   property="itemName"     />
+		<result column="item_num"         jdbcType="INTEGER"   property="itemNum"      />
+		<result column="item_purprice"    jdbcType="INTEGER"   property="itemPurprice" />
+		<result column="item_saleprice"   jdbcType="INTEGER"   property="itemSaleprice"/>
+		<result column="item_saledate"    jdbcType="TIMESTAMP"      property="itemSaledate" />
+		<result column="user_id"	      jdbcType="INTEGER"   property="userId"       />
+		
+	</resultMap>
+	
+	<select id = "selectAll" resultMap="SellManagementMap">
+		select * from salemange order by sale_num asc
+ 	</select>
+	
+	
+	
+</mapper>

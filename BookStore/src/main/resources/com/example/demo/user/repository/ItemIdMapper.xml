@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.user.repository.ItemIdMapper">
+
+	<resultMap id="ItemIdMap" type="com.example.demo.user.entity.ItemId">
+		<result column="item_id"        jdbcType="INTEGER" property="itemId"        />
+		<result column="item_name"      jdbcType="VARCHAR" property="itemName"      />
+		<result column="category_name"  jdbcType="VARCHAR" property="categoryName"  />
+		<result column="item_purprice"  jdbcType="INTEGER" property="itemPurprice"  />
+		<result column="item_saleprice" jdbcType="INTEGER" property="itemSaleprice" />
+		<result column="iteminfo"       jdbcType="VARCHAR" property="iteminfo"      />
+		<result column="stock"          jdbcType="INTEGER" property="stock"         />
+		<result column="purchaseno"     jdbcType="VARCHAR" property="purchaseno"    />
+	</resultMap>
+
+	<select id="selectAll" resultMap="ItemIdMap">
+		select * from item_id order by item_id asc
+	</select>
+
+</mapper>
