@@ -2,12 +2,73 @@
 <!-- 売上確認画面-->
 <!-- @date 2025/01/08-->
 <!-- @member 髙田-->
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>売上管理画面</title>
+
 </head>
 <body>
+	<header class="header">				
+					<div class="book-container">
+						<p class="book">Book Super Market</p>
+					</div>
+				</header>
+				  <div class="content-container">
+	    
+					<div class="button-container">
+						<a href="admin-top.html" class="button">トップページ</a>		        
+						<a href="inventory.html" class="button">在庫管理</a>
+											<a href="product-managemanet.html" class="button">商品管理</a>
+									        
+									        <a href="order-management.html" class="button">発注管理</a>
+									        <a href="order-history-admin.html" class="button">発注履歴</a>
+									    </div>
+										<br>
+										
+										<form action="/search" method="get">
+										  <input type="search" name="q" placeholder="検索キーワードを入力">
+										  <input type="submit" value="検索">
+										</form>
+										<br>
+	    <table border="1"  width="100%">
+	        <thead>
+	            <tr>
+					<th>売上日</th>
+	                <th>商品コード</th>
+	                <th>商品名</th>
+	                <th>売上数</th>
+	                <th>原価（単位：円）</th>
+	                <th>売値（単位：円）</th>
+					</tr>  
+	                
+	            
+	        </thead>
+	        <tbody>
+	            <tr th:each="sale : ${sales}">
+					<td th:text="${#dates.format(sale.saleDate, 'yyyy-MM-dd')}"></td>
+	                <td th:text="${sale.itemId}"></td>
+	                <td th:text="${sale.itemName}"></td>
+	                <td th:text="${sale.itemQuantity}"></td>
+	                <td th:text="${sale.itemCost}"></td>
+	                <td th:text="${sale.sellingPrice}"></td>
+	            </tr>
+	        </tbody>
+	    </table>
+		
+		<table>
+		            <tr>
+		                <th>売上合計金額</th>
+		                <td th:text="${#numbers.formatDecimal(totalSales, 0, 'COMMA', 0, 'POINT')} + '円'"></td>
+		            </tr>
+		            <tr>
+		                <th>利益合計金額</th>
+		                <td th:text="${#numbers.formatDecimal(totalProfit, 0, 'COMMA', 0, 'POINT')} + '円'"></td>
+		            </tr>
+		        </table>
+	</body>
+	</html>
+
 
 </body>
 </html>
