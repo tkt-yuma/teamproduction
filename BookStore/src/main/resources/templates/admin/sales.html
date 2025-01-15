@@ -9,26 +9,27 @@
 </head>
 <body>
 	<header class="header">				
-					<div class="book-container">
-						<p class="book">Book Super Market</p>
-					</div>
+		<div class="book-container">
+			<p class="book">Book Super Market</p>
+		</div>
 	</header>
-				  <div class="button-container">
-						<a href="admin-top.html" class="button">トップページ</a>		        
-						<a href="inventory.html" class="button">在庫管理</a>
-											<a href="product-managemanet.html" class="button">商品管理</a>
-									        
-									        <a href="order-management.html" class="button">発注管理</a>
-									        <a href="order-history-admin.html" class="button">発注履歴</a>
-									    </div>
-										<br>
+	<div class="button-container">
+		<a href="admin-top.html" class="button">トップページ</a>		        
+		<a href="order-management.html" class="button">発注管理</a>
+		<a href="order-history-admin.html" class="button">発注履歴</a>
+		<a href="inventory.html" class="button">在庫管理</a>
+		<a href="sales.html" class="button">売上管理</a>
+	</div>
+	<br>
 										
-										<form action="/search" method="get">
-										  <input type="search" name="q" placeholder="検索キーワードを入力">
-										  <input type="submit" value="検索">
-										</form>
-										<br>
-	    <table border="1"  width="100%">
+	<form action="/search" method="get">
+		<input type="search" name="q" placeholder="検索キーワードを入力">
+		<input type="submit" value="検索">
+	</form>
+	<br>
+	
+	<!---売上一覧を表示-->
+	<table border="1"  width="100%">
 	        <thead>
 	            <tr>
 					<th>売上日</th>
