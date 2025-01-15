@@ -1,1 +1,25 @@
 @charset "UTF-8";
+/* ヘッダー全体のスタイル */
+.header {
+    width: 50%;
+    padding: 20px; /* 内側の余白 */
+    text-align: center; /* テキストを中央揃え */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* シャドウ効果 */
+}
+
+/* 本のコンテナのスタイル */
+.book-container {
+	background-color: #4A90E2; /* 背景色 */
+    max-width: 600px; /* 最大幅 */
+    margin: 0 auto; /* 中央揃え */
+}
+
+/* 本のタイトルのスタイル */
+.book {
+    font-family: 'Arial', sans-serif; /* フォントファミリー */
+    font-size: 2.5em; /* フォントサイズ */
+    color: #FFFFFF; /* テキストカラー */
+    letter-spacing: 2px; /* 字間を広げる */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* テキストシャドウ */
+    margin: 0; /* マージンをリセット */
+}

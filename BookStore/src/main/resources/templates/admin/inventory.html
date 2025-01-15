@@ -2,13 +2,170 @@
 <!-- 在庫確認画面-->
 <!-- @date 2025/01/08-->
 <!-- @member 髙田-->
-<html　lang="ja">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>在庫管理画面</title>
+	
+	<link rel="stylesheet" href="/static/css/Admin.css" type="text/css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>在庫管理画面</title>
+
 </head>
 <body>
-	
+	<header class="header">
+		<div class="book-container">
+			<p class="book">Book Super Market</p>
+		</div>
+	</header>
+		<div class="button-container">
+					<a href="admin-top.html" class="button">トップページ</a>		        
+					<a href="order-management.html" class="button">発注管理</a>
+					<a href="order-history-admin.html" class="button">発注履歴</a>
+					<a href="inventory.html" class="button">在庫管理</a>
+					<a href="sales.html" class="button">売上管理</a>
+		</div>
+		<br>
+												
+		<form action="/search" method="get">
+				<input type="search" name="q" placeholder="検索キーワードを入力">
+				<input type="submit" value="検索">
+		</form>
+		<br>
+		
+		<h2>商品在庫</h2>
+				<table border="1"  width="100%">
+					<thead>
+					<tr>
+						<th>商品コード</th>
+						<th>商品名</th>
+						<th>在庫数（単位：冊）</th>
+						<th>原価（単位：円）</th>
+						<th>売価（単位：冊）</th>
+						<th>カテゴリー</th>
+					</tr>  
+													                
+													            
+					</thead>
+					<tbody>
+						<tr th:each="inventory : ${inventorys}">
+							<td th:text="${inventory.itemId}"></td>
+							<td th:text="${inventory.itemName}"></td>
+							<td th:text="${inventory.stock}"></td>
+							<td th:text="${inventory.itemCost}"></td>
+							<td th:text="${inventory.saleprice}"></td>
+							<td th:text="${inventory.category}"></td>
+						</tr>
+					</tbody>
+				</table>
+				<form>
+				  <input type="radio" id="option1" name="radioGroup" value="option1">
+				  <label for="option1">情報の更新・修正</label>
+
+				  <input type="radio" id="option2" name="radioGroup" value="option2">
+				  <label for="option2">商品の新規登録</label><br>
+				  </form>
+				  
+				  <div id="updateForm" style="display: none;">
+				    <h3>情報の更新・修正</h3>
+				    <form action="/update-inventory" method="post">
+				      <table border="1" width="100%">
+				        <thead>
+				          <tr>
+				            <th>商品ID</th>
+				            <th>商品名</th>
+				            <th>カテゴリーID</th>
+				            <th>原価（円）</th>
+				            <th>売価（円）</th>
+				            <th>商品情報</th>
+				            <th>在庫数</th>
+				            <th>発注元</th>
+				          </tr>
+				        </thead>
+				        <tbody>
+				          <tr th:each="inventory : ${inventorys}">
+				            <td><input type="text" th:value="${inventory.itemId}" name="itemId[]" readonly></td>
+				            <td><input type="text" th:value="${inventory.itemName}" name="itemName[]"></td>
+				            <td><input type="text" th:value="${inventory.categoryId}" name="categoryId[]"></td>
+				            <td><input type="number" th:value="${inventory.itemPurprice}" name="itemPurprice[]"></td>
+				            <td><input type="number" th:value="${inventory.itemSaleprice}" name="itemSaleprice[]"></td>
+				            <td><input type="text" th:value="${inventory.iteminfo}" name="iteminfo[]"></td>
+				            <td><input type="number" th:value="${inventory.stock}" name="stock[]"></td>
+				            <td><input type="text" th:value="${inventory.purchaseno}" name="purchaseno[]"></td>
+				          </tr>
+				        </tbody>
+				      </table>
+				      <button type="submit">修正</button>
+				    </form>
+				  </div>
+
+
+				  
+					<div id="newItemForm" style="display: none;">
+					  <h3>商品の新規登録</h3>
+					  <form action="#" method="post">
+					    <table class="entry">
+					      <thead>
+					        <tr>
+					          <th>商品ID（シリアル付与）</th>
+					          <th>商品名</th>
+					          <th>発注元</th>
+					          <th>原価（単位：円）</th>
+					          <th>売価（単位：円）</th>
+					          <th>カテゴリー</th>
+					          <th>商品情報</th>
+							</tr>
+					      </thead>
+					      <tbody>
+					        <tr>
+					          <td><input type="text" name="item_id[]" required></td>
+					          <td><input type="text" name="item_name[]" required></td>
+					          <td><input type="text" name="purchaseno[]" required></td>
+					          <td><input type="number" name="item_purprice[]" required></td>
+							  <td><input type="number" name="item_saleprice[]" required></td>
+							  <td><input type="text" name="category[]" required></td>
+							  <td><input type="text" name="iteminfo[]"></td>
+					        </tr>
+					      </tbody>
+					    </table>
+					    <button type="submit">登録</button>
+					  </form>
+
+					</div>
+				  
+				  <script>
+					document.addEventListener('DOMContentLoaded', function() {
+					  const radioButtons = document.querySelectorAll('input[name="radioGroup"]');
+					  const updateForm = document.getElementById('updateForm');
+					  const newItemForm = document.getElementById('newItemForm');
+
+					  radioButtons.forEach(function(radio) {
+					    radio.addEventListener('change', function() {
+					      if (this.value === 'option1') {
+					        updateForm.style.display = 'block';
+					        newItemForm.style.display = 'none';
+					        // 更新フォームが表示されたときにデータを取得する
+					        fetchInventoryData();
+					      } else if (this.value === 'option2') {
+					        updateForm.style.display = 'none';
+					        newItemForm.style.display = 'block';
+					      }
+					    });
+					  });
+					});
+
+					function fetchInventoryData() {
+					  // ここでAjaxリクエストを使用してサーバーから最新の在庫データを取得し、
+					  // 更新フォームに表示します。
+					  // 例: fetch('/api/inventory').then(response => response.json()).then(data => updateFormWithData(data));
+					}
+
+					function updateFormWithData(data) {
+					  // 取得したデータを使用して更新フォームの入力フィールドを埋めます
+					  // この関数の実装は、サーバーから返されるデータの構造に依存します
+					}
+
+				  </script>
+
+				
 </body>
 </html>

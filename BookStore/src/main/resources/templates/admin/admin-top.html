@@ -4,41 +4,40 @@
 <!-- @member 小野-->
 <html>
 <head>
-<meta charset="UTF-8">
-<title>管理者トップページ</title>
+	<link rel="stylesheet" href="C:/Users/3031023/git/teamproduction/BookStore/src/main/resources/static/css/Admin.css" type="text/css">
+	<meta charset="UTF-8">
+	<title>管理者トップページ</title>
 </head>
 <body>
 	<header class="header">
-				<div class="book-container">
-					<p class="book">Book Super Market</p>
-				</div>
-			</header>
+		<div class="book-container">
+			<p class="book">Book Super Market</p>
+		</div>
+	</header>
 			  
-				<h1>管理者トップページ</h1>
-				<div class="button-container">
-				        <a href="inventory.html" class="button">在庫管理</a>
-						<a href="product-managemanet.html" class="button">商品管理</a>
-				        <a href="sales.html" class="button">売上管理</a>
-				        <a href="order-management.html" class="button">発注管理</a>
-				        <a href="order-history-admin.html" class="button">発注履歴</a>
-				    </div>
+	<h1>管理者トップページ</h1>
+		<div class="button-container">
+					        
+			<a href="order-management.html" class="button">発注管理</a>
+			<a href="order-history-admin.html" class="button">発注履歴</a>
+			<a href="inventory.html" class="button">在庫管理</a>
+			<a href="sales.html" class="button">売上管理</a>
+		</div>
 					
-				<br><br>
-				
-					
-					
-					<button onclick="logout()">ログアウト</button>
+		<br><br>
 
-					    <script>
-					        function logout() {
-					            // ここでログアウト処理を行う
-					            // 例: セッションのクリア、サーバーへのログアウトリクエストなど
+		<button onclick="logout()">ログアウト</button>
+
+		<script>
+		function logout() {
+			 // ここでログアウト処理を行う
+			 // 例: セッションのクリア、サーバーへのログアウトリクエストなど
 					            
-					            alert("ログアウトしました。");
+			alert("ログアウトしました。");
 					            
-					            // ログイン画面へリダイレクト
-					            window.location.href = "admin-login.html";  // login.htmlはログイン画面のファイル名に置き換えてください
+			// ログイン画面へリダイレクト
+			 window.location.href = "admin-login.html";  // login.htmlはログイン画面のファイル名に置き換えてください
 					        }
-					    </script>
+		</script>
 </body>
 </html>
