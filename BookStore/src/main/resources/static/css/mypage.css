@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
+/*変えない*/
 body {
 	margin: 0;
 	padding: 20px;
-	
 }
 
 /*タイトル*/
@@ -25,6 +25,12 @@ body {
 	color: white;
 }
 
+/*マイページ*/
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .mypage-title {
     font-size: 28px;
@@ -55,6 +61,7 @@ body {
 	
 }
 
+/*ボタン*/
 .button-container {
     margin-top: 30px;
     display: flex;
@@ -77,17 +84,14 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
+/*トップページへボタン*/
 .top-page {
     background-color: lightblue;
 }
 
+/*登録内容を修正ボタン*/
 .edit-info {
     background-color: blue;
     color: white;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}

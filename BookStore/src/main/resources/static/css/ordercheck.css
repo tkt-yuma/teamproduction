@@ -25,102 +25,22 @@ body {
 	color: white;
 }
 
-
-.book-image {
-	width: 120px;
-	/* 本の画像を小さくする */
-	height: auto;
-	margin-right: 15px;
-}
-
-.book-title {
-	margin-top: 0;
-	font-size: 18px;
-}
-
-
-.quantity-container {
-	display: flex;
-	align-items: center;
-}
-
-
-.quantity-display {
-	border: 1px solid #ccc;
-	padding: 5px 10px;
-	min-width: 30px;
-	text-align: center;
-}
-
-#quantity-value {
-	font-size: 16px;
-}
-
-.quantity-unit {
-	font-size: 16px;
-	margin-left: 5px;
-
-}
-
-
-.book-subtotal {
-	margin-left: auto;
-}
-
-.total-container {
-	text-align: right;
-	margin-right: 50px;
-	margin-top: 20px;
-	width: 80%;
-	max-width: 600px;
-	margin-left: auto;
-}
-
-.total-price {
-	font-size: 24px;
-	font-weight: bold;
-	padding: 10px 20px;
-	background-color: #f0f0f0;
-	border-radius: 5px;
-	display: inline-block;
-}
-
-.purchase-container {
-	text-align: center;
-	margin-top: 20px;
-}
-
-.purchase-button {
-	background-color: orange;
-	color: white;
-	padding: 15px 50px;
-	font-size: 24px;
-	border: none;
-	border-radius: 8px;
-	cursor: pointer;
-	transition: background-color 0.3s, transform 0.2s;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	width: 300px;
-}
-
-.purchase-button:hover {
-	background-color: darkorange;
-	transform: scale(1.05);
-}
-
-.purchase-button:active {
-	transform: scale(0.98);
-}
-
+/*本の画像*/
 .book-item {
 	max-width: 800px;
 	margin: 0 auto 20px;
 	display: flex;
-	align-items: column;
+	align-items: center;
 	padding: 20px;
-	/* パディングを追加 */
-
+	margin-bottom: 40px;
 }
+
+.book-item:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
 
 .book-header {
 	display: flex;
@@ -145,15 +65,12 @@ body {
 	/* 上下中央に配置の調整 */
 }
 
-
-.quantity-display {
-	border: none;
-	/* 個数の四角を削除 */
-	padding: 5px 0;
-	/* 左右のパディングを削除 */
-	min-width: auto;
-	/* 最小幅の制限を解除 */
+.book-image {
+	width: 120px;
+	height: auto;
+	margin-right: 15px;
 }
+
 
 .book-info {
 	flex-grow: 1;
@@ -162,17 +79,12 @@ body {
 	/* 右側に少し余白を追加 */
 }
 
-.total-container {
-	max-width: 800px;
-	margin: 20px auto;
-	text-align: right;
+
+.book-title {
+	margin-top: 0;
+	font-size: 18px;
 }
 
-.purchase-container {
-	max-width: 800px;
-	margin: 20px auto;
-	text-align: center;
-}
 
 .books-container {
 	max-width: 800px;
@@ -182,37 +94,64 @@ body {
 	border-radius: 8px;
 }
 
-.book-item {
+
+/*個数*/
+.quantity-container {
 	display: flex;
 	align-items: center;
-	margin-bottom: 40px;
+}
+
+/*個数(数字)*/
+.quantity-display {
+	text-align: center;
+	border: none;
+	/* 個数の四角を削除 */
+	padding: 5px 0;
+	/* 左右のパディングを削除 */
+	min-width: auto;
+	/* 最小幅の制限を解除 */
+}
+
+#quantity-value {
+	font-size: 16px;
+}
+
+/*個数(個)*/
+.quantity-unit {
+	font-size: 16px;
+	margin-left: 5px;
 
 }
 
-.book-item:last-child {
-	margin-bottom: 0;
-	padding-bottom: 0;
-	border-bottom: none;
-}
-
-.book-header {
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	padding: 0;
-	position: relative;
-	width: 100%;
-}
-
+/*小計*/
 .book-subtotal {
+	margin-left: auto;
 	position: absolute;
 	right: 0;
 	top: 50%;
 	transform: translateY(-50%);
 }
 
+/*合計*/
+.total-container {
+	text-align: right;
+	margin: 20px auto;
+	width: 80%;
+	max-width: 800px;
+	
+}
+
+.total-price {
+	font-size: 24px;
+	font-weight: bold;
+	padding: 10px 20px;
+	background-color: #f0f0f0;
+	border-radius: 5px;
+	display: inline-block;
+}
 
 
+/*支払い方法のブロック*/
 .shipping-payment-container {
 	max-width: 800px;
 	margin: 20px auto;
@@ -222,11 +161,13 @@ body {
 	border-radius: 8px;
 }
 
+/*発送先*/
 .shipping-address {
 	font-size: 18px;
 	margin-bottom: 20px;
 }
 
+/*支払方法*/
 .payment-method {
 	margin-bottom: 20px;
 }
@@ -236,6 +177,7 @@ body {
 	margin-bottom: 10px;
 }
 
+/*ラジオボタン*/
 .radio-group {
 	display: flex;
 	flex-direction: column;
@@ -246,6 +188,7 @@ body {
 	margin-left: 5px;
 }
 
+/*カードの番号*/
 .card-number-input {
 	margin-top: 10px;
 }
@@ -258,9 +201,11 @@ body {
 	width: 200px;
 }
 
+/*購入ボタン*/
 .purchase-container {
+	max-width: 800px;
+	margin: 20px auto;
 	text-align: center;
-	margin-top: 20px;
 	display: flex;
 	justify-content: center;
 	gap: 40px;
@@ -280,6 +225,17 @@ body {
 	flex-shrink: 0;
 }
 
+.purchase-button:hover {
+	background-color: darkorange;
+	transform: scale(1.05);
+}
+
+.purchase-button:active {
+	transform: scale(0.98);
+}
+
+
+/*キャンセルボタン*/
 .cancel-button {
 	background-color: #007bff;
 }
