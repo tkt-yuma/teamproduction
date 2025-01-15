@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<!-- 購入確認画面-->
-
+<!--購入履歴-->
 <html lang="ja">
 
 
 <head>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/ordercheck.css}">
+	<link rel="stylesheet" type="text/css" href="kounyuurireki.css">
 	<meta charset="UTF-8">
 	<title>book</title>
 </head>
@@ -22,9 +21,10 @@
 	<div class="books-container">
 		<div class="book-item">
 			<div class="book-header">
-				<label for="bookCheckbox" class="checkbox-label"></label>
+				<div class="book-date">○年○月○日</div>
 				<img src="https://th.bing.com/th/id/OIP.Xi6nAT_M0Hr-UyDqNh_taAHaIw?w=170&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7"
 					alt="本の画像" class="book-image">
+
 				<div class="book-info">
 					<h2 class="book-title">ごんぎつね</h2>
 					<div class="book-quantity">
@@ -46,9 +46,10 @@
 
 		<div class="book-item">
 			<div class="book-header">
-				<label for="bookCheckbox2" class="checkbox-label"></label>
+				<div class="book-date">○年○月○日</div>
 				<img src="https://th.bing.com/th/id/OIP.Xi6nAT_M0Hr-UyDqNh_taAHaIw?w=170&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7"
 					alt="本の画像" class="book-image">
+
 				<div class="book-info">
 					<h2 class="book-title">銀河鉄道の夜</h2>
 					<div class="book-quantity">
@@ -65,38 +66,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="total-container">
-		<p class="total-price">合計: ￥1,100円</p>
-	</div>
-
-	<div class="shipping-payment-container">
-		<p class="shipping-address">発送先：○○県○○市○○区○○</p>
-		<div class="payment-method">
-			<p>支払い方法：</p>
-			<div class="radio-group">
-				<label>
-					<input type="radio" name="payment" value="cod">
-					代引き
-				</label>
-				<label>
-					<input type="radio" name="payment" value="credit">
-					クレジットカード
-				</label>
-				<label>
-					<input type="radio" name="payment" value="new-credit">
-					新規クレジットカード
-				</label>
-			</div>
-		</div>
-		<div class="card-number-input">
-			<input type="text" id="card-number" placeholder="番号入力">
-		</div>
-	</div>
 
 
 	<div class="purchase-container">
-		<button class="purchase-button cancel-button">キャンセル</button>
-		<button class="purchase-button">購入</button>
+		<button class="purchase-button">トップページへ</button>
 	</div>
 
 </body>
