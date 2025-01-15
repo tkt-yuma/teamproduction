@@ -1,59 +1,111 @@
 package com.example.demo.user.controller;
+//1月14日 遠所作業
+//1月15日 遠所作業 作り直し (エラー原因 service未実装)
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.demo.user.service.BookService;
+import com.example.demo.user.service.UserService;
 
 @Controller
 public class ProductController {
 
-    // 仮の商品データ
-    private List<Product> products = new ArrayList<>();
+    @Autowired
+    private BookService bookService; //仮のService
 
-    public ProductController() {
-        // 仮の商品データを追加
-        products.add(new Product(1L, "Book 1", "Description 1", 1000, "Books"));
-        products.add(new Product(2L, "Book 2", "Description 2", 1500, "Books"));
-        products.add(new Product(3L, "Gadget 1", "Description 3", 2000, "Gadgets"));
-        products.add(new Product(4L, "Gadget 2", "Description 4", 2500, "Gadgets"));
-        // 他の商品も追加...
+    @Autowired
+    private UserService userService; //仮のService
+
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("recommendedBooks", bookService.getRecommendedBooks());
+        model.addAttribute("newBooks", bookService.getNewBooks());
+        model.addAttribute("rankingBooks", bookService.getRankingBooks());
+        return "product"; // メインページは product.html
     }
 
-    /**
-     * 商品メニューを表示します。
-     *
-     * @param model モデル
-     * @return 商品メニューのビュー名
-     */
-    @GetMapping("/product")
-    public String product(Model model) {
-        model.addAttribute("recommendedProducts", getRecommendedProducts());
-        model.addAttribute("newArrivals", getNewArrivals());
-        return "user/product"; // 商品メニューのビュー名
+    @GetMapping("/mypage")
+    public String myPage() {
+        return "mypage";
     }
 
-    /**
-     * おすすめ商品を取得します。
-     *
-     * @return おすすめ商品のリスト
-     */
-    private List<Product> getRecommendedProducts() {
-        // 仮の実装：最初の2つの商品をおすすめとして返す
-        return products.subList(0, Math.min(2, products.size()));
+    @GetMapping("/history")
+    public String history() {
+        return "history";
     }
 
-    /**
-     * 新着商品を取得します。
-     *
-     * @return 新着商品のリスト
-     */
-    private List<Product> getNewArrivals() {
-        // 仮の実装：最後の2つの商品を新着として返す
-        int start = Math.max(0, products.size() - 2);
-        return products.subList(start, products.size());
+    @GetMapping("/want")
+    public String wishlist() {
+        return "want";
+    }
+
+    @GetMapping("/amend")
+    public String amendProfile() {
+        return "amend";
+    }
+
+    @GetMapping("/cart")
+    public String cart() {
+        return "cart";
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        // ログアウト処理
+        return "redirect:/";
+    }
+
+    @GetMapping("/search")
+    public String searchPage() {
+        return "search";
+    }
+
+    @PostMapping("/search")
+    public String search(@RequestParam("q") String query, Model model) {
+        model.addAttribute("searchResults", bookService.searchBooks(query));
+        return "search";
+    }
+
+    @GetMapping("/details")
+    public String bookDetails(@RequestParam("id") Long bookId, Model model) {
+        model.addAttribute("book", bookService.getBookById(bookId));
+        return "details";
+    }
+
+    @GetMapping("/review")
+    public String review(@RequestParam("id") Long bookId, Model model) {
+        model.addAttribute("book", bookService.getBookById(bookId));
+        return "review";
+    }
+
+    @GetMapping("/ordercheck")
+    public String orderCheck() {
+        return "ordercheck";
+    }
+
+    @GetMapping("/confirmation")
+    public String confirmation() {
+        return "confirmation";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "user-login";
+    }
+
+    @GetMapping("/category")
+    public String category(@RequestParam("name") String categoryName, Model model) {
+        model.addAttribute("books", bookService.getBooksByCategory(categoryName));
+        return "product"; // カテゴリ別の商品一覧も product.html を使用
     }
 }
-

@@ -1,6 +1,5 @@
 package com.example.demo.user.controller;
-//1月14日 遠所作業 クラス追加
-//1月15日 遠所作業 作り直し (エラー原因 service未実装)(entityのCartinfoと繋げています)
+//1月15日 遠所作業 (エラー原因 service未実装)
 
 import java.util.List;
 
@@ -14,41 +13,41 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.user.entity.CartInfo;
 import com.example.demo.user.service.CartService;
+import com.example.demo.user.service.WantService;
 
 @Controller
-@RequestMapping("/cart")
-public class CartController {
+@RequestMapping("/want")
+public class WantController {
+
+    @Autowired
+    private WantService wantService;
 
     @Autowired
     private CartService cartService;
 
     @GetMapping
-    public String showCart(Model model) {
-        List<CartInfo> cartItems = cartService.getCartItems(getCurrentUserId());
-        double total = cartService.calculateTotal(getCurrentUserId());
-        
-        model.addAttribute("cartItems", cartItems);
-        model.addAttribute("total", total);
-        return "cart";
+    public String showWantList(Model model) {
+        List<CartInfo> wantItems = wantService.getWantItems(getCurrentUserId());
+        model.addAttribute("wantItems", wantItems);
+        return "want";
     }
 
-    @PostMapping("/update")
-    public String updateQuantity(@RequestParam("itemId") Integer itemId, 
-                                 @RequestParam("quantity") Integer quantity) {
-        cartService.updateItemQuantity(getCurrentUserId(), itemId, quantity);
-        return "redirect:/cart";
+    @PostMapping("/addToCart")
+    public String addToCart(@RequestParam("itemId") Integer itemId) {
+        CartInfo item = wantService.getWantItem(getCurrentUserId(), itemId);
+        cartService.addToCart(getCurrentUserId(), item);
+        return "redirect:/want";
     }
 
     @PostMapping("/remove")
-    public String removeItem(@RequestParam("itemId") Integer itemId) {
-        cartService.removeItem(getCurrentUserId(), itemId);
-        return "redirect:/cart";
+    public String removeFromWantList(@RequestParam("itemId") Integer itemId) {
+        wantService.removeFromWantList(getCurrentUserId(), itemId);
+        return "redirect:/want";
     }
 
-    @PostMapping("/purchase")
-    public String purchase() {
-        // 購入処理のロジックを実装
-        return "redirect:/ordercheck";
+    @GetMapping("/top")
+    public String goToTopPage() {
+        return "redirect:/";
     }
 
     // 現在ログインしているユーザーのIDを取得するメソッド（実装が必要）
@@ -94,4 +93,5 @@ public class CartController {
         return "redirect:/"; // トップページへリダイレクト
     }
 }
+
 
