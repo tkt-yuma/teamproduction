@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.user.entity.Comment; // Commentクラスを使用
 import com.example.demo.user.entity.ItemId;
 import com.example.demo.user.service.BookService;
 import com.example.demo.user.service.CartService;
@@ -37,8 +38,8 @@ public class DetailsController {
 
     @GetMapping("/{itemId}")
     public String showItemDetails(@PathVariable Integer itemId, Model model) {
-        ItemId item = itemService.getItemById(itemId);
-        List<Review> reviews = reviewService.getReviewsForItem(itemId);
+        ItemId item = bookService.getItemById(itemId);
+        List<Comment> reviews = reviewService.getCommentsForItem(itemId); // ReviewをCommentに変更
         model.addAttribute("item", item);
         model.addAttribute("reviews", reviews);
         return "details";
@@ -73,7 +74,7 @@ public class DetailsController {
 
     private Integer getCurrentUserId() {
         // 認証システムからユーザーIDを取得する実装
-        return 1;
+        return 1; // 仮の実装
     }
     
  // マイページへのルーティング
