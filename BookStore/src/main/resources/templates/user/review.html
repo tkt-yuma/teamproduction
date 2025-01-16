@@ -1,12 +1,18 @@
-<!DOCTYPE html>
 <!--レビュー画面-->
+<!--修正1/16-->
+
+<!--メニューリストからの移動-->
+<!--レビュー登録-->
+<!--キャンセル-->
+
+<!DOCTYPE html>
 <html lang="ja">
 
 
 <head>
-	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/review.css}">
 	<meta charset="UTF-8">
-	<title>book</title>
+	<title>レビュー</title>
 </head>
 
 <body>
@@ -30,43 +36,46 @@
 		</nav>
 	</header>
 
+	<!--レビュー-->
 	<main class="main-content">
-	        <h1 class="review-title">レビューを書く</h1>
-	        
-	        <div class="review-form">
-	            <div class="book-title-container">
-	                <label for="book-title">本のタイトル</label>
-	                <input type="text" id="book-title" name="book-title" class="bordered-input">
-	            </div>
-	            
-	            <div class="review-title-container">
-	                <label for="review-title">レビュータイトル(20字)</label>
-	                <input type="text" id="review-title" name="review-title" maxlength="20" class="bordered-input">
-	            </div>
+		<h1 class="review-title">レビューを書く</h1>
 
-	            <div class="review-content-container">
-	                <label for="review-content">レビュー本文(500字)</label>
-	                <textarea id="review-content" name="review-content" maxlength="500" rows="10"></textarea>
-	            </div>
-	        </div>
-	    </main>
+		<div class="review-form">
+			<div class="book-title-container">
+				<label for="book-title">本のタイトル</label>
+				<input type="text" id="book-title" name="book-title" class="bordered-input">
+			</div>
+
+			<div class="review-title-container">
+				<label for="review-title">レビュータイトル(20字)</label>
+				<input type="text" id="review-title" name="review-title" maxlength="20" class="bordered-input">
+			</div>
+
+			<div class="review-content-container">
+				<label for="review-content">レビュー本文(500字)</label>
+				<textarea id="review-content" name="review-content" maxlength="500" rows="10"></textarea>
+			</div>
+		</div>
+	</main>
 
 
 	<div class="purchase-container">
 		<button class="purchase-button cancel-button">キャンセル</button>
 		<button class="purchase-button">登録</button>
 	</div>
-	
-	<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				const menuToggle = document.getElementById('menuToggle');
-				const menuList = document.getElementById('menuList');
 
-				menuToggle.addEventListener('click', function () {
-					menuList.classList.toggle('show');
-				});
+	<!--Javascript-->
+	<!--メニューリスト-->
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const menuToggle = document.getElementById('menuToggle');
+			const menuList = document.getElementById('menuList');
+
+			menuToggle.addEventListener('click', function () {
+				menuList.classList.toggle('show');
 			});
-		</script>
+		});
+	</script>
 
 </body>
 

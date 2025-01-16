@@ -1,11 +1,31 @@
 package com.example.demo.user.service;
 
+import org.springframework.stereotype.Service;
+
 import com.example.demo.user.entity.UserInfo;
 
-//1月14日 遠所作業
-//1月15日 遠所作業　作り直し　仮のService　
-public class UserService {
-    UserInfo getUserInfoById(Integer userId);
-    // 他の必要なメソッド
-}
 
+@Service
+public class UserService {
+	public UserInfo getUserInfoById(Integer userId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	public boolean updateUser(UserInfo userInfo) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
+
+	public boolean registerUser(UserInfo userInfo) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
+
+	public boolean authenticateUser(String userMail, String userPass) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
+	
+
+}

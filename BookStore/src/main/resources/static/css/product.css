@@ -1,10 +1,13 @@
 @charset "UTF-8";
 
+
+/*変えない*/
 body {
 	margin: 0;
 	padding: 20px;
 }
 
+/*タイトル*/
 .book-container {
 	flex-grow: 1;
 	background-color: skyblue;
@@ -12,6 +15,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	padding: 15px 0;
+	margin-bottom: 40px;
 }
 
 .book {
@@ -22,6 +26,73 @@ body {
 	color: white;
 }
 
+
+/*ヘッダー*/
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+}
+
+
+.header-img {
+	width: 100px;
+	height: auto;
+	margin: 0px;
+	padding: 10px
+}
+
+/*メニューリスト*/
+.menu-container {
+	cursor: pointer;
+}
+
+.menu-list {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: white;
+	border: 1px solid #ccc;
+	padding: 10px;
+	z-index: 1000;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-10px);
+	transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+
+}
+
+.menu-list.show {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.menu-list ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.menu-list li {
+	padding: 5px 0;
+
+
+}
+
+.menu-list li a {
+	text-decoration: none;
+	color: #000;
+	transition: color 0.1s ease;
+}
+
+.menu-list li a:hover {
+	color: rgb(0, 128, 255);
+	cursor: pointer;
+}
+
+/*一覧のブロック*/
 .product-wrapper {
 	display: flex;
 	flex-wrap: wrap;
@@ -37,6 +108,7 @@ body {
 	text-align: center;
 }
 
+/*画像*/
 .left-img,
 .right-img {
 	flex-shrink: 0;
@@ -64,7 +136,7 @@ body {
 
 }
 
-
+/*本のタイトル*/
 .product-title,
 .product-price {
 	margin: 5px 0;
@@ -72,24 +144,12 @@ body {
 	font-size: 14px;
 }
 
+/*本の値段*/
 .product-price {
 	font-weight: bold;
 }
 
-.more-container {
-	text-align: center;
-	margin-top: 20px;
-}
-
-.more-link {
-	background: none;
-	border: none;
-	color: blue;
-	text-decoration: underline;
-	cursor: pointer;
-	font-size: 16px;
-}
-
+/*検索*/
 .search-container {
 	display: flex;
 	justify-content: center;
@@ -102,6 +162,7 @@ form {
 	gap: 10px;
 }
 
+/*検索ボタン*/
 input[type="search"] {
 	padding: 5px;
 	font-size: 16px;
@@ -123,7 +184,7 @@ input[type="submit"]:hover {
 	background-color: #45a049;
 }
 
-
+/*オススメ*/
 .recommend1 {
 	display: inline-block;
 	padding: 8px 15px;
@@ -139,6 +200,7 @@ input[type="submit"]:hover {
 	transition: all 0.3s ease;
 }
 
+/*新着*/
 .recommend2 {
 	display: inline-block;
 	padding: 8px 15px;
@@ -154,6 +216,7 @@ input[type="submit"]:hover {
 	transition: all 0.3s ease;
 }
 
+/*ランキング*/
 .recommend3 {
 	display: inline-block;
 	padding: 8px 15px;
@@ -169,6 +232,7 @@ input[type="submit"]:hover {
 	transition: all 0.3s ease;
 }
 
+/*画像*/
 .image-container {
 	display: flex;
 	justify-content: space-between;
@@ -176,76 +240,12 @@ input[type="submit"]:hover {
 	width: 100%;
 }
 
-.header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	position: relative;
-}
-
-
-.header-img {
-	width: 100px;
-	height: auto;
-	margin: 0px;
-	padding: 10px
-}
-
-.menu-container {
-	cursor: pointer;
-}
-
-.menu-list {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-
-}
-
-.menu-list.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.menu-list ul {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-}
-
-.menu-list li {
-	padding: 5px 0;
-
-
-}
-
-.menu-list li a {
-  text-decoration: none;
-  color: #000;
-  transition: color 0.1s ease;
-}
-
-.menu-list li a:hover {
-  color: rgb(0, 128, 255);
-  cursor: pointer;
-
-
-}
-
 .product-container img {
 	width: 150px;
 	height: 200px;
 	object-fit: cover;
 	transition: transform 0.3s ease;
+	margin-bottom: 10px;
 }
 
 .product-container {
@@ -254,10 +254,6 @@ input[type="submit"]:hover {
 	align-items: center;
 	width: 180px;
 	margin: 10px;
-}
-
-.product-container img {
-	margin-bottom: 10px;
 }
 
 .product-title,
@@ -270,51 +266,42 @@ input[type="submit"]:hover {
 	transform: scale(1.05);
 }
 
+/*フッター(カテゴリ)*/
 footer {
-  border-top: 1px solid #ccc;
-  padding-top: 20px;
-  margin-top: 20px;
+	border-top: 1px solid #ccc;
+	padding-top: 20px;
+	margin-top: 20px;
 }
 
 .footer-categories {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .footer-categories h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+	font-size: 18px;
+	margin-bottom: 10px;
 }
 
 .footer-categories ul {
-  list-style-type: none;
-  padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 
 .footer-categories li {
-  margin-bottom: 5px;
-
-}
-
-.footer-categories ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-categories li {
-  margin-right: 20px;
-  margin-bottom: 10px;
+	margin-right: 20px;
+	margin-bottom: 10px;
 }
 
 .footer-categories li a {
-  text-decoration: none;
-  color: #000;
-  transition: color 0.1s ease;
+	text-decoration: none;
+	color: #000;
+	transition: color 0.1s ease;
 }
 
 .footer-categories li a:hover {
-  color: rgb(0, 128, 255);
-  cursor: pointer;
+	color: rgb(0, 128, 255);
+	cursor: pointer;
 }

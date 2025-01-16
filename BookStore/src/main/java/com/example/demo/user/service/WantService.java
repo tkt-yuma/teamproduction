@@ -2,14 +2,32 @@ package com.example.demo.user.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.demo.user.entity.CartInfo;
 
-//1月15日 遠所作業
-
+@Service
 public class WantService {
-    List<CartInfo> getWantItems(Integer userId);
-    CartInfo getWantItem(Integer userId, Integer itemId);
-    void removeFromWantList(Integer userId, Integer itemId);
-    // 他の必要なメソッド
-}
 
+
+	public void addToWantList(Integer currentUserId, Integer itemId) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+	public List<CartInfo> getWantItems(Integer currentUserId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	public CartInfo getWantItem(Integer currentUserId, Integer itemId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	public void removeFromWantList(Integer currentUserId, Integer itemId) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+}

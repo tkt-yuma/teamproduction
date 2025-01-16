@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.user.repository.UserInfoMapper">
 
+<!-- ユーザーリストに登録されている情報をDBから指定する処理 -->
 	<resultMap id = "UserInfoMap" type="com.example.demo.user.entity.UserInfo">
 		<result column="user_id"         jdbcType="INTEGER"   property="userId"          />
 		<result column="user_real_name"  jdbcType="VARCHAR"   property="userRealName"    />
@@ -13,6 +14,7 @@
 		
 	</resultMap>
 	
+	<!-- ユーザーリストに登録されている情報をIDの昇順に全件表示するSQL文-->
 	<select id = "selectAll" resultMap="UserInfoMap">
 		select * from userinfo order by user_id asc
 	</select>

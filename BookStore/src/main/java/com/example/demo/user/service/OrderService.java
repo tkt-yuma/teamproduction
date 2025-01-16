@@ -2,11 +2,34 @@ package com.example.demo.user.service;
 
 import java.util.List;
 
-import com.example.demo.user.entity.SellManagement;
+import org.springframework.stereotype.Service;
 
-//1月15日 遠所作業
+import com.example.demo.user.entity.CartInfo;
+import com.example.demo.user.entity.SaleManagement;
+
+
+@Service
 public class OrderService {
-    List<SellManagement> getPurchaseHistoryForUser(Integer userId);
-    // 他の必要なメソッド
-}
 
+
+	public int getEstimatedDeliveryDays(Integer userId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return 0;
+	}
+
+	public List<SaleManagement> getPurchaseHistoryForUser(Integer userId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	public List<CartInfo> getOrderItemsForUser(Integer userId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	public void processOrder(Integer userId, String paymentMethod, String cardNumber) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+}

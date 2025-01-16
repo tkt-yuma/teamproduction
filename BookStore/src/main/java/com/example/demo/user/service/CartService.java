@@ -2,15 +2,41 @@ package com.example.demo.user.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.demo.user.entity.CartInfo;
 
-//1月15日 遠所作業
-
+@Service
 public class CartService {
-    List<CartInfo> getCartItems(Integer userId);
-    double calculateTotal(Integer userId);
-    void updateItemQuantity(Integer userId, Integer itemId, Integer quantity);
-    void removeItem(Integer userId, Integer itemId);
+
+
+	public List<CartInfo> getCartItems(Integer currentUserId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	public double calculateTotal(Integer currentUserId) {
+		// TODO 自動生成されたメソッド・スタブ
+		return 0;
+	}
+
+	public void updateItemQuantity(Integer currentUserId, Integer itemId, Integer quantity) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+	public void removeItem(Integer currentUserId, Integer itemId) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+	public void addToCart(Integer currentUserId, Integer itemId, Integer quantity) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+	public void addToCart(Integer currentUserId, CartInfo item) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
 }
-
-

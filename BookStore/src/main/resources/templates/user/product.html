@@ -1,14 +1,21 @@
+<!--商品一覧画面-->
+<!--修正1/16-->
 
-<!-- 商品一覧画面-->
-<!-- @date 2025/01/08-->
-<!-- @member 髙田-->
+<!--メニューリストからの移動-->
+<!--キーワード検索からの移動-->
+<!--左右の矢印修正(画像から文字へ変更)-->
+<!--商品を選択した後の商品詳細ページへの移動-->
+<!--商品画像、商品タイトル、商品の値段-->
+<!--カテゴリからの移動-->
+
+
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/product.css}">
 	<meta charset="UTF-8">
-	<title>book</title>
+	<title>商品一覧</title>
 </head>
 
 <body>
@@ -17,7 +24,7 @@
 			<img src="https://konpure.com/wp-content/uploads/2019/04/humberger01.png" alt="メニュー" class="img header-img"
 				id="menuToggle">
 		</div>
-		<div class="Book-container">
+		<div class="book-container">
 			<p class="book">Book Super Market</p>
 		</div>
 		<nav class="menu-list" id="menuList">
@@ -218,58 +225,82 @@
 		<img src="https://img.freepik.com/free-icon/play-triangular-arrow-symbol_318-40204.jpg?size=338&ext=jpg"
 			alt="リスト" class="img small-img right-img" id="rankingNextBtn">
 	</div>
+
+	<!--フッター(カテゴリ)-->
 	<footer>
-	  <div class="footer-categories">
-	    <h3>カテゴリ</h3>
-	    <ul>
-			<li><a href="#">ビジネス</a></li>
-			<li><a href="#">経済</a></li>
-			<li><a href="#">自己啓発</a></li>
-			<li><a href="#">歴史</a></li>
-			<li><a href="#">地理</a></li>
-			<li><a href="#">科学</a></li>
-			<li><a href="#">技術</a></li>
-			<li><a href="#">芸術</a></li>
-			<li><a href="#">音楽</a></li>
-			<li><a href="#">料理</a></li>
-			<li><a href="#">グルメ</a></li>
-			<li><a href="#">旅行</a></li>
-			<li><a href="#">アウトドア</a></li>
-			<li><a href="#">スポーツ</a></li>
-			<li><a href="#">健康</a></li>
-			<li><a href="#">趣味</a></li>
-			<li><a href="#">実用</a></li>
-			<li><a href="#">語学</a></li>
-			<li><a href="#">辞書</a></li>
-			<li><a href="#">哲学</a></li>
-			<li><a href="#">思想</a></li>
-			<li><a href="#">宗教</a></li>
-			<li><a href="#">スピリチュアル</a></li>
-			<li><a href="#">政治</a></li>
-			<li><a href="#">社会</a></li>
-			<li><a href="#">医学</a></li>
-			<li><a href="#">看護</a></li>
-			<li><a href="#">コンピューター</a></li>
-			<li><a href="#">IT</a></li>
-			<li><a href="#">法律</a></li>
-			<li><a href="#">外国語書籍</a></li>
-			<!--href属性は"#"に設定されていますが、実際のリンク先を設定する際は適切なURLに変更してください。-->
-	    </ul>
-	  </div>
-	  <!-- 他のフッターコンテンツ -->
+		<div class="footer-categories">
+			<h3>カテゴリ</h3>
+			<ul>
+				<li><a href="#">ビジネス</a></li>
+				<li><a href="#">経済</a></li>
+				<li><a href="#">自己啓発</a></li>
+				<li><a href="#">歴史</a></li>
+				<li><a href="#">地理</a></li>
+				<li><a href="#">科学</a></li>
+				<li><a href="#">技術</a></li>
+				<li><a href="#">芸術</a></li>
+				<li><a href="#">音楽</a></li>
+				<li><a href="#">料理</a></li>
+				<li><a href="#">グルメ</a></li>
+				<li><a href="#">旅行</a></li>
+				<li><a href="#">アウトドア</a></li>
+				<li><a href="#">スポーツ</a></li>
+				<li><a href="#">健康</a></li>
+				<li><a href="#">趣味</a></li>
+				<li><a href="#">実用</a></li>
+				<li><a href="#">語学</a></li>
+				<li><a href="#">辞書</a></li>
+				<li><a href="#">哲学</a></li>
+				<li><a href="#">思想</a></li>
+				<li><a href="#">宗教</a></li>
+				<li><a href="#">スピリチュアル</a></li>
+				<li><a href="#">政治</a></li>
+				<li><a href="#">社会</a></li>
+				<li><a href="#">医学</a></li>
+				<li><a href="#">看護</a></li>
+				<li><a href="#">コンピューター</a></li>
+				<li><a href="#">IT</a></li>
+				<li><a href="#">法律</a></li>
+				<li><a href="#">外国語書籍</a></li>
+				<!--href属性は"#"に設定されていますが、実際のリンク先を設定する際は適切なURLに変更してください。-->
+			</ul>
+		</div>
+		<!-- 他のフッターコンテンツ -->
 	</footer>
-	
+
+	<!--Javascript-->
+	<!--メニューリスト-->
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const menuToggle = document.getElementById('menuToggle');
+			const menuList = document.getElementById('menuList');
+
+			menuToggle.addEventListener('click', function () {
+				menuList.classList.toggle('show');
+			});
+		});
+	</script>
+
+	<!--商品一覧表示-->
+	<!--	主要な機能
+	カルーセルの設定
+	setupProductCarousel関数が、3つの異なるカルーセル（おすすめ、新着、ランキング）を設定します。
+	各カルーセルは、製品を表示する要素と、前後に移動するためのボタンを持っています。
+	製品の表示制御
+	showProducts関数が、現在のインデックスに基づいて、表示する製品と非表示にする製品を制御します。
+	ナビゲーション
+	nextProductsとprevProducts関数が、「次へ」と「前へ」ボタンのクリックに応じて製品の表示を更新します。-->
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			function setupProductCarousel(wrapperId, prevBtnId, nextBtnId) {
 				const productWrapper = document.getElementById(wrapperId);
 				const prevBtn = document.getElementById(prevBtnId);
 				const nextBtn = document.getElementById(nextBtnId);
-				let currentIndex = 0;
-				const productsPerPage = 4;
+				let currentIndex = 0;//インデックスを0にする
+				const productsPerPage = 4;//最初に4つ表示する
 				const allProducts = Array.from(productWrapper.children);
 
-				function showProducts(startIndex) {
+				function showProducts(startIndex) {//ループ処理
 					for (let i = 0; i < allProducts.length; i++) {
 						if (i >= startIndex && i < startIndex + productsPerPage) {
 							allProducts[i].style.display = 'block';
@@ -278,13 +309,13 @@
 						}
 					}
 				}
-				function nextProducts() {
+				function nextProducts() {//次へボタン
 
 					currentIndex = (currentIndex + productsPerPage) % allProducts.length;
 					showProducts(currentIndex);
 				}
 
-				function prevProducts() {
+				function prevProducts() {//前へボタン
 					currentIndex = (currentIndex - productsPerPage + allProducts.length)
 						% allProducts.length;
 					showProducts(currentIndex);
@@ -306,16 +337,7 @@
 		});
 	</script>
 
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			const menuToggle = document.getElementById('menuToggle');
-			const menuList = document.getElementById('menuList');
 
-			menuToggle.addEventListener('click', function () {
-				menuList.classList.toggle('show');
-			});
-		});
-	</script>
 </body>
 
 </html>

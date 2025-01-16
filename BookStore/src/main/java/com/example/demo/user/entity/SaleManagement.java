@@ -5,7 +5,7 @@ import java.util.Date;
 import lombok.Data;
 
 @Data
-public class SellManagement {
+public class SaleManagement {
 	private Integer saleNum;
 	private Integer itemId;
 	private String itemName;
