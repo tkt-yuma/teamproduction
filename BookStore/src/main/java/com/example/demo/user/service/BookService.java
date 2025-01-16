@@ -6,7 +6,7 @@ import com.example.demo.user.entity.ItemId;
 
 //１月１５日　遠所作業　仮のService
 
-public interface BookService {
+public class BookService {
     ItemId getItemById(Integer id);
     List<ItemId> searchItems(String query);
     // 他の必要なメソッド

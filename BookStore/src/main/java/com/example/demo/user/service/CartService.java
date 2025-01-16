@@ -6,7 +6,7 @@ import com.example.demo.user.entity.CartInfo;
 
 //1月15日 遠所作業
 
-public interface CartService {
+public class CartService {
     List<CartInfo> getCartItems(Integer userId);
     double calculateTotal(Integer userId);
     void updateItemQuantity(Integer userId, Integer itemId, Integer quantity);
