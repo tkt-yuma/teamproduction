@@ -9,6 +9,7 @@ import com.example.demo.user.entity.CartInfo;
 @Service
 public class WantService {
 
+
 	public void addToWantList(Integer currentUserId, Integer itemId) {
 		// TODO 自動生成されたメソッド・スタブ
 		

@@ -4,9 +4,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.user.entity.UserInfo;
 
+
 @Service
 public class UserService {
-
 	public UserInfo getUserInfoById(Integer userId) {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;

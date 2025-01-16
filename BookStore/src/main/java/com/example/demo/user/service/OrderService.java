@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import com.example.demo.user.entity.CartInfo;
 import com.example.demo.user.entity.SellManagement;
 
+
 @Service
 public class OrderService {
+
 
 	public int getEstimatedDeliveryDays(Integer userId) {
 		// TODO 自動生成されたメソッド・スタブ

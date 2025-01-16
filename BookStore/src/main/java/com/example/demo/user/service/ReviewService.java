@@ -1,5 +1,6 @@
 package com.example.demo.user.service;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,6 @@ public class ReviewService {
 		// TODO 自動生成されたメソッド・スタブ
 		
 	}
-	
 	
 
 }

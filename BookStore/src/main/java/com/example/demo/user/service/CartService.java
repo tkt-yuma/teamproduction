@@ -9,6 +9,7 @@ import com.example.demo.user.entity.CartInfo;
 @Service
 public class CartService {
 
+
 	public List<CartInfo> getCartItems(Integer currentUserId) {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
@@ -38,5 +39,4 @@ public class CartService {
 		// TODO 自動生成されたメソッド・スタブ
 		
 	}
-
 }
