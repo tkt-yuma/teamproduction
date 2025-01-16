@@ -25,6 +25,7 @@ body {
 	color: white;
 }
 
+/*注文完了画面*/
 .main-content {
     max-width: 800px;
     margin: 40px auto;
@@ -38,16 +39,19 @@ body {
     margin-bottom: 40px;
 }
 
+/*注文完了*/
 .order-complete-title {
     font-size: 32px;
     margin-bottom: 20px;
 }
 
+/*購入メッセージ*/
 .order-complete-message {
     font-size: 18px;
     line-height: 1.5;
 }
 
+/*トップページへのボタン*/
 .top-page-button {
     display: inline-block;
     background-color: skyblue;

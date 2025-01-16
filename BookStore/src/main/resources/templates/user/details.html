@@ -1,11 +1,23 @@
-<!DOCTYPE html>
 <!--商品詳細画面-->
+<!--修正1/16-->
+
+<!--トップページへ-->
+<!--メニューリストからの移動-->
+<!--キーワード検索空の移動-->
+<!--本のタイトル、画像、値段、詳細-->
+<!--カートに追加-->
+<!--ほしいものリストに追加-->
+<!--レビューを書く画面への移動-->
+<!--カテゴリ空の移動-->
+
+
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/details.css}">
 	<meta charset="UTF-8">
-	<title>book</title>
+	<title>商品詳細</title>
 </head>
 
 <body>
@@ -41,16 +53,16 @@
 		<div class="book-details">
 			<h2 class="book-title">ごんぎつね</h2>
 			<img src="			https://th.bing.com/th/id/OIP.Xi6nAT_M0Hr-UyDqNh_taAHaIw?w=170&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7"
-								alt="本の表紙" class="book-image">
+				alt="本の表紙" class="book-image">
 			<p class="book-price">\500円</p>
 			<div class="book-description">
 				<h4 class="description-title">詳細</h4>
-				<p class="description-content">				山の中に住む一匹狐のごんは、いたずら好きで村人に迷惑をかけていました。ある日、ごんは兵十が捕まえた魚やうなぎを逃がしてしまいます。
-				数日後、ごんは兵十の母親の葬式を目撃します。ごんは自分のいたずらが原因で兵十の母親が十分な栄養を取れずに亡くなったのではないかと後悔します。
-				償いの気持ちから、ごんは毎日こっそりと兵十の家に栗や松茸などの食べ物を届けるようになります。
-				ある日、ごんが兵十の家に忍び込むのを見た兵十は、またいたずらをしに来たと勘違いし、火縄銃でごんを撃ってしまいます。
-				土間に置かれた栗を見て、食べ物を毎日届けてくれていたのがごんだったことに気づいた兵十は、「ごん、お前だったのか。」とつぶやきます123。
-				この物語は、誤解や気持ちを伝えることの難しさ、そして償いの気持ちを描いた悲劇的な結末を持つ作品です。</p>
+				<p class="description-content"> 山の中に住む一匹狐のごんは、いたずら好きで村人に迷惑をかけていました。ある日、ごんは兵十が捕まえた魚やうなぎを逃がしてしまいます。
+					数日後、ごんは兵十の母親の葬式を目撃します。ごんは自分のいたずらが原因で兵十の母親が十分な栄養を取れずに亡くなったのではないかと後悔します。
+					償いの気持ちから、ごんは毎日こっそりと兵十の家に栗や松茸などの食べ物を届けるようになります。
+					ある日、ごんが兵十の家に忍び込むのを見た兵十は、またいたずらをしに来たと勘違いし、火縄銃でごんを撃ってしまいます。
+					土間に置かれた栗を見て、食べ物を毎日届けてくれていたのがごんだったことに気づいた兵十は、「ごん、お前だったのか。」とつぶやきます123。
+					この物語は、誤解や気持ちを伝えることの難しさ、そして償いの気持ちを描いた悲劇的な結末を持つ作品です。</p>
 			</div>
 		</div>
 	</div>
@@ -68,32 +80,32 @@
 		<button class="action-button add-to-cart">カートに追加</button>
 		<button class="action-button add-to-wishlist">ほしいものリスト</button>
 	</div>
-	
-	<!-- 新しく追加するレビューセクション -->
-<div class="review-section">
-  <div class="review-icon">レビュー</div>
-  <a href="#" class="write-review-btn">＋ レビューを書く</a>
-</div>
 
-<div class="reviews-container">
-  <div class="review">
-    <h4 class="reviewer-name">山田太郎</h4>
-    <h3 class="review-title">素晴らしい絵本です！</h3>
-    <p class="review-content">子供と一緒に読みましたが、とても楽しめました。絵も美しく、ストーリーも心温まるものでした。おすすめです。</p>
-  </div>
-  
-  <div class="review">
-    <h4 class="reviewer-name">佐藤花子</h4>
-    <h3 class="review-title">教育的で面白い</h3>
-    <p class="review-content">子供の想像力を刺激する素晴らしい絵本です。読み聞かせにも最適で、毎晩楽しく読んでいます。</p>
-  </div>
-  
-  <div class="review">
-    <h4 class="reviewer-name">鈴木一郎</h4>
-    <h3 class="review-title">大人も楽しめる</h3>
-    <p class="review-content">子供向けの絵本ですが、大人が読んでも十分楽しめる内容です。メッセージ性も強く、考えさせられる部分が多いです。</p>
-  </div>
-</div>
+	<!-- 新しく追加するレビューセクション -->
+	<div class="review-section">
+		<div class="review-icon">レビュー</div>
+		<a href="#" class="write-review-btn">＋ レビューを書く</a>
+	</div>
+
+	<div class="reviews-container">
+		<div class="review">
+			<h4 class="reviewer-name">山田太郎</h4>
+			<h3 class="review-title">素晴らしい絵本です！</h3>
+			<p class="review-content">子供と一緒に読みましたが、とても楽しめました。絵も美しく、ストーリーも心温まるものでした。おすすめです。</p>
+		</div>
+
+		<div class="review">
+			<h4 class="reviewer-name">佐藤花子</h4>
+			<h3 class="review-title">教育的で面白い</h3>
+			<p class="review-content">子供の想像力を刺激する素晴らしい絵本です。読み聞かせにも最適で、毎晩楽しく読んでいます。</p>
+		</div>
+
+		<div class="review">
+			<h4 class="reviewer-name">鈴木一郎</h4>
+			<h3 class="review-title">大人も楽しめる</h3>
+			<p class="review-content">子供向けの絵本ですが、大人が読んでも十分楽しめる内容です。メッセージ性も強く、考えさせられる部分が多いです。</p>
+		</div>
+	</div>
 
 	<footer>
 		<div class="footer-categories">
@@ -135,21 +147,23 @@
 		</div>
 		<!-- 他のフッターコンテンツ -->
 	</footer>
-	
+
 	<div id="cartDialog" class="dialog">
-  <div class="dialog-content">
-	<p class="dialog-message">カートに追加しました</p>
-    <button id="closeDialog" class="close-button">閉じる</button>
-  </div>
-</div>
+		<div class="dialog-content">
+			<p class="dialog-message">カートに追加しました</p>
+			<button id="closeDialog" class="close-button">閉じる</button>
+		</div>
+	</div>
 
-<div id="wishlistDialog" class="wdialog">
-  <div class="wdialog-content">
-    <p class="wdialog-message">ほしいものリストに追加しました</p>
-    <button id="closeWishlistDialog" class="wclose-button">閉じる</button>
-  </div>
-</div>
+	<div id="wishlistDialog" class="wdialog">
+		<div class="wdialog-content">
+			<p class="wdialog-message">ほしいものリストに追加しました</p>
+			<button id="closeWishlistDialog" class="wclose-button">閉じる</button>
+		</div>
+	</div>
 
+	<!--Javascript-->
+	<!--メニューリスト-->
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
 			const menuToggle = document.getElementById('menuToggle');
@@ -161,13 +175,18 @@
 		});
 	</script>
 
+	<!--数量変更-->
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
+			//数量を表示
 			const quantityValue = document.getElementById('quantity-value');
+			//数量を増やす
 			const upButton = document.querySelector('.quantity-up');
+			//数量を減らす
 			const downButton = document.querySelector('.quantity-down');
-			let quantity = 1;
+			let quantity = 1;//現在の数量(初期値は1)
 
+			//増加ボタンの機能
 			upButton.addEventListener('click', function () {
 				if (quantity < 99) {
 					quantity++;
@@ -175,6 +194,7 @@
 				}
 			});
 
+			//減少ボタンの機能
 			downButton.addEventListener('click', function () {
 				if (quantity > 1) {
 					quantity--;
@@ -184,70 +204,77 @@
 		});
 	</script>
 
+	<!--レビュー書き込みボタン-->
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
-			const menuToggle = document.getElementById('menuToggle');
-			const menuList = document.getElementById('menuList');
-
-			menuToggle.addEventListener('click', function () {
-				menuList.classList.Toggle('show');
+			const writeReviewBtn = document.querySelector('.write-review-btn');
+			writeReviewBtn.addEventListener('click', function (e) {
+				e.preventDefault();
+				// ここにレビューを書くページへのリンクを追加します
+				// 例: window.location.href = 'write-review.html';
+				alert('レビューを書くページは現在準備中です。');
 			});
 		});
 	</script>
 
+	<!--ダイアログ-->
 	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-		  const writeReviewBtn = document.querySelector('.write-review-btn');
-		  writeReviewBtn.addEventListener('click', function(e) {
-		    e.preventDefault();
-		    // ここにレビューを書くページへのリンクを追加します
-		    // 例: window.location.href = 'write-review.html';
-		    alert('レビューを書くページは現在準備中です。');
-		  });
+		document.addEventListener('DOMContentLoaded', function () {
+			//カートに追加するボタン
+			const addToCartButton = document.querySelector('.add-to-cart');
+			//カート追加時に表示されるダイアログ
+			const cartDialog = document.getElementById('cartDialog');
+			//ダイアログを閉じるボタン
+			const closeDialogButton = document.getElementById('closeDialog');
+
+			//カートに追加する機能
+			addToCartButton.addEventListener('click', function () {
+				cartDialog.style.display = "block";
+			});
+
+			//ダイアログを閉じる機能
+			closeDialogButton.addEventListener('click', function () {
+				cartDialog.style.display = "none";
+			});
+
+			//ダイアログ外クリックで閉じる機能
+			window.addEventListener('click', function (event) {
+				if (event.target == cartDialog) {
+					cartDialog.style.display = "none";
+					//ダイアログの外側をクリックしてもダイアログが閉じる
+				}
+			});
 		});
 	</script>
-	
+
+
+	<!--ダイアログ-->
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {
-  const addToCartButton = document.querySelector('.add-to-cart');
-  const cartDialog = document.getElementById('cartDialog');
-  const closeDialogButton = document.getElementById('closeDialog');
+			//ウィッシュリストに追加するボタン
+			const addToWishlistButton = document.querySelector('.add-to-wishlist');
+			//ウィッシュリスト追加時に表示されるダイアログ
+			const wishlistDialog = document.getElementById('wishlistDialog');
+			//ダイアログを閉じるボタン
+			const closeWishlistDialogButton = document.getElementById('closeWishlistDialog');
 
-  addToCartButton.addEventListener('click', function() {
-    cartDialog.style.display = "block";
-  });
+			//ウィッシュリストに追加する機能
+			addToWishlistButton.addEventListener('click', function () {
+				wishlistDialog.style.display = "block";
+			});
 
-  closeDialogButton.addEventListener('click', function() {
-    cartDialog.style.display = "none";
-  });
+			//ダイアログを閉じる機能
+			closeWishlistDialogButton.addEventListener('click', function () {
+				wishlistDialog.style.display = "none";
+			});
 
-  window.addEventListener('click', function(event) {
-    if (event.target == cartDialog) {
-      cartDialog.style.display = "none";
-    }
-  });
-});
-	</script>
-	
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-		  const addToWishlistButton = document.querySelector('.add-to-wishlist');
-		  const wishlistDialog = document.getElementById('wishlistDialog');
-		  const closeWishlistDialogButton = document.getElementById('closeWishlistDialog');
-
-		  addToWishlistButton.addEventListener('click', function() {
-		    wishlistDialog.style.display = "block";
-		  });
-
-		  closeWishlistDialogButton.addEventListener('click', function() {
-		    wishlistDialog.style.display = "none";
-		  });
-
-		  window.addEventListener('click', function(event) {
-		    if (event.target == wishlistDialog) {
-		      wishlistDialog.style.display = "none";
-		    }
-		  });
+			//ダイアログ外クリックで閉じる機能
+			window.addEventListener('click', function (event) {
+				if (event.target == wishlistDialog) {
+					wishlistDialog.style.display = "none";
+					//ダイアログの外側をクリックしてもダイアログが閉じる
+				}
+			});
 		});
 	</script>
 </body>
