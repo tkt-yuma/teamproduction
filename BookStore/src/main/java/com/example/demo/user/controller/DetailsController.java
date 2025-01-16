@@ -35,6 +35,8 @@ public class DetailsController {
 
     @Autowired
     private ReviewService reviewService;
+    
+
 
     @GetMapping("/{itemId}")
     public String showItemDetails(@PathVariable Integer itemId, Model model) {
@@ -61,7 +63,7 @@ public class DetailsController {
 
     @GetMapping("/search")
     public String search(@RequestParam String q, Model model) {
-        List<ItemId> searchResults = itemService.searchItems(q);
+        List<ItemId> searchResults = bookService.searchItems(q);
         model.addAttribute("searchResults", searchResults);
         return "product";
     }

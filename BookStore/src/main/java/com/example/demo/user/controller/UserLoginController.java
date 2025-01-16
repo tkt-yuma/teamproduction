@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.demo.user.entity.UserInfo; // ユーザー情報を保持するクラス
+import com.example.demo.user.entity.UserLogin;
 import com.example.demo.user.service.UserService;
 
 @Controller
@@ -22,8 +22,8 @@ public class UserLoginController {
     }
 
     @PostMapping("/login")
-    public String login(UserInfo userInfo, Model model) {
-        boolean isAuthenticated = userService.authenticateUser(userInfo.getUsername(), userInfo.getPassword());
+    public String login(UserLogin userlogin, Model model) {
+        boolean isAuthenticated = userService.authenticateUser(userlogin.getUserMail(), userlogin.getUserPass());
 
         if (isAuthenticated) {
             // ログイン成功時の処理（セッションにユーザー情報を保存など）

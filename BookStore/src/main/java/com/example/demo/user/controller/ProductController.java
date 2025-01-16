@@ -7,12 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.user.service.BookService;
 import com.example.demo.user.service.UserService;
 
 @Controller
+@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
@@ -21,7 +23,7 @@ public class ProductController {
     @Autowired
     private UserService userService; //仮のService
 
-    @GetMapping("/")
+    @GetMapping("/toppage")
     public String home(Model model) {
         model.addAttribute("recommendedBooks", bookService.getRecommendedBooks());
         model.addAttribute("newBooks", bookService.getNewBooks());

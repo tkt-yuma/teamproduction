@@ -17,7 +17,7 @@ import com.example.demo.user.entity.Comment; // Commentクラスを使用
 import com.example.demo.user.service.ReviewService;
 
 @Controller
-@RequestMapping("/reviews")
+@RequestMapping("/review")
 public class ReviewController {
 
     @Autowired
@@ -58,7 +58,7 @@ public class ReviewController {
  // マイページへのルーティング
     @GetMapping("/mypage")
     public String myPage() {
-        return "mypage"; // mypage.htmlを返す
+        return "review/mypage"; // mypage.htmlを返す
     }
 
     // 購入履歴へのルーティング

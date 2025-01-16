@@ -34,4 +34,9 @@ public class CartService {
 		
 	}
 
+	public void addToCart(Integer currentUserId, CartInfo item) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
 }

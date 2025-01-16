@@ -21,6 +21,11 @@ public class UserService {
 		// TODO 自動生成されたメソッド・スタブ
 		return false;
 	}
+
+	public boolean authenticateUser(String userMail, String userPass) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
 	
 
 }
