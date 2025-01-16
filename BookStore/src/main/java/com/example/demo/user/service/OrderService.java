@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.user.entity.CartInfo;
-import com.example.demo.user.entity.SellManagement;
+import com.example.demo.user.entity.SaleManagement;
 
 
 @Service
@@ -17,7 +17,7 @@ public class OrderService {
 		return 0;
 	}
 
-	public List<SellManagement> getPurchaseHistoryForUser(Integer userId) {
+	public List<SaleManagement> getPurchaseHistoryForUser(Integer userId) {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}

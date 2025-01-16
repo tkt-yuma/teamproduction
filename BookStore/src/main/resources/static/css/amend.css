@@ -1,4 +1,11 @@
+
 @charset "UTF-8";
+
+/*変えない*/
+body {
+	margin: 0;
+	padding: 20px;
+}
 
 /*タイトル*/
 .book-container {
@@ -19,7 +26,7 @@
 	color: white;
 }
 
-
+/*登録内容変更・修正*/
 .content-container {
 	flex: 1;
 	display: flex;
@@ -87,6 +94,7 @@ button {
 	margin-top: 20px;
 }
 
+/*ボタン*/
 .button-container button {
 	padding: 10px 20px;
 	border: none;
@@ -94,11 +102,13 @@ button {
 	cursor: pointer;
 }
 
+/*キャンセルボタン*/
 #cancel-button {
 	background-color: #f44336;
 	color: white;
 }
 
+/*変更内容を保存ボタン*/
 #submit-button {
 	background-color: #4CAF50;
 	color: white;

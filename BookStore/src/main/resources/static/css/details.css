@@ -1,10 +1,12 @@
 @charset "UTF-8";
 
+/*変えない*/
 body {
 	margin: 0;
 	padding: 20px;
 }
 
+/*タイトル*/
 .book-container {
 	flex-grow: 1;
 	background-color: skyblue;
@@ -12,6 +14,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	padding: 15px 0;
+	margin-bottom: 40px;
 }
 
 .book {
@@ -22,151 +25,7 @@ body {
 	color: white;
 }
 
-
-.center-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	margin-top: 20px;
-}
-
-.book-details {
-	text-align: center;
-	max-width: 600px;
-	width: 100%;
-}
-
-.book-title {
-	font-size: 24px;
-	margin-bottom: 20px;
-}
-
-.book-image {
-	max-width: 300px;
-	height: auto;
-}
-
-.book-description {
-  text-align: left;
-  width: 100%;
-  margin-bottom: 30px;
-}
-
-.description-title {
-  text-align: left;
-  margin-bottom: 10px;
-}
-
-.description-content {
-  text-align: left;
-  line-height: 1.6;
-}
-
-
-
-.product-wrapper {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	gap: 20px;
-	margin: 0 20px;
-	flex-wrap: nowrap;
-}
-
-.product-container {
-	flex: 0 0 calc(25% - 15px);
-	margin-bottom: 20px;
-	text-align: center;
-}
-
-.left-img,
-.right-img {
-	flex-shrink: 0;
-}
-
-.small-img {
-	width: 50px;
-	height: auto;
-	align-self: center;
-	fill: #808080;
-	/* グレーの色 */
-	transition: all 0.3s ease;
-}
-
-.small-img:hover {
-	fill: blue;
-	/* ホバー時の色 */
-}
-
-
-
-.img {
-	max-width: 100%;
-	height: auto;
-
-}
-
-
-.product-title,
-.product-price {
-	margin: 5px 0;
-	text-align: center;
-	font-size: 14px;
-}
-
-.product-price {
-	font-weight: bold;
-}
-
-.more-container {
-	text-align: center;
-	margin-top: 20px;
-}
-
-.more-link {
-	background: none;
-	border: none;
-	color: blue;
-	text-decoration: underline;
-	cursor: pointer;
-	font-size: 16px;
-}
-
-.search-container {
-	display: flex;
-	justify-content: center;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-form {
-	display: flex;
-	gap: 10px;
-}
-
-input[type="search"] {
-	padding: 5px;
-	font-size: 16px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-}
-
-input[type="submit"] {
-	padding: 5px 10px;
-	font-size: 16px;
-	background-color: #4CAF50;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
-
-input[type="submit"]:hover {
-	background-color: #45a049;
-}
-
-
+/*ヘッダー*/
 .header {
 	display: flex;
 	align-items: center;
@@ -182,6 +41,7 @@ input[type="submit"]:hover {
 	padding: 10px
 }
 
+/*メニューリスト*/
 .menu-container {
 	cursor: pointer;
 }
@@ -228,9 +88,93 @@ input[type="submit"]:hover {
 .menu-list li a:hover {
   color: rgb(0, 128, 255);
   cursor: pointer;
-
-
 }
+
+/*検索*/
+.search-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+form {
+	display: flex;
+	gap: 10px;
+}
+
+/*検索ボタン*/
+input[type="search"] {
+	padding: 5px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+input[type="submit"] {
+	padding: 5px 10px;
+	font-size: 16px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #45a049;
+}
+
+
+
+
+/*本のブロック*/
+.center-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-top: 20px;
+}
+
+.book-details {
+	text-align: center;
+	max-width: 600px;
+	width: 100%;
+}
+
+/*本のタイトル*/
+.book-title {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+/*本の画像*/
+.book-image {
+	max-width: 300px;
+	height: auto;
+}
+
+/*詳細など*/
+.book-description {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+/*詳細*/
+.description-title {
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+/*詳細内容*/
+.description-content {
+  text-align: left;
+  line-height: 1.6;
+}
+
+/*数量などのブロック*/
 .product-actions {
   display: flex;
   align-items: center;
@@ -259,15 +203,18 @@ input[type="submit"]:hover {
   height: 80px;
 }
 
+/*数量*/
 .quantity-label {
   font-size: 14px;
 }
 
+/*個数*/
 #quantity-value {
   font-size: 24px;
   font-weight: bold;
 }
 
+/*数量変更ボタン*/
 .quantity-buttons {
   display: flex;
   flex-direction: column;
@@ -292,6 +239,7 @@ input[type="submit"]:hover {
   background-color: #e0e0e0;
 }
 
+/*ボタン*/
 .action-button {
   height: 80px;
   flex-grow: 1; /* ボタンを横長に */
@@ -311,14 +259,10 @@ input[type="submit"]:hover {
   transition: background-color 0.3s, border-color 0.3s;
 }
 
+/*カートに追加ボタン*/
 .add-to-cart {
   background-color: #4CAF50;
   border-color: #4CAF50;
-}
-
-.add-to-wishlist {
-  background-color: #2196F3;
-  border-color: #2196F3;
 }
 
 .add-to-cart:hover {
@@ -326,11 +270,18 @@ input[type="submit"]:hover {
   border-color: #45a049;
 }
 
+/*ほしいものリストボタン*/
+.add-to-wishlist {
+  background-color: #2196F3;
+  border-color: #2196F3;
+}
+
 .add-to-wishlist:hover {
   background-color: #1e87db;
   border-color: #1e87db;
 }
 
+/*レビュー*/
 .review-section {
   display: flex;
   justify-content: space-between;
@@ -340,8 +291,6 @@ input[type="submit"]:hover {
   border-radius: 5px;
   margin-top: 50px;
 }
-
-
 
 .review {
   border: 1px solid #ddd;
@@ -385,7 +334,7 @@ input[type="submit"]:hover {
   background-color: #e0e0e0;
 }
 
-
+/*フッター(カテゴリ)*/
 footer {
   border-top: 1px solid #ccc;
   padding-top: 20px;
@@ -399,16 +348,6 @@ footer {
 .footer-categories h3 {
   font-size: 18px;
   margin-bottom: 10px;
-}
-
-.footer-categories ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.footer-categories li {
-  margin-bottom: 5px;
-
 }
 
 .footer-categories ul {
@@ -435,6 +374,7 @@ footer {
   cursor: pointer;
 }
 
+/*ダイアログ(カート)*/
 .dialog {
   display: none;
   position: fixed;
@@ -458,6 +398,7 @@ footer {
    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* シャドウを追加してより目立たせる */
 }
 
+/*ダイアログメッセージ*/
 .dialog-message {
  font-size: 32px;  /* フォントサイズを大きくする */
   margin-bottom: 40px;  /* 下のマージンを増やして、閉じるボタンとの間隔を広げる */
@@ -465,7 +406,7 @@ footer {
    color: #333; /* テキストの色を少し濃くする */
 }
 
-
+/*閉じるボタン*/
 .close-button {
  background-color: rgb(128, 128, 128); /* ボタンの色を変更 */
   color: white;
@@ -481,6 +422,7 @@ footer {
 
 }
 
+/*ダイアログ(ほしいものリスト)*/
 .wdialog {
   display: none;
   position: fixed;
@@ -504,6 +446,7 @@ footer {
    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* シャドウを追加してより目立たせる */
 }
 
+/*ダイアログメッセージ*/
 .wdialog-message {
  font-size: 32px;  /* フォントサイズを大きくする */
   margin-bottom: 40px;  /* 下のマージンを増やして、閉じるボタンとの間隔を広げる */
@@ -511,7 +454,7 @@ footer {
    color: #333; /* テキストの色を少し濃くする */
 }
 
-
+/*閉じるボタン*/
 .wclose-button {
  background-color: rgb(128, 128, 128); /* ボタンの色を変更 */
   color: white;
@@ -526,4 +469,3 @@ footer {
   transition: background-color 0.3s; /* ホバー効果のためのトランジション */
 
 }
-
