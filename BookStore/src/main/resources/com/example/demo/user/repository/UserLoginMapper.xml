@@ -15,5 +15,7 @@
 		select * from userlogin order by user_id asc
 	</select>
 	
-	
+	<select id = "findByUserMail" resultMap="UserLoginMap">
+		select * from userlogin where user_mail = #{mail}
+	</select>
 </mapper>

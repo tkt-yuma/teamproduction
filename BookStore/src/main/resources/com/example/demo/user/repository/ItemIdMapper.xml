@@ -16,5 +16,19 @@
 	<select id="selectAll" resultMap="ItemIdMap">
 		select * from item_id order by item_id asc
 	</select>
+	
+	<select id = "selectById" resultMap="ItemIdMap">
+		select * from item_id where item_id = #{id} order by item_id asc
+	</select>
+	
+	<select id = "selectKeyWord" resultMap="ItemIdMap">
+		select * from item_id where item_name like concat('%', #{word}, '%') 
+		or category_name like concat('%', #{word}, '%')
+		or iteminfo like concat('%', #{word}, '%') order by item_id asc
+	</select>
+	
+	<update id = "updataItemStock">
+		update item_id set stock = #{stock} where item_id = #{itemId}
+	</update>
 
 </mapper>

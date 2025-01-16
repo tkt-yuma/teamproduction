@@ -16,4 +16,17 @@
 		select * from cartinfo order by num asc
 	</select>
 	
+	<select id = "selectById" resultMap="CartInfoMap">
+		select * from cartinfo where id = #{id} order by num asc
+	</select>
+	
+	<insert id = "cartInsert">
+		insert into cartinfo (user_id,item_id,item_name,quantity) 
+			values (#{userId}, #{itemId}, #{itemName}, #{quantity})
+	</insert>
+	
+	<delete id = "cartDelete">
+		delete cartinfo where item_id = #{itemId} and user_id = #{userId} 
+	</delete>
+
 </mapper>
