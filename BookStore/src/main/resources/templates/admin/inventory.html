@@ -31,17 +31,20 @@
 				<input type="submit" value="検索">
 		</form>
 		<br>
-		
+		<!--検索結果を表示-->
 		<h2>商品在庫</h2>
 				<table border="1"  width="100%">
 					<thead>
 					<tr>
 						<th>商品コード</th>
 						<th>商品名</th>
-						<th>在庫数（単位：冊）</th>
+						<th>カテゴリー</th>
 						<th>原価（単位：円）</th>
 						<th>売価（単位：冊）</th>
-						<th>カテゴリー</th>
+						<th>商品情報</th>
+						<th>在庫数（単位：冊）</th>
+						<th>発注先</th>
+						<th>画像</th>
 					</tr>  
 													                
 													            
@@ -50,13 +53,18 @@
 						<tr th:each="inventory : ${inventorys}">
 							<td th:text="${inventory.itemId}"></td>
 							<td th:text="${inventory.itemName}"></td>
-							<td th:text="${inventory.stock}"></td>
+							<td th:text="${inventory.category}"></td>
 							<td th:text="${inventory.itemCost}"></td>
 							<td th:text="${inventory.saleprice}"></td>
-							<td th:text="${inventory.category}"></td>
+							<td th:text="${inventory.iteminfo}"></td>
+							<td th:text="${inventory.stock}"></td>
+							<td th:text="${inventory.purchaseno}"></td>
+							<td th:text="${inventory.imageaddress}"></td>
 						</tr>
 					</tbody>
 				</table>
+				
+				<!--更新or新規登録のラジオボタン-->
 				<form>
 				  <input type="radio" id="option1" name="radioGroup" value="option1">
 				  <label for="option1">情報の更新・修正</label>
@@ -65,6 +73,8 @@
 				  <label for="option2">商品の新規登録</label><br>
 				  </form>
 				  
+				  
+				  <!--更新にチェックを入れた場合-->
 				  <div id="updateForm" style="display: none;">
 				    <h3>情報の更新・修正</h3>
 				    <form action="/update-inventory" method="post">
@@ -78,7 +88,8 @@
 				            <th>売価（円）</th>
 				            <th>商品情報</th>
 				            <th>在庫数</th>
-				            <th>発注元</th>
+				            <th>発注先ID</th>
+							<th>画像</th>
 				          </tr>
 				        </thead>
 				        <tbody>
@@ -91,6 +102,7 @@
 				            <td><input type="text" th:value="${inventory.iteminfo}" name="iteminfo[]"></td>
 				            <td><input type="number" th:value="${inventory.stock}" name="stock[]"></td>
 				            <td><input type="text" th:value="${inventory.purchaseno}" name="purchaseno[]"></td>
+							<td><input type="file" th:value="${inventory.imageaddress}" name="imageaddress[]"></td>
 				          </tr>
 				        </tbody>
 				      </table>
@@ -99,31 +111,34 @@
 				  </div>
 
 
-				  
+				  <!--新規登録にチェックを入れた場合-->
 					<div id="newItemForm" style="display: none;">
 					  <h3>商品の新規登録</h3>
 					  <form action="#" method="post">
 					    <table class="entry">
 					      <thead>
 					        <tr>
-					          <th>商品ID（シリアル付与）</th>
+					          
 					          <th>商品名</th>
-					          <th>発注元</th>
-					          <th>原価（単位：円）</th>
+							  <th>カテゴリーID</th>
+							  <th>原価（単位：円）</th>
 					          <th>売価（単位：円）</th>
-					          <th>カテゴリー</th>
-					          <th>商品情報</th>
+							  <th>商品情報</th>
+					          <th>発注先ID</th>
+							  <th>画像</th>
 							</tr>
 					      </thead>
 					      <tbody>
 					        <tr>
-					          <td><input type="text" name="item_id[]" required></td>
+					          
 					          <td><input type="text" name="item_name[]" required></td>
-					          <td><input type="text" name="purchaseno[]" required></td>
-					          <td><input type="number" name="item_purprice[]" required></td>
-							  <td><input type="number" name="item_saleprice[]" required></td>
 							  <td><input type="text" name="category[]" required></td>
-							  <td><input type="text" name="iteminfo[]"></td>
+					          <td><input type="text" name="item_purprice[]" inputmode="numeric" required></td>
+							  <td><input type="text" name="item_saleprice[]" inputmode="numeric" required></td>
+							  <!--数字以外を除去、半角を全角にするJavaScriptがいる？-->
+							  <td><input type="text" name="iteminfo[]"required></td>
+							  <td><input type="text" name="purchaseno[]" required></td>
+							  <td><input type="file" name="item_image[]" accept="image/*"></td>
 					        </tr>
 					      </tbody>
 					    </table>

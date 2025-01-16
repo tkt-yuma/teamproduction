@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.user.repository.WishlistMapper">
 
-	<!-- ウィッシュリストをユーザーIDとウィッシュリストIDとアイテムIDから参照して指定する処理 -->
+<!-- ウィッシュリストをユーザーIDとウィッシュリストIDとアイテムIDから参照して指定する処理 -->
 	<resultMap id = "WishlistMap" type="com.example.demo.user.entity.Wishlist">
 		<result column="wishlistno"  jdbcType="INTEGER"   property="wishListNo" />
 		<result column="item_id"     jdbcType="INTEGER"   property="itemId"     />
@@ -10,6 +10,7 @@
 		<result column="user_id"     jdbcType="INTEGER"   property="userId"     />
 		
 	</resultMap>
+	
 	<!-- wishlistテーブルからアイテムIDを昇順に選択するSQL文 -->
 	<select id = "selectAll" resultMap="WishlistMap">
 		select * from wishlist order by item_id asc
