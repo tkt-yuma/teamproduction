@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.user.repository.UserLoginMapper">
 
+<!-- ユーザーログイン時に必要な情報（ID,メール,パスワード）をDBから指定する処理 -->
 	<resultMap id = "UserLoginMap" type="com.example.demo.user.entity.UserLogin">
 		
 		<result column="user_id"   jdbcType="INTEGER" property="userId"   />
@@ -11,10 +12,12 @@
 		
 	</resultMap>
 	
+	<!-- userloginテーブルからユーザーIDを昇順に選択するSQL文 -->
 	<select id = "selectAll" resultMap="UserLoginMap">
 		select * from userlogin order by user_id asc
 	</select>
 	
+	<!-- userloginテーブルからメールアドレスを選択するSQL文 -->
 	<select id = "findByUserMail" resultMap="UserLoginMap">
 		select * from userlogin where user_mail = #{mail}
 	</select>
