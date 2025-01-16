@@ -1,40 +1,49 @@
+<!--ログイン画面-->
+<!--修正1/15-->
+
+<!--キャンセル-->
+<!--ログイン-->
+<!--新規登録-->
+
 <!DOCTYPE html>
-<!-- ユーザーログイン画面-->
-<!-- @date 2025/01/08-->
-<!-- @member 髙田-->
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" th:href="@{/css/user-login.css}">
-<title>ログイン</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/user-login.css">
+	<title>ログイン</title>
 </head>
 
 <body>
 	<header class="header">
-			
-			<div class="book-container">
-				<p class="book">Book Super Market</p>
-			</div>
-			
-			
-		</header>
-		  <div class="content-container">
-	<h1>ログイン</h1>
-	   <form action="/login" method="post">
-		<div class="form-group">
-	       <label for="username">ユーザー名:</label>
-	       <input type="text" id="username" name="username" required>
-	      </div>
-		    <br>
+
+		<div class="book-container">
+			<p class="book">Book Super Market</p>
+		</div>
+
+
+	</header>
+	<div class="content-container">
+		<h1>ログイン</h1>
+		<form action="/login" method="post">
 			<div class="form-group">
-	       <label for="password">パスワード:</label>
-	       <input type="password" id="password" name="password" required>
-	       </div>
-		   <br>
-	       <button type="submit">ログイン</button>
-	   </form>
-	   <a href="register.html">新規登録はこちら</a>
-	   </div>
+				<label for="username">ユーザー名:</label>
+				<input type="text" id="username" name="username" required>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="password">パスワード:</label>
+				<input type="password" id="password" name="password" required>
+			</div>
+			<br>
+			<div class="button-group">
+				<button type="button" class="cancel-button">キャンセル</button>
+				<button type="submit" class="login-button">ログイン</button>
+			</div>
+		</form>
+		<a href="register.html">新規登録はこちら</a>
+	</div>
 </body>
+
 </html>
