@@ -51,36 +51,6 @@ public class UserController {
 	@Autowired
     private WantService wantService;
 
-	// マイページへのルーティング
-    @GetMapping("/mypage")
-    public String myPage() {
-        return "user/mypage"; // mypage.htmlを返す
-    }
-
-    // 購入履歴へのルーティング
-    @GetMapping("/history")
-    public String history() {
-        return "user/history"; // history.htmlを返す
-    }
-
-    // ほしいものリストへのルーティング
-    @GetMapping("/wishlist")
-    public String wishlist() {
-        return "user/wishlist"; // wishlist.htmlを返す
-    }
-
-    // プロフィール変更へのルーティング
-    @GetMapping("/amend")
-    public String amendProfile() {
-        return "user/amend"; // amend.htmlを返す
-    }
-
-    // カートへのルーティング
-    @GetMapping("/cart")
-    public String cart() {
-        return "user/cart"; // cart.htmlを返す
-    }
-
     // ログアウト処理
     @GetMapping("/logout")
     public String logout() {
@@ -118,19 +88,19 @@ public class UserController {
         return "redirect:/user/cart";
     }
 
- @PostMapping("/search")
+    @PostMapping("/search")
     public String search(@RequestParam("q") String query, Model model) {
         model.addAttribute("searchResults", bookService.searchBooks(query));
         return "search";
     }
 
-  @GetMapping("/category")
+  	@GetMapping("/category")
     public String category(@RequestParam("name") String categoryName, Model model) {
         model.addAttribute("books", bookService.getBooksByCategory(categoryName));
         return "product"; // カテゴリ別の商品一覧も product.html を使用
     }
 
-  @PostMapping
+  	@PostMapping("/register")
     public String registerUser(UserInfo userInfo, Model model) {
         // ユーザー情報をサービスに渡して登録を処理
         boolean isRegistered = userService.registerUser(userInfo);
@@ -143,8 +113,8 @@ public class UserController {
             return "user/register"; // 登録失敗時、再度登録フォームを表示
         }
     }
-   // 特定の商品に対するレビューを表示
-    @GetMapping("/{itemId}")
+    // 特定の商品に対するレビューを表示
+    @PostMapping("/{itemId}/review")
     public String showReviews(@PathVariable Integer itemId, Model model) {
         List<Comment> reviews = reviewService.getReviewsForItem(itemId);
         model.addAttribute("review", reviews);
@@ -175,7 +145,7 @@ public class UserController {
         return "redirect:/user/reviews/" + itemId; // 作成したレビューに基づいてリダイレクト
     }
 
- @GetMapping("/login")
+    @GetMapping("/login")
     public String showLoginForm() {
         return "user/user-login"; // user-login.htmlを返す
     }
@@ -193,7 +163,7 @@ public class UserController {
         }
     }
 
-   @GetMapping("/wishlist")
+    @GetMapping("/wishlist")
     public String showWishList(Model model) {
         List<CartInfo> wantItems = wantService.getWantItems(getCurrentUserId());
         model.addAttribute("wantItems", wantItems);
@@ -207,13 +177,13 @@ public class UserController {
         return "redirect:/user/wishlist";
     }
 
-    @PostMapping("/remove")
+    @PostMapping("/wishlist-remove")
     public String removeFromWantList(@RequestParam("itemId") Integer itemId) {
         wantService.removeFromWantList(getCurrentUserId(), itemId);
         return "redirect:/user/wishlist";
     }
     
- // ユーザー情報を保持するための簡易的なストレージ
+    // ユーザー情報を保持するための簡易的なストレージ
     private static Map<Integer, UserInfo> userStorage = new HashMap<>();
 
     static {
@@ -279,11 +249,11 @@ public class UserController {
         return false;
     }
     
- // カート情報を保持するための簡易的なストレージ
+    // カート情報を保持するための簡易的なストレージ
     private static Map<Integer, List<CartInfo>> cartStorage = new HashMap<>();
     private static int nextCartItemId = 1;
 
-    @GetMapping
+    @GetMapping("/cart")
     public String showCart(Model model) {
         List<CartInfo> cartItems = getCartItems(getCurrentUserId());
         double total = calculateTotal(getCurrentUserId());
@@ -300,13 +270,13 @@ public class UserController {
         return "redirect:/user/cart";
     }
 
-    @PostMapping("/remove")
+    @PostMapping("/cart-remove")
     public String removeItem(@RequestParam("itemId") Integer itemId) {
         removeItemFromCart(getCurrentUserId(), itemId);
         return "redirect:/user/cart";
     }
 
-    @PostMapping("/purchase")
+    @PostMapping("/ordercheck")
     public String purchase() {
         // 購入処理のロジックを実装
         return "redirect:/user/ordercheck";
@@ -360,7 +330,7 @@ public class UserController {
         return 1; // 仮の実装
     }
     
-    @GetMapping
+    @GetMapping("/confirmation")
     public String showConfirmation(Model model) {
         Integer userId = getCurrentUserId();
         int estimatedDeliveryDays = orderService.getEstimatedDeliveryDays(userId);
@@ -369,7 +339,7 @@ public class UserController {
         return "user/confirmation";
     }
     
-    @GetMapping("/{itemId}")
+    @PostMapping("/{itemId}/details")
     public String showItemDetails(@PathVariable Integer itemId, Model model) {
         ItemId item = getItemById(itemId);
         List<Comment> reviews = getCommentsForItem(itemId);
@@ -419,7 +389,7 @@ public class UserController {
         return results;
     }
     
-    @GetMapping
+    @GetMapping("/history")
     public String showPurchaseHistory(Model model) {
         Integer userId = getCurrentUserId();
         List<SellManagement> purchaseHistory = orderService.getPurchaseHistoryForUser(userId);
@@ -428,7 +398,7 @@ public class UserController {
         return "user/history"; // history.htmlを返す
     }
 
-    @GetMapping
+    @GetMapping("/mypage")
     public String showMypage(Model model) {
         // ユーザー情報の取得（仮の実装）
         UserInfo userInfo = new UserInfo();
