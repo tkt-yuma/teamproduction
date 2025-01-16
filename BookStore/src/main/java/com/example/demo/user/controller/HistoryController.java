@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.user.entity.SellManagement;
+import com.example.demo.user.entity.SaleManagement;
 import com.example.demo.user.service.OrderService;
 
 @Controller
@@ -22,7 +22,7 @@ public class HistoryController {
     @GetMapping
     public String showPurchaseHistory(Model model) {
         Integer userId = getCurrentUserId();
-        List<SellManagement> purchaseHistory = orderService.getPurchaseHistoryForUser(userId);
+        List<SaleManagement> purchaseHistory = orderService.getPurchaseHistoryForUser(userId);
         
         model.addAttribute("purchaseHistory", purchaseHistory);
         return "history"; // history.htmlを返す
