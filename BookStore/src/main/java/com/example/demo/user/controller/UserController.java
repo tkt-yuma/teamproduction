@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.user.entity.CartInfo;
 import com.example.demo.user.entity.Comment;
 import com.example.demo.user.entity.ItemId;
-import com.example.demo.user.entity.SellManagement;
+import com.example.demo.user.entity.SaleManagement;
 import com.example.demo.user.entity.UserInfo;
 import com.example.demo.user.entity.UserLogin;
 import com.example.demo.user.service.BookService;
@@ -392,7 +392,7 @@ public class UserController {
     @GetMapping("/history")
     public String showPurchaseHistory(Model model) {
         Integer userId = getCurrentUserId();
-        List<SellManagement> purchaseHistory = orderService.getPurchaseHistoryForUser(userId);
+        List<SaleManagement> purchaseHistory = orderService.getPurchaseHistoryForUser(userId);
         
         model.addAttribute("purchaseHistory", purchaseHistory);
         return "user/history"; // history.htmlを返す
