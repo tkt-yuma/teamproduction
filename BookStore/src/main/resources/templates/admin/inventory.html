@@ -38,10 +38,13 @@
 					<tr>
 						<th>商品コード</th>
 						<th>商品名</th>
-						<th>在庫数（単位：冊）</th>
+						<th>カテゴリー</th>
 						<th>原価（単位：円）</th>
 						<th>売価（単位：冊）</th>
-						<th>カテゴリー</th>
+						<th>商品情報</th>
+						<th>在庫数（単位：冊）</th>
+						<th>発注先</th>
+						<th>画像</th>
 					</tr>  
 													                
 													            
@@ -50,10 +53,13 @@
 						<tr th:each="inventory : ${inventorys}">
 							<td th:text="${inventory.itemId}"></td>
 							<td th:text="${inventory.itemName}"></td>
-							<td th:text="${inventory.stock}"></td>
+							<td th:text="${inventory.category}"></td>
 							<td th:text="${inventory.itemCost}"></td>
 							<td th:text="${inventory.saleprice}"></td>
-							<td th:text="${inventory.category}"></td>
+							<td th:text="${inventory.iteminfo}"></td>
+							<td th:text="${inventory.stock}"></td>
+							<td th:text="${inventory.purchaseno}"></td>
+							<td th:text="${inventory.imageaddress}"></td>
 						</tr>
 					</tbody>
 				</table>
