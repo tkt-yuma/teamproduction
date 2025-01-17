@@ -154,29 +154,41 @@ public class UserController {
     public String cancelOrder() {
         return "redirect:/user/cart";
     }
+    
+    @GetMapping("/search") //検索画面を表示
+    public String showSearchForm(Model model) {
+        model.addAttribute("searchQuery", "");
+        return "user/search";  // 検索画面を表示するビューを返す
+    }
 
-    @GetMapping("/search") //検索結果を表示するメソッド
-    public String search(@RequestParam("q") String query, 
-                         @RequestParam(defaultValue = "1") int page, 
-                         Model model) {
-        int pageSize = 10; //1ページあたりの商品数
-        List<ItemId> allItems = searchItems(query); //既存のsearchItemsメソッドを使用
-        
+    @PostMapping("/search") //検索処理
+    public String executeSearch(@RequestParam("q") String query, 
+                                @RequestParam(defaultValue = "1") int page, 
+                                Model model) {
+        int pageSize = 10;  //1ページあたりの商品数
+
+        List<ItemId> allItems = (List<ItemId>) bookService.searchBooks(query); //検索を実行
+        List<ItemId> pageItems = getPaginatedItems(allItems, page, pageSize); //検索結果をページネーション
+
+        addSearchResultsToModel(model, query, pageItems, page, allItems.size(), pageSize); //モデルに検索結果を追加
+
+        return "user/search";  //検索結果を表示するビューを返す
+    }
+
+    //ページネーション処理を行うプライベートメソッド
+    private List<ItemId> getPaginatedItems(List<ItemId> allItems, int page, int pageSize) {
         int start = (page - 1) * pageSize;
         int end = Math.min(start + pageSize, allItems.size());
-        List<ItemId> pageItems = allItems.subList(start, end);
-        
+        return allItems.subList(start, end);
+    }
+
+    //検索結果をモデルに追加するプライベートメソッド
+    private void addSearchResultsToModel(Model model, String query, List<ItemId> pageItems, 
+                                         int currentPage, int totalItems, int pageSize) {
         model.addAttribute("searchQuery", query);
         model.addAttribute("searchResults", pageItems);
-        model.addAttribute("currentPage", page);
-        model.addAttribute("totalPages", (int) Math.ceil((double) allItems.size() / pageSize));
-        return "user/search";
-    }
-    
-    @PostMapping("/search") //検索処理
-    public String search(@RequestParam("q") String query, Model model) {
-        model.addAttribute("searchResults", bookService.searchBooks(query));
-        return "user/search";
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", (int) Math.ceil((double) totalItems / pageSize));
     }
     
     @GetMapping("/category/{name}") //カテゴリ別商品一覧を商品一覧画面に表示
