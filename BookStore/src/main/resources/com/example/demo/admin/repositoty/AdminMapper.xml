@@ -12,4 +12,5 @@
 		select * from admin_id where admin_id = #{id}
 	</select>
 	
+	
 </mapper>

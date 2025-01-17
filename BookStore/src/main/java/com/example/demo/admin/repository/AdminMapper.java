@@ -9,4 +9,7 @@ import com.example.demo.admin.entity.Admin;
 @Mapper
 public interface AdminMapper {
 	Optional<Admin> findById(int id);
+	
+	
+
 }

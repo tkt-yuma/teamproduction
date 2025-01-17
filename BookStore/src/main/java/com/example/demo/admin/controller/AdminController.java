@@ -1,5 +1,11 @@
 package com.example.demo.admin.controller;
-//test
-public class AdminController {
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
+public class AdminController {
+	
 }
+
+
