@@ -89,15 +89,13 @@ public class UserController {
     }
     
     @PostMapping("/logout") //ログアウト処理
-    public String logout() {
-        // ログアウト処理（セッション無効化など）
-        return "redirect:/user"; // トップページへリダイレクト
+    public String logout() { //ログアウト処理（セッション無効化など）
+        return "redirect:/user"; //トップページへリダイレクト
     }
 
     @GetMapping("/mypage") //マイページ画面の表示
     public String showMypage(Model model) {
-        // ユーザー情報の取得（仮の実装）
-        UserInfo userInfo = new UserInfo();
+        UserInfo userInfo = new UserInfo(); //ユーザー情報の取得（仮の実装）
         userInfo.setUserId(1);
         userInfo.setUserRealName("テストユーザー");
         userInfo.setUserMail("test@example.com");
@@ -116,7 +114,7 @@ public class UserController {
         List<SaleManagement> purchaseHistory = orderService.getPurchaseHistoryForUser(userId);
         
         model.addAttribute("purchaseHistory", purchaseHistory);
-        return "user/history"; // history.htmlを返す
+        return "user/history"; 
     }
     
     @GetMapping("/ordercheck") //購入確認画面の表示
