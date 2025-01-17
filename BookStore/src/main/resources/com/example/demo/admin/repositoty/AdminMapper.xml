@@ -1,15 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.admin.repository.AdminMapper">
-	<resultMap id = "AdminMap" type="com.example.demo.admin.entity.Admin">
+	<resultMap id = "findById" type="com.example.demo.admin.entity.Admin">
 		<result column="admin_id"   jdbcType="INTEGER" property="adminId"   />
 		<result column="admin_name" jdbcType="VARCHAR" property="adminName" />
 		<result column="admin_pass" jdbcType="VARCHAR" property="adminPass" />
 		
 	</resultMap>
 	
-	<select id = "findById" resultMap="AdminMap">
+	<select id = "findById" resultMap="findById">
 		select * from admin_id where admin_id = #{id}
 	</select>
 	
+	<resultMap id = "Order", "SelectOrderAll"  type="com.example.demo.admin.entity.PurchaseManage">
+		<result column="purchasemanage_id"  	 jdbcType="INTEGER" property="purchaseNum"   />
+		<result column="item_id"				jdbcType="INTEGER" property="itemId" />
+		<result column="purchasemanage_buynum"	 jdbcType="INTEGER" property="buynum" />
+		<result column="admin_id"				 jdbcType="INTEGER" property="adminId" />
+		<result column="purchasemanage_buydate" jdbcType="DATE" property="buyDate" />
+	</resultMap>
+	<select id = "AddOrder" resultMap="Order">
+		insert into purchasemanage (item_id,purchasemanage_buynum,admin_id,purchasemanage_buydate) values(#{purchaseNum},#{itemId},#{buynum},#{adminId},CURRENT_TIMESTAMP)
+	</select>
+	
+	<select id = "SelectOrderAll" resultMap="Order">
+		select * from purchasemanage 
+	</select>
+	
+	<resultMap id = "Sale" type="com.example.demo.admin.entity.SaleManage">
+		<result column="sale_num"  		 jdbcType="INTEGER" property="saleNum"   />
+		<result column="item_id"		jdbcType="INTEGER" property="itemId" />
+		<result column="item_name"	 	jdbcType="VARCHAR" property="itemName" />
+		<result column="item_num"	 	jdbcType="INTEGER" property="itemNum" />
+		<result column="item_purprice" jdbcType="INTEGER" property="itemPurprice" />
+		<result column="item_saleprice"	 jdbcType="INTEGER" property="itemSaleprice"   />
+		<result column="item_saledate"	jdbcType="DATE" property="itemSaledate" />
+		<result column="user_id"	 	jdbcType="INTEGER" property="userId" />
+		
+	</resultMap>
+	<select id = "SelectSaleAll" resultMap="Sale">
+		select * from salemanage 
+			</select>
+			
+	<resultMap id="Item" type="com.example.demo.user.entity.ItemId">
+		<result column="item_id"        jdbcType="INTEGER" property="itemId"        />
+		<result column="item_name"      jdbcType="VARCHAR" property="itemName"      />
+		<result column="category_name"  jdbcType="VARCHAR" property="categoryName"  />
+		<result column="item_purprice"  jdbcType="INTEGER" property="itemPurprice"  />
+		<result column="item_saleprice" jdbcType="INTEGER" property="itemSaleprice" />
+		<result column="iteminfo"       jdbcType="VARCHAR" property="iteminfo"      />
+		<result column="stock"          jdbcType="INTEGER" property="stock"         />
+		<result column="purchaseno"     jdbcType="VARCHAR" property="purchaseno"    />
+	</resultMap>
+
+	<select id="SelectItemAll" resultMap="Item">
+		select * from item_id 
+	</select>
 </mapper>
