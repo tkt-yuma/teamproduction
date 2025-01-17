@@ -58,9 +58,14 @@ public class UserController {
         return "user/product";
     }
     
+    @GetMapping("/register") //新規登録画面の表示
+    public String showRegister() {
+        return "user/register";
+    }
+    
     @PostMapping("/register") //新規登録の処理
     public String registerUser(UserInfo userInfo, Model model) {
-        boolean isRegistered = userService.registerUser(userInfo); //ユーザー情報をサービスに渡して登録を処理
+        boolean isRegistered = userService.registerUser(userInfo); //ユーザー情報をServiceに渡して登録を処理
         
         if (isRegistered) {
             model.addAttribute("message", "登録が完了しました。ログインしてください。");
@@ -225,7 +230,7 @@ public class UserController {
   	@GetMapping("/category")
     public String category(@RequestParam("name") String categoryName, Model model) {
         model.addAttribute("books", bookService.getBooksByCategory(categoryName));
-        return "product"; //カテゴリ別の商品一覧も product.html を使用
+        return "user/product"; //カテゴリ別の商品一覧も product.html を使用
     }
 
     @PostMapping("/{itemId}/review") //特定の商品に対するレビューを表示
