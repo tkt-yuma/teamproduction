@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.user.repository.CartInfoMapper">
 
-	
+	<!-- ユーザーidを参照してカートに追加されている商品をアイテムidから参照してDBから指定する処理 -->
 	<resultMap id = "CartInfoMap" type="com.example.demo.user.entity.CartInfo">
 		<result column="num"       jdbcType="INTEGER"   property="num"       />
 		<result column="user_id"   jdbcType="INTEGER"   property="userId"    />
@@ -12,6 +12,7 @@
 		
 	</resultMap>
 	
+	<!-- カート内情報に登録されている商品をカートに登録した順番に全件表示するSQL文-->
 	<select id = "selectAll" resultMap="CartInfoMap">
 		select * from cartinfo order by num asc
 	</select>
@@ -19,12 +20,12 @@
 	<select id = "selectById" resultMap="CartInfoMap">
 		select * from cartinfo where id = #{id} order by num asc
 	</select>
-	
+	<!-- カートに商品を追加するSQL文-->
 	<insert id = "cartInsert">
 		insert into cartinfo (user_id,item_id,item_name,quantity) 
 			values (#{userId}, #{itemId}, #{itemName}, #{quantity})
 	</insert>
-	
+	<!-- カートから商品を削除するSQL文-->
 	<delete id = "cartDelete">
 		delete cartinfo where item_id = #{itemId} and user_id = #{userId} 
 	</delete>
