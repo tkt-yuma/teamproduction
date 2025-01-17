@@ -12,4 +12,5 @@ public class Item {
 	private String  iteminfo;
 	private Integer stock;
 	private String  purchaseno;
+	private String imageaddress;
 }
