@@ -86,16 +86,16 @@
         </tr>
     </thead>
     <tbody>
-        <tr th:each="inventory : ${inventories}">
-            <td th:text="${inventory.itemId}" contenteditable="false"></td><!--商品IDは変更不可-->
-            <td th:text="${inventory.itemName}" contenteditable="true"></td>
-            <td th:text="${inventory.category}" contenteditable="true"></td>
-            <td th:text="${inventory.purprice}" contenteditable="true"></td>
-            <td th:text="${inventory.saleprice}" contenteditable="true"></td>
-            <td th:text="${inventory.iteminfo}" contenteditable="true"></td>
-            <td th:text="${inventory.stock}" contenteditable="true"></td>
-            <td th:text="${inventory.purchaseno}" contenteditable="true"></td>
-            <td th:text="${inventory.imageaddress}" contenteditable="true"></td>
+        <tr th:each="item : ${item}">
+            <td th:text="${item.itemId}" contenteditable="false"></td><!--商品IDは変更不可-->
+            <td th:text="${item.itemName}" contenteditable="true"></td>
+            <td th:text="${item.category}" contenteditable="true"></td>
+            <td th:text="${item.purprice}" contenteditable="true"></td>
+            <td th:text="${item.saleprice}" contenteditable="true"></td>
+            <td th:text="${item.iteminfo}" contenteditable="true"></td>
+            <td th:text="${item.stock}" contenteditable="true"></td>
+            <td th:text="${item.purchaseno}" contenteditable="true"></td>
+            <td th:text="${item.imageaddress}" contenteditable="true"></td>
 			<td><button onclick="deleteRow(this)">削除</button></td>
         </tr>
     </tbody>
