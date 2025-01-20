@@ -15,7 +15,7 @@ import com.example.demo.admin.entity.Item;
 import com.example.demo.admin.entity.PurchaseManage;
 import com.example.demo.admin.entity.Salemanage;
 import com.example.demo.admin.service.AdminService;
-//1/17吉岡編集
+//1/20髙田編集
 
 @Controller
 @RequestMapping("/admin")
@@ -23,7 +23,7 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 
-	@PostMapping("/order")
+	@PostMapping("/admin/order")
 	public String itemOrder(@RequestBody AdminDto adminDto,Model model) {
 		adminService.AddToOrder(adminDto);
 		List<PurchaseManage> purchase = adminService.SelectOrderAll();
@@ -33,19 +33,24 @@ public class AdminController {
 	
 
 	//トップページへ
-	@GetMapping("/admintop")
+	@GetMapping("/admin/adminprivate/admin-top")
 	public String adminTop() {
-		return "admin/admin-top";
+		return "admin/adminprivate/admin-top";
 	}
 
 	//ログインページへ
-	@GetMapping("/adminlogin")
+	@GetMapping("/adminlogin/admin-login")
 	public String adminLogin() {
-		return "admin/admin-login";
+		return "admin/adminlogin/admin-login";
+	}
+	
+	@PostMapping("/adminlogin/admin-login")
+	public String adminLogin2() {
+		return "admin/adminlogin/admin-login";
 	}
 
 	//在庫画面へ
-	@GetMapping("/inventory")
+	@GetMapping("/admin/inventory")
 	public String adminInventory(Model model) {
 		List<Item> item = adminService.SelectItemAll();
 		model.addAttribute("item", item);
@@ -53,7 +58,7 @@ public class AdminController {
 	}
 
 	//注文履歴へ
-	@GetMapping("/adminorderHistory")
+	@GetMapping("/admin/adminorderHistory")
 	public String adminOrderHistory(Model model) {
 		List<PurchaseManage> order = adminService.SelectOrderAll();
 		model.addAttribute("order",order);		
@@ -61,13 +66,13 @@ public class AdminController {
 	}
 
 	//注文画面へ
-	@GetMapping("/adminorder")
+	@GetMapping("/admin/adminorder")
 	public String adminOrder() {
 		return "admin/order-management";
 	}
 
 	//売上管理画面へ
-	@GetMapping("/sales")
+	@GetMapping("/admin/sales")
 	public String adminSale(Model model) {
 		List<Salemanage> sale = adminService.SelectSaleAll();
 		model.addAttribute("sale", sale);

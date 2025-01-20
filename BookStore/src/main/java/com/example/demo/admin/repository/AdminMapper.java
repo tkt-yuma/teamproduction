@@ -1,6 +1,7 @@
 package com.example.demo.admin.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -23,7 +24,7 @@ public interface AdminMapper {
 
 	List<Item> SelectItemAll();
 	
-	
+	Optional<Admin> findByName(String username);
 	
 	
 	

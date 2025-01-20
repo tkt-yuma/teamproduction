@@ -45,6 +45,10 @@
 		select item_id,item_name from salemanage
 			</select>
 			
+		<select id = "findByName" resultMap="SelectSaleAll">
+		select * from admin_id where = #{username}
+			</select>	
+			
 <!--	<resultMap id="Item" type="com.example.demo.user.entity.Item">-->
 <!--		<result column="item_id"        jdbcType="INTEGER" property="itemId"        />-->
 <!--		<result column="item_name"      jdbcType="VARCHAR" property="itemName"      />-->
