@@ -76,26 +76,29 @@ public class UserController {
         }
     }
     
-	@GetMapping("/login") //ログイン画面を表示
+	@GetMapping("/userpublic/user-login") //ログイン画面を表示
     public String showLoginForm() {
-        return "user/user-login"; //user-login.htmlを返す
+        return "user/userpublic/user-login"; //user-login.htmlを返す
     }
 
-    @PostMapping("/login") //ログインの処理
+    @PostMapping("/userpublic/user-login") //ログインの処理
     public String login(UserLogin userlogin, Model model) {
         boolean isAuthenticated = userService.authenticateUser(userlogin.getUserMail(), userlogin.getUserPass());
 
         if (isAuthenticated) { //ログイン成功時の処理（セッションにユーザー情報を保存など）
-            return "redirect:/user/product"; //トップページへリダイレクト
+            return "redirect:/user/userpublic/product"; //トップページへリダイレクト
         } else {
             model.addAttribute("error", "ユーザー名またはパスワードが間違っています。");
-            return "user/user-login"; //ログイン失敗時、再度ログインフォームを表示
+            return "user/userpublic/user-login"; //ログイン失敗時、再度ログインフォームを表示
         }
     }
-    
-    @PostMapping("/logout") //ログアウト処理
+    @GetMapping("/userpublic/product") //ログアウト処理
+    public String logout2() { //ログアウト処理（セッション無効化など）
+        return "user/userpublic/product"; //トップページへリダイレクト
+    }
+    @PostMapping("/userpublic/product") //ログアウト処理
     public String logout() { //ログアウト処理（セッション無効化など）
-        return "redirect:/user"; //トップページへリダイレクト
+        return "user/userpublic/product"; //トップページへリダイレクト
     }
 
     @GetMapping("/mypage") //マイページ画面の表示
