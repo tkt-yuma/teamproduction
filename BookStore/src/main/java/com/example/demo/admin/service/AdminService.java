@@ -32,8 +32,8 @@ public class AdminService {
 	public Admin findById(int id) {
 		return adminMapper.findById(id);
 	}
+	
 	public List<Item> SelectItemAll() {
-		
 		return adminMapper.SelectItemAll();
 	}
 	
