@@ -19,5 +19,19 @@
 		select * from userinfo order by user_id asc
 	</select>
 	
+	<!-- ユーザーリストに登録されている情報をuserMailを住県に全件表示するSQL文-->
+	<select id="selectById" resultMap="UserInfoMap">
+		select * from userinfo where user_mail = #{userMail}
+	</select>
 	
+	<!--ユーザーリストを更新するSQL文-->
+	 <update id="updateById">
+	 	update userinfo set (user_real_name = #{userRealName},user_mail = #{userMail},
+		user_tel = #{userTel},user_creditnum = #{userCreditnum},user_address = #{userAddress}) where user_id =  #{userId};
+	</update>
+	
+	<!--ユーザーリストを削除するSQL文-->
+	<delete id="deleteById">
+		delete from userinfo where user_id = #{userId}
+		</delete>
 </mapper>

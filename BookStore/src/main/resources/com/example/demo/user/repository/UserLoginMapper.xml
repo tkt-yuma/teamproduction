@@ -21,4 +21,10 @@
 	<select id = "findByUserMail" resultMap="UserLoginMap">
 		select * from userlogin where user_mail = #{mail}
 	</select>
+	
+	<!--userloginテーブルを更新するSQL文-->
+	<update id="updateById">
+		update userlogin set user_pass = #{userPass} where user_id = #{userId};
+		</update>
+	
 </mapper>
