@@ -10,50 +10,48 @@
 <title>発注管理画面</title>
 </head>
 <body>
-
-	<header class="header">				
-		<div class="book-container">
-			<p class="book">Book Super Market</p>
-		</div>
-	</header>
-	<div class="button-container">
-		<a href="admin-top.html" class="button">トップページ</a>		        
-		<a href="order-management.html" class="button">発注管理</a>
-		<a href="order-history-admin.html" class="button">発注履歴</a>
-		<a href="inventory.html" class="button">在庫管理</a>
-		<a href="sales.html" class="button">売上管理</a>
-	</div>
-	<br>
-										
-	<form action="/search" method="get">
-		<input type="search" name="q" placeholder="検索キーワードを入力">
-		<input type="submit" value="検索">
-	</form>
-	<br>
-										
-	<h2>商品発注</h2>
-		<table border="1"  width="100%">
-			<thead>
-			<tr>
-				<th>商品コード</th>
-				<th>商品名</th>
-				<th>発注元</th>
-				<th>原価（単位：円）</th>
-				<th>在庫数（単位：冊）</th>
-			</tr>  
-											                
-											            
-			</thead>
-			<tbody>
-				<tr th:each="order : ${orders}">
-					<td th:text="${order.itemId}"></td>
-					<td th:text="${order.itemName}"></td>
-					<td th:text="${order.Purchase}"></td>
-					<td th:text="${order.itemCost}"></td>
-					<td th:text="${order.stock}"></td>
-				</tr>
-			</tbody>
-		</table>
-										
+	<header class="header">
+			<div class="book-container">
+				<p class="book">Book Super Market</p>
+			</div>
+		</header>
+			<div class="button-container">
+				<a href="/admin_top" class="button">トップページ</a>		        
+				<a href="/order-management" class="button">発注管理</a>
+				<a href="/order-history-admin" class="button">発注履歴</a>
+				<a href="/inventory" class="button">在庫管理</a>
+				<a href="/sales" class="button">売上管理</a>
+			</div>
+			<br>
+													
+			<form th:action="@{/inventory}" method="get">
+				<input type="text" name="searchTerm" th:value="${searchTerm}" placeholder="商品コードまたは商品名で検索">
+				<button type="submit">検索</button>
+			</form>			<br>
+			<h2>商品発注履歴</h2>
+					<table class="inventoryTable">
+						<thead>
+						<tr>
+							<th>日付</th>
+							<th>商品コード</th>
+							<th>発注数</th>
+							<th>発注先コード</th>
+							<th>発注者コード</th>
+						</tr>  
+														                
+														            
+						</thead>
+						<tbody>
+							<tr th:each="order : ${orders}">
+								<td th:text="${#dates.format(order.buyDate, 'yyyy-MM-dd')}"></td>
+								<td th:text="${order.itemId}"></td>
+								<td th:text="${order.buynum}"></td>
+								<td th:text="${order.purchaseNum}"></td>
+								<td th:text="${order.adminId}"></td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<script src="js/admin.js"></script>
 </body>
 </html>
