@@ -14,47 +14,51 @@
 		</div>
 	</header>
 	<div class="button-container">
-		<a href="admin-top.html" class="button">トップページ</a>		        
-		<a href="order-management.html" class="button">発注管理</a>
-		<a href="order-history-admin.html" class="button">発注履歴</a>
-		<a href="inventory.html" class="button">在庫管理</a>
-		<a href="sales.html" class="button">売上管理</a>
+		<a href="/admin_top" class="button">トップページ</a>		        
+		<a href="/order-management" class="button">発注管理</a>
+		<a href="/order-history-admin" class="button">発注履歴</a>
+		<a href="/inventory" class="button">在庫管理</a>
+		<a href="/sales" class="button">売上管理</a>
+		<a href="/admin-login" class="button">ログイン</a>
 	</div>
 	<br>
 										
-	<form action="/search" method="get">
-		<input type="search" name="q" placeholder="検索キーワードを入力">
-		<input type="submit" value="検索">
-	</form>
-	<br>
+	<form th:action="@{/inventory}" method="get">
+					<input type="text" name="searchTerm" th:value="${searchTerm}" placeholder="商品コードまたは商品名で検索">
+					<button type="submit">検索</button>
+				</form>			<br>	<br>
 	
 	<!---売上一覧を表示-->
-	<table border="1"  width="100%">
+	<table class="inventoryTable">
 	        <thead>
 	            <tr>
+					<th>売上コード</th>
 					<th>売上日</th>
 	                <th>商品コード</th>
 	                <th>商品名</th>
 	                <th>売上数</th>
 	                <th>原価（単位：円）</th>
 	                <th>売値（単位：円）</th>
+					<th>ユーザーID</th>
 					</tr>  
 	                
 	            
 	        </thead>
 	        <tbody>
 	            <tr th:each="sale : ${sales}">
+					<td th:text="${sale.salenum}"></td>
 					<td th:text="${#dates.format(sale.saleDate, 'yyyy-MM-dd')}"></td>
 	                <td th:text="${sale.itemId}"></td>
 	                <td th:text="${sale.itemName}"></td>
-	                <td th:text="${sale.itemQuantity}"></td>
-	                <td th:text="${sale.itemCost}"></td>
-	                <td th:text="${sale.sellingPrice}"></td>
+	                <td th:text="${sale.itemnum}"></td>
+	                <td th:text="${sale.purprice}"></td>
+	                <td th:text="${sale.saleprice}"></td>
+					<td th:text="${sale.userId}"></td>
 	            </tr>
 	        </tbody>
 	    </table>
 		
-		<table>
+		<table class="calcresult">
 		            <tr>
 		                <th>売上合計金額</th>
 		                <td th:text="${#numbers.formatDecimal(totalSales, 0, 'COMMA', 0, 'POINT')} + '円'"></td>
@@ -64,6 +68,8 @@
 		                <td th:text="${#numbers.formatDecimal(totalProfit, 0, 'COMMA', 0, 'POINT')} + '円'"></td>
 		            </tr>
 		        </table>
+				
+				<script src="js/admin.js"></script>
 	
 </body>
 </html>

@@ -5,7 +5,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	
-	<link rel="stylesheet" href="/static/css/Admin.css" type="text/css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Admin.css}">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>在庫管理画面</title>
@@ -17,14 +17,18 @@
 			<p class="book">Book Super Market</p>
 		</div>
 	</header>
-		<div class="button-container">
-					<a href="admin-top.html" class="button">トップページ</a>		        
-					<a href="order-management.html" class="button">発注管理</a>
-					<a href="order-history-admin.html" class="button">発注履歴</a>
-					<a href="inventory.html" class="button">在庫管理</a>
-					<a href="sales.html" class="button">売上管理</a>
-		</div>
+	<br>
+	<div class="button-container">
+	    <a href="/admin_top" class="button">トップページ</a>		        
+	    <a href="/order-management" class="button">発注管理</a>
+	    <a href="/order-history-admin" class="button">発注履歴</a>
+	    <a href="/inventory" class="button">在庫管理</a>
+	    <a href="/sales" class="button">売上管理</a>
+	</div>
+
 		<br>
+		
+
 												
 <!--		<form action="/search" method="get">-->
 <!--				<input type="search" name="q" placeholder="検索キーワードを入力">-->
@@ -32,9 +36,11 @@
 <!--		</form>-->
 
 			<form th:action="@{/inventory}" method="get">
-    			<input type="text" name="searchTerm" th:value="${searchTerm}" placeholder="商品コードまたは商品名で検索">
+				
+            <input type="text" name="searchTerm" th:value="${searchTerm}" placeholder="商品コードまたは商品名で検索">
     			<button type="submit">検索</button>
 			</form>
+			<script>searchTerm = new Number(null); </script> 
 		<br>
 		<!--検索結果を表示-->
 		<h2>商品在庫</h2>
@@ -71,7 +77,7 @@
 
 
 <!--一覧画面を直接修正できるかテスト-->
-<table border="1" width="100%" id="inventoryTable">
+<table class="inventoryTable">
     <thead>
         <tr>
             <th>商品コード</th>
@@ -83,19 +89,21 @@
             <th>在庫数（単位：冊）</th>
             <th>発注先</th>
             <th>画像</th>
+			<th>データ削除</th>
         </tr>
     </thead>
     <tbody>
-        <tr th:each="item : ${item}">
-            <td th:text="${item.itemId}" contenteditable="false"></td><!--商品IDは変更不可-->
-            <td th:text="${item.itemName}" contenteditable="true"></td>
-            <td th:text="${item.category}" contenteditable="true"></td>
-            <td th:text="${item.purprice}" contenteditable="true"></td>
-            <td th:text="${item.saleprice}" contenteditable="true"></td>
-            <td th:text="${item.iteminfo}" contenteditable="true"></td>
-            <td th:text="${item.stock}" contenteditable="true"></td>
-            <td th:text="${item.purchaseno}" contenteditable="true"></td>
-            <td th:text="${item.imageaddress}" contenteditable="true"></td>
+        <tr th:each="inventory : ${inventories}">
+            <td class="itemID" th:text="${inventory.itemId}" contenteditable="false"></td><!--商品IDは変更不可-->
+            <td class="itemName" th:text="${inventory.itemName}" contenteditable="true"></td>
+            <td class="category" th:text="${inventory.category}" contenteditable="true"></td>
+            <td class="purprice" th:text="${inventory.purprice}" contenteditable="true"></td>
+            <td class="saleprice" th:text="${inventory.saleprice}" contenteditable="true"></td>
+            <td class="iteminfo" th:text="${inventory.iteminfo}" contenteditable="true"></td>
+            <td class="stock" th:text="${inventory.stock}" contenteditable="true"></td>
+            <td class="purchaseno" th:text="${inventory.purchaseno}" contenteditable="true"></td>
+			<td class="imageaddress" th:text="${inventory.imageaddress}" contenteditable="true" style="display:none;">
+			    <input type="file" th:id="'file_' + ${inventory.id}" /></td>
 			<td><button onclick="deleteRow(this)">削除</button></td>
         </tr>
     </tbody>
@@ -280,9 +288,9 @@ function deleteRow(btn) {
 					  // 取得したデータを使用して更新フォームの入力フィールドを埋めます
 					  // この関数の実装は、サーバーから返されるデータの構造に依存します
 					}
-
+}
 				  </script>
 
-				
+				  <script src="admin.js"></script>			  	
 </body>
 </html>

@@ -4,7 +4,7 @@
 <!-- @member 小野-->
 <html>
 <head>
-	<link rel="stylesheet" href="C:/Users/3031023/git/teamproduction/BookStore/src/main/resources/static/css/Admin.css" type="text/css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/Admin.css}">
 	<meta charset="UTF-8">
 	<title>管理者トップページ</title>
 </head>
@@ -14,18 +14,24 @@
 			<p class="book">Book Super Market</p>
 		</div>
 	</header>
+	
 			  
-	<h1>管理者トップページ</h1>
-	<div class="button-container-top">
-	    <a href="order-management.html" class="button">発注管理</a>
-	    <a href="order-history-admin.html" class="button">発注履歴</a>
-	    <a href="inventory.html" class="button">在庫管理</a>
-	    <a href="sales.html" class="button">売上管理</a>
+	<h1 class="management-menu">管理Menu</h1>
+	<div class="top-button-container">
+	    <a href="/order-management"  class="top-button" >発注管理</a>
+	    <a href="/order-history-admin" class="top-button">発注履歴</a>
+	</div><br>
+	<div class="top-button-container">
+	    <a href="/inventory" class="top-button">在庫管理</a>
+	    <a href="/sales" class="top-button">売上管理</a>
 	</div>
 					
-		<br><br>
+		<br>
 
-		<button onclick="logout()">ログアウト</button>
+		
+		  <button class="top-logout-button" onclick="logout()">ログアウト</button>
+		
+		<script src="js/admin.js"></script>
 
 		<script>
 		function logout() {
@@ -38,5 +44,7 @@
 			 window.location.href = "admin-login.html";  // login.htmlはログイン画面のファイル名に置き換えてください
 					        }
 		</script>
+
+
 </body>
 </html>

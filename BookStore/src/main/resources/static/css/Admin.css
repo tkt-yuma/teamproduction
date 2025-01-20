@@ -1,110 +1,300 @@
 @charset "UTF-8";
-/* ヘッダー全体のスタイル */
+/*ログイン用スタイル*/
+/*body {*/
+/*            font-family: Arial, sans-serif;*/
+/*            background-color: #f4f4f4;*/
+/*            display: flex;*/
+/*            justify-content: center;*/
+/*            align-items: center;*/
+/*            height: 100vh;*/
+/*            margin: 0;*/
+/*        }*/
+        .login-container {
+			flex-direction: column;
+			background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3; /* ホバー時の色 */
+        }
+
+
+
+
+/*ログインページ以外共通ヘッダー*/
 .header {
-    width: 100%; /* 幅を100%に指定 */
-    margin: 0 auto; /* 水平方向の中央揃え */
-    padding: 20px; /* 内側の余白 */
-    text-align: center; /* テキストを中央揃え */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* シャドウ効果 */
-    position: fixed; /* 相対位置に設定 */
-    top: 0; /* 上部に配置 */
-    left: 0; /* 左端に配置 */
-    box-sizing: border-box; /* ボックスモデルの設定 */
+  background-color: rgb(134, 208, 215);
+  padding: 20px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* 本のコンテナのスタイル */
 .book-container {
-    background-color: #4A90E2; /* 背景色 */
-    max-width: 400px; /* 最大幅 */
-    margin: 0 auto; /* 中央揃え */
+  /*max-width: 1200px;*/
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* 本のタイトルのスタイル */
 .book {
-    font-family: 'Arial', sans-serif; /* フォントファミリー */
-    font-size: 2.5em; /* フォントサイズ */
-    color: #FFFFFF; /* テキストカラー */
-    letter-spacing: 2px; /* 字間を広げる */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* テキストシャドウ */
-    margin: 0; /* マージンをリセット */
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  margin: 0;
+  text-align: center;
+}
+/*トップページタイトル用*/
+h1.management-menu {
+  font-size: 36px;
+  color: #0066cc;
+  background-color: #f0f8ff;
+  padding: 10px;
+  border-left: 5px solid #0066cc;
 }
 
 
-/* Admin.css */
+/*トップページ用メニューボタン*/
+.top-button-container {
+  display:flex; 
+  justify-content: center;
+ }
 
-/* 全体のリセット */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.top-button {
+	display:inline-block;
+	background:rgb(175, 224, 228);
+	padding:55px 150px;
+	text-align:center;
+	color:#FFF;
+	margin:10px;
+	border:2px solid;
+	cursor:pointer;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	font-size: 18px;
+	text-decoration: none;
 }
 
-/* ボディのスタイル */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    display: flex;
+.top-button:hover {
+	background-color: rgb(64, 180, 189); 
+	  transform: translateY(2px); /* クリック時に少し下がる効果 */
+  
+}
+/*トップページログアウトボタン*/
+.top-logout-button{
+  float: right;
+  background-color: rgb(146, 213, 218); 
+  color: white; /* 白色のテキスト */
+  padding: 10px 20px; /* 上下左右のパディング */
+  margin-right: 200px;
+  border: none; /* ボーダーなし */
+  border-radius: 4px; /* 角を丸く */
+  cursor: pointer; /* カーソルをポインターに */
+  font-size: 16px; /* フォントサイズ */
+  font-weight: bold; /* 太字 */
+  transition: background-color 0.3s ease; /* 背景色の変化をスムーズに */
+}
+
+.logout-button:hover {
+  background-color: rgb(64, 180, 189); 
+}
+
+.logout-button:active {
+  background-color: rgb(0, 128, 192); 
+  transform: translateY(2px); /* クリック時に少し下がる効果 */
+}
+
+/*トップページ以外のメニューボタン*/
+.button container:not(.top-button-container){
+	width: 100%;
+	display:flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	background-color: rgb(64, 180, 189); 
+}
+.button {
+	display:inline-block;
+	flex-basis: auto; /* または適切な値 */
+	width: auto; /* または適切な値 */
+	background:rgb(175, 224, 228);
+	padding:20px 6%;
+	text-align:center;
+	color:#FFF;
+	margin:0px;
+	border:2px solid;
+	cursor:pointer;
+	border-radius: 10px;/*角を丸める*/
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	font-size: 18px;
+	text-decoration: none;
+}
+
+.button:hover {
+	background-color: rgb(64, 180, 189); 
+	  transform: translateY(2px); /* クリック時に少し下がる効果 */
+  
+}
+
+/*検索ボックス*/
+/*フォーム全体のスタイル */
+form {
+  display: flex;
+  align-items: center;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 入力フィールドのスタイル */
+input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+/* 検索ボタンのスタイル */
+button[type="submit"] {
+  padding: 10px 20px;
+  margin-left: 10px;
+  background-color: rgb(64, 180, 189);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 480px) {
+  form {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* ビューポートの高さに合わせる */
+    align-items: stretch;
+  }
+
+  input[type="text"] {
+    margin-bottom: 10px;
+  }
+
+  button[type="submit"] {
+    margin-left: 0;
+  }
 }
 
-/* コンテナのスタイル */
-.content-container {
-    background-color: white;
-    border-radius: 8px; /* 角を丸くする */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* シャドウ効果 */
-    padding: 40px; /* 内側の余白 */
-    width: 300px; /* 幅を指定 */
+/* テーブル全体のスタイル */
+.inventoryTable {
+    border-collapse: collapse; /* ボーダーを重ねて表示 */
+    width: 100%; /* テーブル幅を100%に設定 */
+	overflow-x: auto;
+	display: block;
+	margin-top: 20px; /* 上部の余白 */
 }
 
-/* 見出しのスタイル */
-h1 {
-    margin-bottom: 20px; /* 下部余白 */
-    font-size: 24px; /* フォントサイズ */
-    text-align: center; /* 中央揃え */
+
+/* テーブルヘッダーのスタイル */
+/*.inventoryTable thead {*/
+/*    background-color: #f2f2f2;  ヘッダー背景色 */
+/*}*/
+
+
+.inventoryTable th {
+	white-space: nowrap;
+	background-color: #f2f2f2;
+	padding: 12px; /* ヘッダーセルの内側余白 */
+    text-align: center; /* 中央 */
+    border-bottom: 2px solid #ddd; /* 下部ボーダー */
+}
+.inventoryTable.iteminfo {
+	width: 50%;
 }
 
-/* ラベルと入力フィールドのスタイル */
-label {
-    margin-bottom: 5px; /* 下部余白 */
-    display: block; /* ブロック要素にして縦に並べる */
+/* テーブルボディのスタイル */
+.inventoryTable tbody tr {
+    transition: background-color 0.3s; /* ホバー時の背景色変化にアニメーションを追加 */
 }
 
-input[type="text"],
-input[type="password"] {
-    width: 100%; /* 幅を100%にして親要素に合わせる */
-    padding: 10px; /* 内側の余白 */
-    margin-bottom: 15px; /* 下部余白 */
-    border-radius: 4px; /* 角を丸くする */
-    border: 1px solid #ccc; /* 薄い灰色のボーダー */
+#inventoryTable tbody tr:hover {
+    background-color: #f5f5f5; /* ホバー時の背景色 */
 }
 
-/* ボタンのスタイル */
-button {
-    background-color: #4CAF50; /* 緑色 */
-    color: white; /* テキスト色を白にする */
+.inventoryTable td {
+    padding: 10px; /* セル内の余白 */
+    border: 1px solid #ddd; /* 下部ボーダー */
+}
+#wide-column {
+       width: 150px; /* 特定の列の幅 */
+   }
+/* 編集可能なセルのスタイル */
+#inventoryTable td[contenteditable="true"] {
+    background-color: #fff; /* 編集可能なセルの背景色 */
+}
+
+#inventoryTable td[contenteditable="true"]:focus {
+    outline: none; /* フォーカス時のアウトラインを削除 */
+    background-color: #e6ffe6; /* フォーカス時の背景色 */
+}
+
+/* 削除ボタンのスタイル */
+#inventoryTable button {
+    background-color: #ff4d4d; /* ボタン背景色 */
+    color: white; /* ボタン文字色 */
     border: none; /* ボーダーなし */
-    padding: 10px; /* 内側の余白 */
-    border-radius: 4px; /* 角を丸くする */
-    cursor: pointer; /* カーソルをポインターに変える */
-    width: 100%; /* 幅を100%にする */
+    padding: 8px 12px; /* 内側余白 */
+    cursor: pointer; /* カーソルをポインターに変更 */
+    border-radius: 4px; /* ボタン角を丸くする */
 }
 
-button:hover {
-    background-color: #45a049; /* ホバー時の色変更 */
+#inventoryTable button:hover {
+    background-color: #ff1a1a; /* ホバー時のボタン背景色変更 */
 }
 
-/* リンクのスタイル */
-a {
-    display: block; /* ブロック要素として配置する */
-    text-align: center; /* 中央揃えにする */
-    margin-top: 15px; /* 上部余白 */
-    color: #4CAF50; /* 緑色でリンクを表示する */
-}
-
-a:hover {
-    text-decoration: underline; /* ホバー時に下線を引く */
+/*売上管理画面計算結果のスタイル*/
+.calcresult {
+	margin-left: auto; /* 左側のマージンを自動に設定 */
+	   margin-right: 0;   /* 右側のマージンを0に設定 */
+	   width: auto;       /* テーブルの幅を自動に設定 */
+	   border-collapse: collapse; /* セルの境界線を結合 */
+	   background-color: rgb(118, 203, 209);
 }
