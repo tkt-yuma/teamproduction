@@ -29,8 +29,20 @@
 <!--	<select id = "SelectOrderAll" resultMap="Order">-->
 <!--		select * from purchasemanage -->
 <!--	</select>-->
+	<resultMap id = "AdminMap" type="com.example.demo.admin.entity.Admin">
+		<result column="admin_id"   jdbcType="INTEGER" property="adminId"   />
+		<result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+		<result column="admin_pass" jdbcType="VARCHAR" property="adminPass" />
+		<result column="loginname"  jdbcType="VARCHAR" property="loginName" />
+		
+	</resultMap>
 	
-	<resultMap id = "SelectSaleAll" type="com.example.demo.admin.entity.Salemanage">
+	<select id = "findByName" resultMap="AdminMap">
+		select * from admin_id where loginname = #{username}
+	</select>
+	
+	
+	<!--  <resultMap id = "SelectSaleAll" type="com.example.demo.admin.entity.Salemanage">
 		<result column="sale_num"  		 jdbcType="INTEGER" property="saleNum"   />
 		<result column="item_id"		jdbcType="INTEGER" property="itemId" />
 		<result column="item_name"	 	jdbcType="VARCHAR" property="itemName" />
@@ -45,9 +57,9 @@
 		select item_id,item_name from salemanage
 			</select>
 			
-		<select id = "findByName" resultMap="SelectSaleAll">
-		select * from admin_id where = #{username}
-			</select>	
+	<select id = "findByName" resultMap="SelectSaleAll">
+	select * from admin_id where = #{username}
+	</select>	-->
 			
 <!--	<resultMap id="Item" type="com.example.demo.user.entity.Item">-->
 <!--		<result column="item_id"        jdbcType="INTEGER" property="itemId"        />-->

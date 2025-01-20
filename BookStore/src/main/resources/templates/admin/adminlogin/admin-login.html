@@ -10,6 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form action="/admin/adminLogout" method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			        <button type="submit">ログアウト</button>
+			    </form>
 	<header class="header">				
 				<div class="book-container">
 					<p class="book">Book Super Market</p>
@@ -17,7 +21,8 @@
 			</header>
 			  <div class="content-container">
 	<h1>管理者ログイン</h1>
-	    <form action="/login" method="post">
+	    <form action="/admin/authenticate" method="post">
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 	        <label for="username">ユーザー名:</label>
 	        <input type="text" id="username" name="username" required>
 	        <br>

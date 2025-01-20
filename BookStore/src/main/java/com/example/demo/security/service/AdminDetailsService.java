@@ -13,12 +13,14 @@ import com.example.demo.admin.repository.AdminMapper;
 public class AdminDetailsService implements UserDetailsService{
 	
 	@Autowired
-	AdminMapper adminIdMapper;
+	AdminMapper adminMapper;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Admin admin = adminIdMapper.findByName(username)
+		
+		Admin admin = adminMapper.findByName(username)
 				.orElseThrow(() -> new UsernameNotFoundException(username + "番管理者は存在しません"));
+	
 		return org.springframework.security.core.userdetails.User
 				.withUsername(admin.getLoginName())
 				.password(admin.getAdminPass())

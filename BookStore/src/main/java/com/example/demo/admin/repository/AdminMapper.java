@@ -24,7 +24,7 @@ public interface AdminMapper {
 
 	List<Item> SelectItemAll();
 	
-	Optional<Admin> findByName(String username);
+	Optional<Admin> findByName(String name);
 	
 	
 	

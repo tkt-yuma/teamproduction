@@ -33,10 +33,16 @@ public class AdminController {
 	
 
 	//トップページへ
-	@GetMapping("/admin/adminprivate/admin-top")
+	@GetMapping("/adminprivate/admin-top")
 	public String adminTop() {
 		return "admin/adminprivate/admin-top";
 	}
+	
+	@PostMapping("/adminprivate/admin-top")
+	public String adminTop2() {
+		return "admin/adminprivate/admin-top";
+	}
+
 
 	//ログインページへ
 	@GetMapping("/adminlogin/admin-login")
@@ -71,7 +77,7 @@ public class AdminController {
 		return "admin/order-management";
 	}
 
-	//売上管理画面へ
+//	//売上管理画面へ
 	@GetMapping("/admin/sales")
 	public String adminSale(Model model) {
 		List<Salemanage> sale = adminService.SelectSaleAll();
