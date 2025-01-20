@@ -8,4 +8,6 @@ import com.example.demo.user.entity.Wishlist;
 @Mapper
 public interface WishlistMapper {
 	List<Wishlist> selectAll();
+
+	List<Wishlist> getWantItems(Integer userId);
 }

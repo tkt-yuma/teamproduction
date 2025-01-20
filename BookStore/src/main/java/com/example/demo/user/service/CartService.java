@@ -2,17 +2,21 @@ package com.example.demo.user.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.user.entity.CartInfo;
+import com.example.demo.user.repository.CartInfoMapper;
 
 @Service
 public class CartService {
 
-
-	public List<CartInfo> getCartItems(Integer currentUserId) {
+	@Autowired
+	private CartInfoMapper cartInfoMapper;
+	
+	public List<CartInfo> getCartItems(Integer UserId) {
 		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		return cartInfoMapper.cartById();
 	}
 
 	public double calculateTotal(Integer currentUserId) {

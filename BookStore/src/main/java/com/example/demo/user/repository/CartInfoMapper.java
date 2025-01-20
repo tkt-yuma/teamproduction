@@ -9,4 +9,6 @@ import com.example.demo.user.entity.CartInfo;
 @Mapper
 public interface CartInfoMapper {
 	List<CartInfo> selectAll();
+
+	List<CartInfo> cartById();
 }

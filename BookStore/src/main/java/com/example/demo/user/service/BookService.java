@@ -14,43 +14,18 @@ public class BookService {
 	private ItemIdMapper itemIdMapper;
 
 
-	public ItemId getItemById(Integer itemId) { 
+	public  ItemId getItemById(Integer itemId) { 
 		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		return itemIdMapper.searchById(itemId);
 	}
 
-	public List<ItemId> searchItems(String q) {
+	public List<ItemId> getBooksByCategory(String categoryName) {
 		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		return itemIdMapper.searchCategory(categoryName);
 	}
 
-	public Object getBookById(Long bookId) {
+	public List<ItemId> searchBooks(String query) {
 		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	public Object getBooksByCategory(String categoryName) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	public Object searchBooks(String query) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	public Object getRecommendedBooks() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	public Object getNewBooks() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	public Object getRankingBooks() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		return itemIdMapper.search(query);
 	}
 }
