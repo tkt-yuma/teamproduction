@@ -1,4 +1,12 @@
 @charset "UTF-8";
+
+/*共通スタイル*/
+body {
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
+}
+
 /*ログイン用スタイル*/
 /*body {*/
 /*            font-family: Arial, sans-serif;*/
