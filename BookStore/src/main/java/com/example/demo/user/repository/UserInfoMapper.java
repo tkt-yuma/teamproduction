@@ -13,4 +13,6 @@ public interface UserInfoMapper {
 	UserInfo getUserInfoById(Integer userId);
 
 	boolean userAdd(UserDto userDto);
+
+	boolean updateInfo(UserDto userDto);
 }

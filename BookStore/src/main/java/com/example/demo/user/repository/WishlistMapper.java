@@ -10,4 +10,6 @@ public interface WishlistMapper {
 	List<Wishlist> selectAll();
 
 	List<Wishlist> getWantItems(Integer userId);
+
+	void deleteWishList(Integer userId, Integer itemId);
 }

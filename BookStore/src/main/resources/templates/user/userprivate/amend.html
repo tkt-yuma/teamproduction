@@ -1,10 +1,10 @@
 <!--登録修正画面-->
 <!--修正1/16-->
 
+<!--修正1/20-->
 <!--トップページへ-->
 <!--キャンセル-->
 <!--変更内容を保存-->
-
 
 
 <!DOCTYPE html>
@@ -22,8 +22,8 @@
 	<header class="header">
 
 		<div class="book-container">
-			<p class="book">Book Super Market</p>
-		</div>
+						    <a href="product.html" class="book">Book Super Market</a>
+						</div>	
 
 	</header>
 
@@ -66,6 +66,26 @@
 				<button type="button" id="cancel-button">キャンセル</button>
 				<button type="submit" id="submit-button">変更内容を保存</button>
 			</div>
+			
+			<script>
+						document.addEventListener('DOMContentLoaded', function() {
+						    // キャンセルボタンの処理
+						    document.getElementById('cancel-button').addEventListener('click', function() {
+						        window.location.href = 'product.html';
+						    });
+
+						    // フォームの送信処理
+						    document.querySelector('form').addEventListener('submit', function(e) {
+						        e.preventDefault(); // デフォルトのフォーム送信を防止
+
+						        // ここでフォームデータの送信処理を行う
+						        // 例: fetch APIを使用してサーバーにデータを送信
+
+						        // 送信完了後、mypage.htmlにリダイレクト
+						        window.location.href = 'mypage.html';
+						    });
+						});
+						</script>
 
 		</form>
 

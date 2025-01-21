@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.user.dto.CartDto;
 import com.example.demo.user.entity.CartInfo;
 import com.example.demo.user.repository.CartInfoMapper;
 
@@ -19,28 +20,24 @@ public class CartService {
 		return cartInfoMapper.cartById();
 	}
 
-	public double calculateTotal(Integer currentUserId) {
+
+
+	public void addToCart(Integer userId, Integer itemId, CartDto cartDto) {
 		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+		cartInfoMapper.addToCart(userId,itemId,cartDto);
 	}
 
-	public void updateItemQuantity(Integer currentUserId, Integer itemId, Integer quantity) {
+	public void updateItemQuantity(Integer userId, Integer itemId, CartDto cartDto) {
 		// TODO 自動生成されたメソッド・スタブ
-		
+		cartInfoMapper.updateItemQuantity(userId,itemId,cartDto);
 	}
 
-	public void removeItem(Integer currentUserId, Integer itemId) {
+	public void deleteItemCart(Integer userId, Integer itemId) {
 		// TODO 自動生成されたメソッド・スタブ
-		
+		cartInfoMapper.deleteItemCart(userId,itemId);
 	}
 
-	public void addToCart(Integer currentUserId, Integer itemId, Integer quantity) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
 
-	public void addToCart(Integer currentUserId, CartInfo item) {
-		// TODO 自動生成されたメソッド・スタブ
-		
-	}
+
+	
 }
