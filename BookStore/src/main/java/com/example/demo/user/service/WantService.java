@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.user.entity.CartInfo;
 import com.example.demo.user.entity.Wishlist;
 import com.example.demo.user.repository.WishlistMapper;
 
@@ -25,10 +24,7 @@ public class WantService {
 		return wishlistMapper.getWantItems(UserId);
 	}
 
-	public CartInfo getWantItem(Integer currentUserId, Integer itemId) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
+	
 
 
 	public void deleteWishList(Integer userId, Integer itemId) {

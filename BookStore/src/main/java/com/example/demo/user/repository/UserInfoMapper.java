@@ -12,7 +12,7 @@ public interface UserInfoMapper {
 
 	UserInfo getUserInfoById(Integer userId);
 
-	boolean userAdd(UserDto userDto);
+	UserInfo userAdd(UserDto userDto);
 
-	boolean updateInfo(UserDto userDto);
+	UserInfo updateInfo(UserDto userDto);
 }
