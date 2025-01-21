@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.user.dto.UserDto;
 import com.example.demo.user.entity.UserInfo;
+import com.example.demo.user.entity.UserLogin;
 import com.example.demo.user.repository.UserInfoMapper;
 import com.example.demo.user.repository.UserLoginMapper;
 
@@ -23,27 +24,28 @@ public class UserService {
 		return userInfoMapper.getUserInfoById(userId);
 	}
 
-	public boolean addUserInfo(UserDto userDto) {
+	public UserInfo addUserInfo(UserDto userDto) {
 		// TODO 自動生成されたメソッド・スタブ
-		result = userInfoMapper.userAdd(userDto);
-		return result;
+		return userInfoMapper.userAdd(userDto);
+		
 	}
 
-	public boolean authenticateUser(String userMail, String userPass) {
+	
+
+	public UserInfo updateInfo(UserDto userDto) {
 		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		return  userInfoMapper.updateInfo(userDto);
 	}
 
-	public boolean updateInfo(UserDto userDto) {
+	public UserLogin updatePass(String string) {
 		// TODO 自動生成されたメソッド・スタブ
-		result = userInfoMapper.updateInfo(userDto);
-		return result;
+		return userLoginMapper.updatePass(string);
+		
 	}
 
-	public boolean updatePass(UserDto userDto) {
+	public UserLogin addUserLogin(UserDto userDto) {
 		// TODO 自動生成されたメソッド・スタブ
-		result = userLoginMapper.updatePass(userDto);
-		return result;
+		return userLoginMapper.addUserLogin(userDto);
 	}
 	
 	
