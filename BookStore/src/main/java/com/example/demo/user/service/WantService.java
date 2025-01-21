@@ -30,9 +30,10 @@ public class WantService {
 		return null;
 	}
 
-	public void removeFromWantList(Integer currentUserId, Integer itemId) {
+
+	public void deleteWishList(Integer userId, Integer itemId) {
 		// TODO 自動生成されたメソッド・スタブ
-		
+		wishlistMapper.deleteWishList(userId,itemId);
 	}
 
 }

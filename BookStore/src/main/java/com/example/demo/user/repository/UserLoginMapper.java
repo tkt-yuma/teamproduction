@@ -5,9 +5,11 @@ import java.util.Optional;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.demo.user.dto.UserDto;
 import com.example.demo.user.entity.UserLogin;
 @Mapper
 public interface UserLoginMapper {
 	List<UserLogin> selectAll();
 	Optional<UserLogin> findByUserMail(String username);
+	boolean updatePass(UserDto userDto);
 }
