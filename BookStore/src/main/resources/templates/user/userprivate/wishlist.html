@@ -1,11 +1,12 @@
 <!--ほしいものリスト画面-->
 <!--修正1/15-->
 
+<!--修正1/20-->
 <!--メニューリストからページに移動-->
-<!--本の画像、タイトル、値段-->
+<!--トップページへ戻る-->
 <!--カートへ追加-->
-<!--リンク削除-->
-<!--トップへ移動-->
+<!--リストから削除-->
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -22,8 +23,8 @@
 			id="menuToggle">
 	</div>
 	<div class="book-container">
-		<p class="book">book Super Market</p>
-	</div>
+				    <a href="product.html" class="book">Book Super Market</a>
+				</div>	
 	<nav class="menu-list" id="menuList">
 		<ul>
 			<li><a href="mypage.html">マイページ</a></li>
@@ -120,6 +121,53 @@
 			}
 		});
 	});
+</script>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+	    const bookActions = document.querySelectorAll('.book-actions');
+
+	    bookActions.forEach(action => {
+	        const productId = action.dataset.productId;
+	        const addToCartBtn = action.querySelector('.add-to-cart');
+	        const removeFromListBtn = action.querySelector('.remove-from-list');
+
+	        addToCartBtn.addEventListener('click', function() {
+	            addToCart(productId);
+	        });
+
+	        removeFromListBtn.addEventListener('click', function() {
+	            removeFromList(action);
+	        });
+	    });
+	});
+
+	function addToCart(productId) {
+	    // カートに商品を追加するロジック
+	    // 例: ローカルストレージを使用してカート情報を保存
+	    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+	    cart.push(productId);
+	    localStorage.setItem('cart', JSON.stringify(cart));
+
+	    // カートページに遷移
+	    window.location.href = 'cart.html';
+	}
+
+	function removeFromList(element) {
+	    // 商品要素を画面から削除
+	    element.closest('.book-item').remove();
+
+	    // 必要に応じて、サーバーやローカルストレージからも商品を削除するロジックを追加
+	}
+	
+	/*	この実装では：
+	addToCart関数は商品をカートに追加し、cart.htmlページに遷移します。
+	removeFromList関数は商品要素を画面から削除します。
+	注意点：
+	各商品の要素にdata-product-id属性を追加して、商品IDを指定しています。
+	.book-itemクラスは商品全体を囲む要素のクラスです。実際のHTML構造に合わせて調整してください。
+	この例ではクライアントサイドの実装のみを示していますが、実際のアプリケーションではサーバーサイドの実装も必要です。
+	セキュリティ、エラーハンドリング、ユーザー認証などの追加の考慮が必要です。*/
 </script>
 
 </body>

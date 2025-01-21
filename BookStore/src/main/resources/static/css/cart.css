@@ -17,16 +17,20 @@ body {
 	margin-bottom: 40px;
 }
 
-.book {
-	margin: 0;
-	padding: 10px;
-	font-weight: bold;
-	font-size: 50px;
-	color: white;
+
+.book-container a {
+    text-decoration: none;
 }
 
 
-
+.book {
+    margin: 0;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
 
 .img {
 	max-width: 100%;
@@ -266,7 +270,3 @@ body {
     transform: scale(0.98);
 }
 
-
-.purchase-button {
-    width: 300px;
-}

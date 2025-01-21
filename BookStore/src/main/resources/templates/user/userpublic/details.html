@@ -27,17 +27,17 @@
 				id="menuToggle">
 		</div>
 		<div class="book-container">
-			<p class="book">Book Super Market</p>
-		</div>
+				    <a href="product.html" class="book">Book Super Market</a>
+				</div>	
 		<nav class="menu-list" id="menuList">
 			<ul>
-				<li><a href="#">マイページ</a></li>
-				<li><a href="#">履歴</a></li>
-				<li><a href="#">ほしいものリスト</a></li>
-				<li><a href="#">登録情報の変更・修正</a></li>
-				<li><a href="#">カート</a></li>
-				<li><a href="#">ログアウト</a></li>
-			</ul>
+							<li><a href="mypage.html">マイページ</a></li>
+							<li><a href="history.html">履歴</a></li>
+							<li><a href="wishlist.html">ほしいものリスト</a></li>
+							<li><a href="amend.html">登録情報の変更・修正</a></li>
+							<li><a href="cart.html">カート</a></li>
+							<li><a href="logout.html">ログアウト</a></li>
+						</ul>
 		</nav>
 	</header>
 
@@ -77,8 +77,9 @@
 				<button class="quantity-down">▼</button>
 			</div>
 		</div>
-		<button class="action-button add-to-cart">カートに追加</button>
-		<button class="action-button add-to-wishlist">ほしいものリスト</button>
+		<button class="action-button add-to-cart" onclick="addToCart(productId)">カートに追加</button>
+			    <button class="action-button add-to-wishlist" onclick="addToWishlist(productId)">ほしいものリスト</button>
+				
 	</div>
 
 	<!-- 新しく追加するレビューセクション -->
@@ -277,6 +278,57 @@
 			});
 		});
 	</script>
+	
+	<script>
+			// カートに商品を追加する関数
+			function addToCart(productId) {
+			    // カートに商品を追加するロジック
+			    // 例: APIリクエストを送信してサーバー側でカートを更新
+			    fetch('/api/cart/add', {
+			        method: 'POST',
+			        headers: {
+			            'Content-Type': 'application/json',
+			        },
+			        body: JSON.stringify({ productId: productId })
+			    })
+			    .then(response => response.json())
+			    .then(data => {
+			        console.log('カートに追加されました:', data);
+			        // 必要に応じて、ユーザーに通知を表示
+			        alert('商品がカートに追加されました');
+			    })
+			    .catch((error) => {
+			        console.error('エラー:', error);
+			    });
+			}
+
+			// ほしいものリストに商品を追加する関数
+			function addToWishlist(productId) {
+			    // ほしいものリストに商品を追加するロジック
+			    // 例: APIリクエストを送信してサーバー側でほしいものリストを更新
+			    fetch('/api/wishlist/add', {
+			        method: 'POST',
+			        headers: {
+			            'Content-Type': 'application/json',
+			        },
+			        body: JSON.stringify({ productId: productId })
+			    })
+			    .then(response => response.json())
+			    .then(data => {
+			        console.log('ほしいものリストに追加されました:', data);
+			        // 必要に応じて、ユーザーに通知を表示
+			        alert('商品がほしいものリストに追加されました');
+			    })
+			    .catch((error) => {
+			        console.error('エラー:', error);
+			    });
+			}
+			/*↑		この実装では、ボタンがクリックされると対応する関数が呼び出され、
+			サーバーにリクエストを送信して商品をカートまたはほしいものリストに追加します。
+			サーバー側では、受け取ったリクエストに基づいて適切なデータベース操作を行い、カートやほしいものリストを更新します。
+			実際の実装では、セキュリティ対策やエラーハンドリング、ユーザー認証などの追加の考慮が必要です。
+			また、サーバーサイドの実装も必要となります。*/
+		</script>
 </body>
 
 </html>

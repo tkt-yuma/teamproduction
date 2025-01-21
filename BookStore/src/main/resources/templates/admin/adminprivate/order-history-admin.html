@@ -24,11 +24,12 @@
 			</div>
 			<br>
 													
-			<form th:action="@{/inventory}" method="get">
-				<input type="text" name="searchTerm" th:value="${searchTerm}" placeholder="商品コードまたは商品名で検索">
-				<button type="submit">検索</button>
-			</form>			<br>
-			<h2>商品発注履歴</h2>
+			<form class="serchform" th:action="@{/inventory}" method="get">
+				
+			<input class="serchword" type="text" name="searchTerm" th:value="${searchTerm}" placeholder="商品コードまたは商品名で検索">
+				<button class="serchbutton" type="submit">検索</button>
+			</form><br>
+						<h2>商品発注履歴</h2>
 					<table class="inventoryTable">
 						<thead>
 						<tr>

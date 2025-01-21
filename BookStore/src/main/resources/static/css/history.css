@@ -17,13 +17,20 @@ body {
 	margin-bottom: 40px;
 }
 
-.book {
-	margin: 0;
-	padding: 10px;
-	font-weight: bold;
-	font-size: 50px;
-	color: white;
+.book-container a {
+    text-decoration: none;
 }
+
+
+.book {
+    margin: 0;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+
 
 /*本の画像*/
 .book-image {
