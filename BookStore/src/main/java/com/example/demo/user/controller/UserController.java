@@ -81,7 +81,12 @@ public class UserController {
 
 	
 	@GetMapping("/userpublic/product") //ログアウト処理
-	public String logout2() { //ログアウト処理（セッション無効化など）
+	public String logout2(Model model) { //ログアウト処理（セッション無効化など）
+		List<ItemId> list = bookService.findAll();
+//		for(ItemId i : list) {
+//			System.out.println(i.getItemName());
+//		}
+		model.addAttribute("itemlist", list);
 		return "user/userpublic/product"; //トップページへリダイレクト
 	}
 	@PostMapping("/userpublic/product") //ログアウト処理
@@ -193,14 +198,15 @@ public class UserController {
 	}
 
 
-	@GetMapping("/{itemId}/details") //商品詳細ページの表示
+	@GetMapping("/userpublic/{itemId}/details") //商品詳細ページの表示
 	public String showItemDetails(@PathVariable("itemId") Integer itemId, Model model) {
 		ItemId item = bookService.getItemById(itemId);
 		List<Comment> reviews = reviewService.getReviewsForItem(itemId);
-
+		//System.out.println(reviews.size());
 		model.addAttribute("item", item);
 		model.addAttribute("reviews", reviews);
-		return "redirect:/user/userpublic/details";
+		return "user/userpublic/details";
+		//return "redirect:/user/userpublic/details";
 	}
 
 	@PostMapping("/{itemId}/addToWishlist") //商品詳細ページから欲しいものリストに追加

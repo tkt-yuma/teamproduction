@@ -13,6 +13,9 @@ public class BookService {
 	@Autowired
 	private ItemIdMapper itemIdMapper;
 
+	public List<ItemId> findAll(){
+		return itemIdMapper.selectAll();
+	}
 
 	public  ItemId getItemById(Integer itemId) { 
 		// TODO 自動生成されたメソッド・スタブ
