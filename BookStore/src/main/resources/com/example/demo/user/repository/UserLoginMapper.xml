@@ -26,5 +26,10 @@
 	<update id="updateById">
 		update userlogin set user_pass = #{userPass} where user_id = #{userId};
 		</update>
+		
+	<!-- userloginテーブルからユーザーIDをt取る -->
+	<select id = "findUserId" resultMap="UserLoginMap">
+		select user_id from userlogin where user_mail = #{username}
+	</select>
 	
 </mapper>

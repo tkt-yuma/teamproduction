@@ -1,13 +1,8 @@
 package com.example.demo.security.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.core.annotation.Order;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,17 +12,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
-	private final AdminAuthenticationProvider adminAuthenticationProvider;
-	private final UserAuthenticationProvider userAuthenticationProvider;
-
-	@Autowired
-	public SecurityConfig(@Lazy UserAuthenticationProvider userAuthenticationProvider,
-			@Lazy AdminAuthenticationProvider adminAuthenticationProvider) {
-		this.userAuthenticationProvider = userAuthenticationProvider;
-		this.adminAuthenticationProvider = adminAuthenticationProvider;
-
-	}
 
 	@Bean
 	@Order(1)
@@ -76,17 +60,6 @@ public class SecurityConfig {
 		return http.build();
 	}
 
-	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
-			throws Exception {
-		return authenticationConfiguration.getAuthenticationManager();
-	}
-
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(userAuthenticationProvider)
-				.authenticationProvider(adminAuthenticationProvider);
-	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {

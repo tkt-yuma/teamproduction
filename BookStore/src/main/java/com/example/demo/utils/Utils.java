@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import com.example.demo.security.service.details.UsersDetails;
 import com.example.demo.user.service.UserService;
 
 public class Utils {
@@ -21,12 +20,10 @@ public class Utils {
 	}
 
 	public static int getUserId() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		UsersDetails usersDetails = (UsersDetails) authentication;
-		if (usersDetails != null) {
-			return usersDetails.getUserId();
-		}
-		return 0;
+		UserService userService = new UserService();
+		return userService.getUserID();
+		
+		
 	}
 
 }

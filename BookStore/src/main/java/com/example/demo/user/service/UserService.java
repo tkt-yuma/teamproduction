@@ -1,6 +1,9 @@
 package com.example.demo.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.user.dto.UserDto;
@@ -47,6 +50,16 @@ public class UserService {
 		// TODO 自動生成されたメソッド・スタブ
 		return userLoginMapper.addUserLogin(userDto);
 	}
-	
+	public int getUserID() {
+    	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    	if (authentication != null && authentication.isAuthenticated()) {
+             // ユーザー情報を獲得
+             Object principal = authentication.getPrincipal();
+             if(principal instanceof UserDetails) {
+            	 return userLoginMapper.findUserId(authentication.getName());
+             }
+    	}
+    	return 0;
+    }
 	
 }
