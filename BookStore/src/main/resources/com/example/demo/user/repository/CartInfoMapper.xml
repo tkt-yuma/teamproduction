@@ -17,17 +17,36 @@
 		select * from cartinfo order by num asc
 	</select>
 	
-	<select id = "selectById" resultMap="CartInfoMap">
-		select * from cartinfo where id = #{id} order by num asc
+<!--	<select id = "selectById" resultMap="CartInfoMap">-->
+<!--		select * from cartinfo where id = #{id} order by num asc-->
+<!--	</select>-->
+	
+<!-- ユーザーIDに基づいてカート情報を取得するSQL文 -->
+	<select id="cartById" resultMap="CartInfoMap">
+		select * from cartinfo where user_id = #{userId} order by num asc
 	</select>
-	<!-- カートに商品を追加するSQL文-->
-	<insert id = "cartInsert">
-		insert into cartinfo (user_id,item_id,item_name,quantity) 
-			values (#{userId}, #{itemId}, #{itemName}, #{quantity})
+	
+<!--	 カートに商品を追加するSQL文-->
+<!--	<insert id = "cartInsert">-->
+<!--		insert into cartinfo (user_id,item_id,item_name,quantity) -->
+<!--			values (#{userId}, #{itemId}, #{itemName}, #{quantity})-->
+<!--	</insert>-->
+	
+<!-- カートに商品を追加するSQL文（CartDtoを使用）-->
+	<insert id="addToCart">
+		insert into cartinfo (user_id, item_id, item_name, quantity)
+		values (#{userId}, #{itemId}, #{cartDto.itemName}, #{cartDto.quantity})
 	</insert>
+	
+<!-- カート内の商品数量を更新するSQL文 -->
+	<update id="updateItemQuantity">
+		update cartinfo set quantity = #{cartDto.quantity}
+		where user_id = #{userId} and item_id = #{itemId}
+	</update>
+	
 	<!-- カートから商品を削除するSQL文-->
-	<delete id = "cartDelete">
-		delete cartinfo where item_id = #{itemId} and user_id = #{userId} 
+	<delete id = "deleteItemCart">
+		delete from cartinfo where item_id = #{itemId} and user_id = #{userId} 
 	</delete>
 
 </mapper>

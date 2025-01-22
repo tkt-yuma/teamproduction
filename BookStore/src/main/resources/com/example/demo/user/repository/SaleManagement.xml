@@ -14,10 +14,16 @@
 		
 	</resultMap>
 	
-	<select id = "selectAll" resultMap="SaleManagementMap">
-		select * from salemange order by sale_num asc
- 	</select>
+<select id="getPurchaseHistoryForUser" resultMap="SaleManagementMap">
+		select * from salemange where user_id = #{userId} order by item_saledate desc
+	</select>
 	
-	
+<insert id="processOrder" parameterType="com.example.demo.user.entity.CartInfo">
+		insert into salemange (item_id, item_name, item_num, item_purprice, item_saleprice, item_saledate, user_id)
+		values (#{itemId}, #{itemName}, #{quantity}, 
+				(select item_purprice from item_id where item_id = #{itemId}),
+				(select item_saleprice from item_id where item_id = #{itemId}),
+				now(), #{userId})
+	</insert>
 	
 </mapper>

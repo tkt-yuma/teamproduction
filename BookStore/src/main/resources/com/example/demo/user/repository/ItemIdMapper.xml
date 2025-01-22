@@ -17,18 +17,26 @@
 		select * from item_id order by item_id asc
 	</select>
 	
-	<select id = "selectById" resultMap="ItemIdMap">
-		select * from item_id where item_id = #{id} order by item_id asc
-	</select>
+<select id="search" parameterType="string" resultMap="ItemIdMap">
+    	SELECT * FROM item_id WHERE item_name LIKE CONCAT('%', #{query}, '%')
+  	</select>
+
+<select id="searchCategory" parameterType="string" resultMap="ItemIdMap">
+    	SELECT * FROM item_id WHERE category_name = #{categoryName}
+  	</select>
+
+<select id="searchById" parameterType="integer" resultMap="ItemIdMap">
+    	SELECT * FROM item_id WHERE item_id = #{itemId}
+  	</select>
 	
-	<select id = "selectKeyWord" resultMap="ItemIdMap">
-		select * from item_id where item_name like concat('%', #{word}, '%') 
-		or category_name like concat('%', #{word}, '%')
-		or iteminfo like concat('%', #{word}, '%') order by item_id asc
-	</select>
+<!--	<select id = "selectKeyWord" resultMap="ItemIdMap">-->
+<!--		select * from item_id where item_name like concat('%', #{word}, '%') -->
+<!--		or category_name like concat('%', #{word}, '%')-->
+<!--		or iteminfo like concat('%', #{word}, '%') order by item_id asc-->
+<!--	</select>-->
 	
-	<update id = "updataItemStock">
-		update item_id set stock = #{stock} where item_id = #{itemId}
-	</update>
+<!--	<update id = "updataItemStock">-->
+<!--		update item_id set stock = #{stock} where item_id = #{itemId}-->
+<!--	</update>-->
 
 </mapper>

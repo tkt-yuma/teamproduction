@@ -22,14 +22,25 @@
 		select * from userlogin where user_mail = #{mail}
 	</select>
 	
-	<!--userloginテーブルを更新するSQL文-->
-	<update id="updateById">
-		update userlogin set user_pass = #{userPass} where user_id = #{userId};
-		</update>
+<!--	userloginテーブルを更新するSQL文-->
+<!--	<update id="updateById">-->
+<!--		update userlogin set user_pass = #{userPass} where user_id = #{userId};-->
+<!--		</update>-->
 		
 	<!-- userloginテーブルからユーザーIDをt取る -->
 	<select id = "findUserId" resultMap="UserLoginMap">
 		select user_id from userlogin where user_mail = #{username}
 	</select>
+	
+<!-- パスワードを更新するSQL文 -->
+	<update id="updatePass" parameterType="java.lang.String">
+		update userlogin set user_pass = #{newPassword} where user_mail = #{userMail}
+	</update>
+
+<!-- 新規ユーザーログイン情報を追加するSQL文 -->
+	<insert id="addUserLogin" parameterType="com.example.demo.user.dto.UserDto" useGeneratedKeys="true" keyProperty="userId">
+		insert into userlogin (user_mail, user_pass)
+		values (#{userMail}, #{userPass})
+	</insert>
 	
 </mapper>

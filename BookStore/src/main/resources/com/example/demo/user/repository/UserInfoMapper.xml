@@ -19,19 +19,43 @@
 		select * from userinfo order by user_id asc
 	</select>
 	
-	<!-- ユーザーリストに登録されている情報をuserMailを住県に全件表示するSQL文-->
-	<select id="selectById" resultMap="UserInfoMap">
-		select * from userinfo where user_mail = #{userMail}
-	</select>
+<!--	 ユーザーリストに登録されている情報をuserMailを住県に全件表示するSQL文-->
+<!--	<select id="selectById" resultMap="UserInfoMap">-->
+<!--		select * from userinfo where user_mail = #{userMail}-->
+<!--	</select>-->
 	
-	<!--ユーザーリストを更新するSQL文-->
-	 <update id="updateById">
-	 	update userinfo set (user_real_name = #{userRealName},user_mail = #{userMail},
-		user_tel = #{userTel},user_creditnum = #{userCreditnum},user_address = #{userAddress}) where user_id =  #{userId};
+<!--	ユーザーリストを更新するSQL文-->
+<!--	 <update id="updateById">-->
+<!--	 	update userinfo set (user_real_name = #{userRealName},user_mail = #{userMail},-->
+<!--		user_tel = #{userTel},user_creditnum = #{userCreditnum},user_address = #{userAddress}) where user_id =  #{userId};-->
+<!--	</update>-->
+	
+<!--	ユーザーリストを削除するSQL文-->
+<!--	<delete id="deleteById">-->
+<!--		delete from userinfo where user_id = #{userId}-->
+<!--		</delete>-->
+		
+<!-- ユーザーIDに基づいてユーザー情報を取得するSQL文 -->
+	<select id="getUserInfoById" parameterType="java.lang.Integer" resultMap="UserInfoMap">
+		select * from userinfo where user_id = #{userId}
+	</select>
+
+<!-- 新しいユーザーを追加するSQL文 -->
+	<insert id="userAdd" parameterType="com.example.demo.user.dto.UserDto" useGeneratedKeys="true" keyProperty="userId">
+		insert into userinfo (user_real_name, user_mail, user_tel, user_birthday, user_creditnum, user_address)
+		values (#{userRealName}, #{userMail}, #{userTel}, #{userBirthday}, #{userCreditnum}, #{userAddress})
+	</insert>
+
+<!-- ユーザー情報を更新するSQL文 -->
+	<update id="updateInfo" parameterType="com.example.demo.user.dto.UserDto">
+		update userinfo set
+			user_real_name = #{userRealName},
+			user_mail = #{userMail},
+			user_tel = #{userTel},
+			user_birthday = #{userBirthday},
+			user_creditnum = #{userCreditnum},
+			user_address = #{userAddress}
+		where user_id = #{userId}
 	</update>
 	
-	<!--ユーザーリストを削除するSQL文-->
-	<delete id="deleteById">
-		delete from userinfo where user_id = #{userId}
-		</delete>
 </mapper>

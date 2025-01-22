@@ -8,9 +8,7 @@ import com.example.demo.user.entity.SaleManagement;
 
 @Mapper
 public interface SaleManagementMapper {
-	List<SaleManagement> getPurchaseHistoryForUser();
-
-	List<SaleManagement> selectAll();
+	List<SaleManagement> getPurchaseHistoryForUser(Integer userId);
 
 	void processOrder(CartInfo carts);
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.user.repository.WishlistMapper">
 
-<!-- ウィッシュリストをユーザーIDとウィッシュリストIDとアイテムIDから参照して指定する処理 -->
+	<!-- ウィッシュリストをユーザーIDとウィッシュリストIDとアイテムIDから参照して指定する処理 -->
 	<resultMap id = "WishlistMap" type="com.example.demo.user.entity.Wishlist">
 		<result column="wishlistno"  jdbcType="INTEGER"   property="wishListNo" />
 		<result column="item_id"     jdbcType="INTEGER"   property="itemId"     />
@@ -16,5 +16,14 @@
 		select * from wishlist order by item_id asc
 	</select>
 	
+<!-- 特定ユーザーのウィッシュリストアイテムを取得するSQL文 -->
+	<select id="getWantItems" parameterType="java.lang.Integer" resultMap="WishlistMap">
+		select * from wishlist where user_id = #{userId}
+	</select>
+
+<!-- ウィッシュリストからアイテムを削除するSQL文 -->
+	<delete id="deleteWishList">
+		delete from wishlist where user_id = #{userId} and item_id = #{itemId}
+	</delete>
 	
 </mapper>

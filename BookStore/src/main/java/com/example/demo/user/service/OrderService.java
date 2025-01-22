@@ -16,19 +16,9 @@ public class OrderService {
 	@Autowired
 	private SaleManagementMapper salemapper;
 
-	public int getEstimatedDeliveryDays(Integer userId) {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
-	}
-
 	public List<SaleManagement> getPurchaseHistoryForUser(Integer userId) {
 		// TODO 自動生成されたメソッド・スタブ
-		return salemapper.getPurchaseHistoryForUser();
-	}
-
-	public List<CartInfo> getOrderItemsForUser(Integer userId) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		return salemapper.getPurchaseHistoryForUser(userId);
 	}
 
 	public void processOrder(List<CartInfo> cart) {
@@ -36,7 +26,6 @@ public class OrderService {
 		for(CartInfo carts: cart) {
 			salemapper.processOrder(carts);
 		}
-		
 	}
 
 }

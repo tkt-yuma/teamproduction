@@ -16,5 +16,13 @@
 		select * from comment order by num desc
 	</select>
 	
-	
+<select id = "selectById" parameterType="integer" resultMap="CommentMap">
+        select * from comment where item_id = #{itemId} order by num desc
+    </select>
+
+<insert id = "saveReview" parameterType="map">
+        insert into comment (item_id, item_name, user_id, date, review)
+        values (#{comment.itemId}, #{comment.itemName}, #{userId}, #{comment.date}, #{comment.review})
+    </insert>
+    
 </mapper>

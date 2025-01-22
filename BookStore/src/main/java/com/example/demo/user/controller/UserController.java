@@ -106,7 +106,7 @@ public class UserController {
 
 	@GetMapping("/ordercheck") //購入確認画面の表示
 	public String showOrderCheck(Model model) {
-		List<CartInfo> orderItems = orderService.getOrderItemsForUser(Utils.getUserId());
+		List<CartInfo> orderItems = cartService.getCartItems(Utils.getUserId());
 		UserInfo user = userService.getUserInfoById(Utils.getUserId());
 
 		model.addAttribute("orderItems", orderItems);
