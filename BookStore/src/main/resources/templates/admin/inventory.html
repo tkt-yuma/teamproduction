@@ -84,10 +84,10 @@
             <th>商品コード</th>
             <th>商品名</th>
             <th>カテゴリー</th>
-            <th>原価（単位：円）</th>
-            <th>売価（単位：冊）</th>
-            <th>商品情報</th>
-            <th>在庫数（単位：冊）</th>
+			<th th:utext="${#strings.replace('原価（単位：円）', '（', '<br>（')}"></th>
+            <th th:utext="${#strings.replace('売価（単位：円）', '（', '<br>（')}"></th>
+			<th>商品情報</th>
+            <th th:utext="${#strings.replace('在庫数（単位：円）', '（', '<br>（')}"></th>
             <th>発注先</th>
             <th>画像</th>
 			
@@ -105,10 +105,15 @@
             <td class="stock" th:text="${inventory.stock}" contenteditable="true"></td>
             <td class="purchaseno" th:text="${inventory.purchaseno}" contenteditable="true"></td>
 			<td class="image">
-			    <img th:src="${inventory.imageaddress}" alt="商品画像" style="max-width: 100px; max-height: 100px;">
-			    <input type="file" th:id="'file_' + ${inventory.itemId}" style="display: none;">
-			    <button th:onclick="'document.getElementById(\'file_' + ${inventory.itemId} + '\').click()'">画像を変更</button>
-			</td>
+				<div>
+				  <img th:src="${inventory.imageaddress}" alt="商品画像" style="max-width: 100px; max-height: 100px;">
+				  <input type="file" th:id="'file_' + ${inventory.itemId}" name="file" style="display: none;">
+				  <label th:for="'file_' + ${inventory.itemId}" class="custom-file-upload">画像を変更</label>
+				</div>
+<!--			<img th:src="${inventory.imageaddress}" alt="商品画像" style="max-width: 100px; max-height: 100px;">-->
+<!--			    <input type="file" th:id="'file_' + ${inventory.itemId}" >-->
+<!--			    -->
+			
 
 <!--			    <input type="file" th:id="'file_' + ${inventory.id}" />-->
 <!--			<td class="image">-->
@@ -121,7 +126,6 @@
 </table>
 
 <button class="updatebutton" onclick="updateInventory()">修正・削除</button>
-
 <script>
 function updateInventory() {
     var table = document.getElementById("inventoryTable");
