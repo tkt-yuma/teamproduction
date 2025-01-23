@@ -20,7 +20,7 @@
 		<a href="/order-history-admin" class="button">発注履歴</a>
 		<a href="/inventory" class="button">在庫管理</a>
 		<a href="/sales" class="button">売上管理</a>
-		<a href="/admin-login" class="button">ログイン</a>
+		
 	</div>
 	<br>
 										
@@ -48,7 +48,7 @@
 	        <tbody>
 	            <tr th:each="sale : ${sales}">
 					<td th:text="${sale.salenum}"></td>
-					<td th:text="${#dates.format(sale.saleDate, 'yyyy-MM-dd')}"></td>
+					<td th:text="${#dates.format(sale.saleDate, 'yyyy-MM-dd')}" style="white-space: nowrap;"></td>
 	                <td th:text="${sale.itemId}"></td>
 	                <td th:text="${sale.itemName}"></td>
 	                <td th:text="${sale.itemnum}"></td>
@@ -57,18 +57,18 @@
 					<td th:text="${sale.userId}"></td>
 	            </tr>
 	        </tbody>
+			<tfoot>
+			    <tr>
+			        <td colspan="5" style="text-align: right;">売価×売上数 合計</td>
+			        <td colspan="3" th:text="${#numbers.formatDecimal(totalSales, 0, 'COMMA', 0, 'POINT')} + '円'"></td>
+			    </tr>
+			    <tr>
+			        <td colspan="5" style="text-align: right;">利益 合計</td>
+			        <td colspan="3" th:text="${#numbers.formatDecimal(totalProfit, 0, 'COMMA', 0, 'POINT')} + '円'"></td>
+			    </tr>
+			</tfoot>
 	    </table>
 		
-		<table class="calcresult">
-		            <tr>
-		                <th>売上合計金額</th>
-		                <td th:text="${#numbers.formatDecimal(totalSales, 0, 'COMMA', 0, 'POINT')} + '円'"></td>
-		            </tr>
-		            <tr>
-		                <th>利益合計金額</th>
-		                <td th:text="${#numbers.formatDecimal(totalProfit, 0, 'COMMA', 0, 'POINT')} + '円'"></td>
-		            </tr>
-		        </table>
 				
 				<script src="js/admin.js"></script>
 	
