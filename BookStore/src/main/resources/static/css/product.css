@@ -209,102 +209,102 @@ input[type="submit"]:hover {
 }
 
 /*矢印*/
-.arrow {
-  font-size: 50px;
-  cursor: pointer;
-  user-select: none;
-  color: #808080;
-  transition: color 0.3s ease;
-  padding: 0 10px; /* パディングを調整 */
-  background: none;
-  border: none;
-  flex: 0 0 auto; /* フレックスアイテムのサイズを固定 */
-}
+/*.arrow {*/
+/*  font-size: 50px;*/
+/*  cursor: pointer;*/
+/*  user-select: none;*/
+/*  color: #808080;*/
+/*  transition: color 0.3s ease;*/
+/*  padding: 0 10px;  パディングを調整 */
+/*  background: none;*/
+/*  border: none;*/
+/*  flex: 0 0 auto;  フレックスアイテムのサイズを固定 */
+/*}*/
 
-.arrow:hover {
-  color: #0056b3;
-}
+/*.arrow:hover {*/
+/*  color: #0056b3;*/
+/*}*/
 
-.product-wrapper {
-  flex-grow: 1;
-  display: flex;
-  overflow-x: hidden;
-}
+/*.product-wrapper {*/
+/*  flex-grow: 1;*/
+/*  display: flex;*/
+/*  overflow-x: hidden;*/
+/*}*/
 
-.left-arrow {
-  margin-right: 10px;
-}
+/*.left-arrow {*/
+/*  margin-right: 10px;*/
+/*}*/
 
-.right-arrow {
-  margin-left: 10px;
-}
+/*.right-arrow {*/
+/*  margin-left: 10px;*/
+/*}*/
 
-.arrow:hover {
-  color: #0056b3;
-}
+/*.arrow:hover {*/
+/*  color: #0056b3;*/
+/*}*/
 
-.arrow:hover {
-  color: #0056b3;
-}
+/*.arrow:hover {*/
+/*  color: #0056b3;*/
+/*}*/
 
 /*本の画像*/
-.image-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 90%;
-  margin: 0 auto;
-  padding: 0 40px; /* コンテナ全体の左右パディングを増やす */
-}
+/*.image-container {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  width: 100%;*/
+/*  max-width: 90%;*/
+/*  margin: 0 auto;*/
+/*  padding: 0 40px;  コンテナ全体の左右パディングを増やす */
+/*}*/
 
-.product-container {
-  flex: 0 0 calc(25% - 15px); /* 4つの画像が等間隔で並ぶように調整 */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 180px;
-  margin: 10px;
-}
+/*.product-container {*/
+/*  flex: 0 0 calc(25% - 15px);  4つの画像が等間隔で並ぶように調整 */
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  width: 180px;*/
+/*  margin: 10px;*/
+/*}*/
 
 
-.product-container img {
-	width: 150px;
-	height: 200px;
-	object-fit: cover;
-	transition: transform 0.3s ease;
-	margin-bottom: 10px;
-}
-.product-container img:hover {
-	transform: scale(1.05);
-}
+/*.product-container img {*/
+/*	width: 150px;*/
+/*	height: 200px;*/
+/*	object-fit: cover;*/
+/*	transition: transform 0.3s ease;*/
+/*	margin-bottom: 10px;*/
+/*}*/
+/*.product-container img:hover {*/
+/*	transform: scale(1.05);*/
+/*}*/
 
-.product-wrapper {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px; /* 画像間の間隔 */
-  overflow: hidden;
-  flex: 1; /* 残りのスペースを埋める */
-  margin: 0 20px; /* 矢印との間隔 */
-  margin-left: 40px; /* この値を調整して右寄せの程度を変更 */
-}
+/*.product-wrapper {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  gap: 20px;  画像間の間隔 */
+/*  overflow: hidden;*/
+/*  flex: 1;  残りのスペースを埋める */
+/*  margin: 0 20px;  矢印との間隔 */
+/*  margin-left: 40px;  この値を調整して右寄せの程度を変更 */
+/*}*/
 
 /*本のタイトルと値段*/
-.product-title,
-.product-price {
-  font-size: 14px;
-  margin: 5px 0;
-   width: 150px; /* 画像の幅に合わせる */
-  text-align: center;
-  white-space: nowrap;
-   overflow: hidden;
-   text-overflow: ellipsis;
-}
+/*.product-title,*/
+/*.product-price {*/
+/*  font-size: 14px;*/
+/*  margin: 5px 0;*/
+/*   width: 150px;  画像の幅に合わせる */
+/*  text-align: center;*/
+/*  white-space: nowrap;*/
+/*   overflow: hidden;*/
+/*   text-overflow: ellipsis;*/
+/*}*/
 
 /*本の値段*/
-.product-price {
-  font-weight: bold;
-}
+/*.product-price {*/
+/*  font-weight: bold;*/
+/*}*/
 
 /*フッター(カテゴリ)*/
 footer {
@@ -344,4 +344,54 @@ footer {
 .footer-categories li a:hover {
 	color: rgb(0, 128, 255);
 	cursor: pointer;
+}
+
+
+.image-slider {
+  position: relative; /* 必須: 矢印ボタンの基準となる親要素 */
+  width: 100%; /* スライダー全体の幅 */
+  overflow: hidden; /* 画像がスライダー外に飛び出さないようにする */
+}
+
+.image-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.image-item {
+  flex-shrink: 0;
+  width: 25%; /* 一度に4アイテムを表示 */
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.item-info {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.arrow {
+  background-color: #333; /* ボタンの背景色 */
+  color: #fff; /* 矢印の文字色 */
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10; /* 矢印ボタンを他の要素の上に表示 */
+  position: absolute; /* 親要素を基準に配置 */
+  top: 50%; /* 縦方向で中央揃え */
+  transform: translateY(-50%); /* ボタンの高さの半分だけ上方向に移動 */
+}
+
+.arrow.left {
+  left: 10px; /* スライダーの左端からの距離 */
+}
+
+.arrow.right {
+  right: 10px; /* スライダーの右端からの距離 */
 }
