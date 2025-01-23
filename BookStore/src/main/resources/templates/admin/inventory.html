@@ -6,10 +6,11 @@
 <head>
 	
 	<link rel="stylesheet" type="text/css" th:href="@{/css/Admin.css}">
+<!--	<link rel="stylesheet" href="/static/css/Admin.css" type="text/css">-->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>在庫管理画面</title>
-
+	
 </head>
 <body>
 	<header class="header">
@@ -22,59 +23,23 @@
 	    <a href="/admin_top" class="button">トップページ</a>		        
 	    <a href="/order-management" class="button">発注管理</a>
 	    <a href="/order-history-admin" class="button">発注履歴</a>
-	    <a href="/inventory" class="button">在庫管理</a>
+		<a href="/inventory" class="button" >在庫管理</a>
 	    <a href="/sales" class="button">売上管理</a>
 	</div>
 
 		<br>
-		
-
-												
-<!--		<form action="/search" method="get">-->
-<!--				<input type="search" name="q" placeholder="検索キーワードを入力">-->
-<!--				<input type="submit" value="検索">-->
-<!--		</form>-->
-
-			<form th:action="@{/inventory}" method="get">
+										
+			<form class="serchform" th:action="@{/inventory}" method="get">
 				
-            <input type="text" name="searchTerm" th:value="${searchTerm}" placeholder="商品コードまたは商品名で検索">
-    			<button type="submit">検索</button>
+            <input class="serchword" type="text" name="searchTerm" th:value="${searchTerm}" placeholder="商品コードまたは商品名で検索">
+    			<button class="serchbutton" type="submit">検索</button>
 			</form>
 			<script>searchTerm = new Number(null); </script> 
 		<br>
-		<!--検索結果を表示-->
-		<h2>商品在庫</h2>
-<!--				<table border="1"  width="100%">-->
-<!--					<thead>-->
-<!--					<tr>-->
-<!--						<th>商品コード</th>-->
-<!--						<th>商品名</th>-->
-<!--						<th>カテゴリー</th>-->
-<!--						<th>原価（単位：円）</th>-->
-<!--						<th>売価（単位：冊）</th>-->
-<!--						<th>商品情報</th>-->
-<!--						<th>在庫数（単位：冊）</th>-->
-<!--						<th>発注先</th>-->
-<!--						<th>画像</th>-->
-<!--					</tr>  -->
-													                
-													            
-<!--					</thead>-->
-<!--					<tbody>-->
-<!--						<tr th:each="inventory : ${inventories}">-->
-<!--							<td th:text="${inventory.itemId}"></td>-->
-<!--							<td th:text="${inventory.itemName}"></td>-->
-<!--							<td th:text="${inventory.category}"></td>-->
-<!--							<td th:text="${inventory.purprice}"></td>-->
-<!--							<td th:text="${inventory.saleprice}"></td>-->
-<!--							<td th:text="${inventory.iteminfo}"></td>-->
-<!--							<td th:text="${inventory.stock}"></td>-->
-<!--							<td th:text="${inventory.purchaseno}"></td>-->
-<!--							<td th:text="${inventory.imageaddress}"></td>-->
-<!--						</tr>-->
-<!--					</tbody>-->
-<!--				</table>-->
-
+		
+	
+<!--検索結果を表示-->
+	<h2>商品在庫</h2>
 
 <!--一覧画面を直接修正できるかテスト-->
 <table class="inventoryTable">
@@ -94,7 +59,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr th:each="inventory : ${inventories}">
+        <tr th:each="inventory : ${item}">
 			<th><input type="checkbox" id="selectAll"></th>
             <td class="itemID" th:text="${inventory.itemId}" contenteditable="false"></td><!--商品IDは変更不可-->
             <td class="itemName" th:text="${inventory.itemName}" contenteditable="true"></td>
@@ -105,206 +70,72 @@
             <td class="stock" th:text="${inventory.stock}" contenteditable="true"></td>
             <td class="purchaseno" th:text="${inventory.purchaseno}" contenteditable="true"></td>
 			<td class="image">
-				<div>
-				  <img th:src="${inventory.imageaddress}" alt="商品画像" style="max-width: 100px; max-height: 100px;">
+				<div style="display: flex; flex-direction: column; align-items: center;">
+				  <img th:src="${inventory.imageaddress}" alt="商品画像" style="max-width: 100px; max-height: 100px; margin-bottom: 10px;">
 				  <input type="file" th:id="'file_' + ${inventory.itemId}" name="file" style="display: none;">
 				  <label th:for="'file_' + ${inventory.itemId}" class="custom-file-upload">画像を変更</label>
 				</div>
-<!--			<img th:src="${inventory.imageaddress}" alt="商品画像" style="max-width: 100px; max-height: 100px;">-->
-<!--			    <input type="file" th:id="'file_' + ${inventory.itemId}" >-->
-<!--			    -->
-			
 
-<!--			    <input type="file" th:id="'file_' + ${inventory.id}" />-->
-<!--			<td class="image">-->
-<!--			    <img th:src="${inventory.imageaddress}" alt="商品画像" style="max-width: 100px; max-height: 100px;">-->
-<!--			    <input type="file" th:id="'file_' + ${inventory.id}">-->
-<!--			    <button onclick="document.getElementById('file_' + this.parentNode.parentNode.rowIndex).click()">画像を変更</button>-->
+			</td>
+
+
 			</td>
         </tr>
     </tbody>
 </table>
 
-<button class="updatebutton" onclick="updateInventory()">修正・削除</button>
-<script>
-function updateInventory() {
-    var table = document.getElementById("inventoryTable");
-    var data = [];
+<button class="updatebutton" onclick="updateInventory()">修正・削除</button><br><br><br>
 
-    for (var i = 1, row; row = table.rows[i]; i++) {
-        data.push({
-            itemId: row.cells[0].innerText, // 商品コードは変更不可なので、そのまま読み取り
-            itemName: row.cells[1].innerText,
-            category: row.cells[2].innerText,
-            purprice: row.cells[3].innerText,
-            saleprice: row.cells[4].innerText,
-            iteminfo: row.cells[5].innerText,
-            stock: row.cells[6].innerText,
-            purchaseno: row.cells[7].innerText,
-            imageaddress: row.cells[8].innerText
-        });
-    }
-
-    // AJAXリクエストを使用してデータをサーバーに送信
-    fetch('/update-inventory', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('修正しました');
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-        alert('エラーが発生しました');
-    });
-}
-
-//削除の処理
-function deleteRow(btn) {
-    var row = btn.parentNode.parentNode;
-    var itemId = row.cells[0].innerText;
-
-    if (confirm('本当に削除しますか？')) {
-        fetch('/delete-inventory', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ itemId: itemId }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            row.parentNode.removeChild(row);
-            alert('削除しました');
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-            alert('削除中にエラーが発生しました');
-        });
-    }
-</script>
 
 				
-				<!--更新or新規登録のラジオボタン-->
-				<form>
-				  <input type="radio" id="option1" name="radioGroup" value="option1">
-				  <label for="option1">情報の更新・修正</label>
 
-				  <input type="radio" id="option2" name="radioGroup" value="option2">
-				  <label for="option2">商品の新規登録</label><br>
-				  </form>
-				  
-				  
-				  <!--更新にチェックを入れた場合-->
-				  <div id="updateForm" style="display: none;">
-				    <h3>情報の更新・修正</h3>
-				    <form action="/update-inventory" method="post">
-				      <table border="1" width="100%">
-				        <thead>
-				          <tr>
-				            <th>商品ID</th>
-				            <th>商品名</th>
-				            <th>カテゴリーID</th>
-				            <th>原価（円）</th>
-				            <th>売価（円）</th>
-				            <th>商品情報</th>
-				            <th>在庫数</th>
-				            <th>発注先ID</th>
-							<th>画像</th>
-				          </tr>
-				        </thead>
-				        <tbody>
-				          <tr th:each="inventory : ${inventorys}">
-				            <td><input type="text" th:value="${inventory.itemId}" name="itemId[]" readonly></td>
-				            <td><input type="text" th:value="${inventory.itemName}" name="itemName[]"></td>
-				            <td><input type="text" th:value="${inventory.category}" name="category[]"></td>
-				            <td><input type="number" th:value="${inventory.itempurprice}" name="itempurprice[]"></td>
-				            <td><input type="number" th:value="${inventory.itemsaleprice}" name="itemsaleprice[]"></td>
-				            <td><input type="text" th:value="${inventory.iteminfo}" name="iteminfo[]"></td>
-				            <td><input type="number" th:value="${inventory.stock}" name="stock[]"></td>
-				            <td><input type="text" th:value="${inventory.purchaseno}" name="purchaseno[]"></td>
-							<td><input type="file" th:value="${inventory.imageaddress}" name="imageaddress[]"></td>
-				          </tr>
-				        </tbody>
-				      </table>
-				      <button type="submit">修正</button>
-				    </form>
-				  </div>
+					
+		<!--新商品登録フォーム	  -->
+					  
+		<div class="newitemform-container">
+			<h3>商品の新規登録</h3>
+				<form action="#" method="post" enctype="multipart/form-data">
+					 <div class="form-group">
+					      <label for="item_name">商品名:</label>
+					      <input type="text" id="item_name" name="item_name[]" required>
+					 </div>
 
+					  <div class="form-group">
+					      <label for="category">カテゴリーID:</label>
+					      <input type="number" id="category_id" name="category[]" required min="0" step="1">
+					  </div>
 
-				  <!--新規登録にチェックを入れた場合-->
-					<div id="newItemForm" style="display: none;">
-					  <h3>商品の新規登録</h3>
-					  <form action="#" method="post">
-					    <table class="entry">
-					      <thead>
-					        <tr>
-					          
-					          <th>商品名</th>
-							  <th>カテゴリーID</th>
-							  <th>原価（単位：円）</th>
-					          <th>売価（単位：円）</th>
-							  <th>商品情報</th>
-					          <th>発注先ID</th>
-							  <th>画像</th>
-							</tr>
-					      </thead>
-					      <tbody>
-					        <tr>
-					          
-					          <td><input type="text" name="item_name[]" required></td>
-							  <td><input type="text" name="category[]" required></td>
-					          <td><input type="text" name="item_purprice[]" inputmode="numeric" required></td>
-							  <td><input type="text" name="item_saleprice[]" inputmode="numeric" required></td>
-							  <!--数字以外を除去、半角を全角にするJavaScriptがいる？-->
-							  <td><input type="text" name="iteminfo[]"required></td>
-							  <td><input type="text" name="purchaseno[]" required></td>
-							  <td><input type="file" name="imageaddress[]" accept="image/*"></td>
-					        </tr>
-					      </tbody>
-					    </table>
+					  <div class="form-group">
+					      <label for="item_purprice">原価（単位：円）:</label>
+					      <input type="number" id="item_purprice" name="item_purprice[]" required min="0" step="1">
+					   </div>
+
+					   <div class="form-group">
+					      <label for="item_saleprice">売価（単位：円）:</label>
+					      <input type="number" id="item_saleprice" name="item_saleprice[]" required min="0" step="1">
+					   </div>
+
+					   <div class="form-group">
+					      <label for="iteminfo">商品情報:</label>
+					      <textarea id="iteminfo" name="iteminfo[]" rows="10" cols="50" required></textarea>
+					   </div>
+
+					   <div class="form-group">
+					      <label for="purchaseno">発注先ID:</label>
+					      <input type="number" id="purchaseno_id" name="purchaseno[]" required min="0" step="1">
+					   </div>
+
+					   <div class="form-group">
+					      <label for="imageaddress">画像:</label>
+					      <input type="file" id="imageaddress" name="imageaddress[]" accept="image/*">
+					   </div><br>
+
 					    <button type="submit">登録</button>
 					  </form>
 
 					</div>
 				  
-				  <script>
-					document.addEventListener('DOMContentLoaded', function() {
-					  const radioButtons = document.querySelectorAll('input[name="radioGroup"]');
-					  const updateForm = document.getElementById('updateForm');
-					  const newItemForm = document.getElementById('newItemForm');
 
-					  radioButtons.forEach(function(radio) {
-					    radio.addEventListener('change', function() {
-					      if (this.value === 'option1') {
-					        updateForm.style.display = 'block';
-					        newItemForm.style.display = 'none';
-					        // 更新フォームが表示されたときにデータを取得する
-					        fetchInventoryData();
-					      } else if (this.value === 'option2') {
-					        updateForm.style.display = 'none';
-					        newItemForm.style.display = 'block';
-					      }
-					    });
-					  });
-					});
-
-					function fetchInventoryData() {
-					  // ここでAjaxリクエストを使用してサーバーから最新の在庫データを取得し、
-					  // 更新フォームに表示します。
-					  // 例: fetch('/api/inventory').then(response => response.json()).then(data => updateFormWithData(data));
-					}
-
-					function updateFormWithData(data) {
-					  // 取得したデータを使用して更新フォームの入力フィールドを埋めます
-					  // この関数の実装は、サーバーから返されるデータの構造に依存します
-					}
-}
-				  </script>
 
 				  <script src="admin.js"></script>			  	
 </body>
