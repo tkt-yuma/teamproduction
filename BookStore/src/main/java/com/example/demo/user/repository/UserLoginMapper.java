@@ -11,7 +11,7 @@ import com.example.demo.user.entity.UserLogin;
 public interface UserLoginMapper {
 	List<UserLogin> selectAll();
 	Optional<UserLogin> findByUserMail(String username);
-	UserLogin updatePass(String string);
+	UserLogin updatePass(Integer integer, UserDto userDto);
 	UserLogin addUserLogin(UserDto userDto);
 	int findUserId(String username);
 	

@@ -33,16 +33,14 @@ public class UserService {
 		
 	}
 
-	
-
 	public UserInfo updateInfo(UserDto userDto) {
 		// TODO 自動生成されたメソッド・スタブ
 		return  userInfoMapper.updateInfo(userDto);
 	}
 
-	public UserLogin updatePass(String string) {
+	public UserLogin updatePass(Integer integer, UserDto userDto) {
 		// TODO 自動生成されたメソッド・スタブ
-		return userLoginMapper.updatePass(string);
+		return userLoginMapper.updatePass(integer, userDto);
 		
 	}
 
