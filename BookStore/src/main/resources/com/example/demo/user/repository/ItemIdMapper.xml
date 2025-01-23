@@ -11,6 +11,7 @@
 		<result column="iteminfo"       jdbcType="VARCHAR" property="iteminfo"      />
 		<result column="stock"          jdbcType="INTEGER" property="stock"         />
 		<result column="purchaseno"     jdbcType="VARCHAR" property="purchaseno"    />
+		<result column="imageAddress"   jdbcType="VARCHAR" property="imageAddress"  />
 	</resultMap>
 
 	<select id="selectAll" resultMap="ItemIdMap">

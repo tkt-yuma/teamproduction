@@ -191,7 +191,7 @@ public class UserController {
 	public String amendUser(UserDto userDto,Model model) {
 
 		UserInfo userInfo = userService.updateInfo(userDto) ;
-		UserLogin userLogin = userService.updatePass(userDto.getUserPass());
+		UserLogin userLogin = userService.updatePass(Utils.getUserId(), userDto);
 		model.addAttribute("amend/user", userInfo);
 		model.addAttribute("amend/pass", userLogin);
 		return "redirect:/user/userprivate/mypage";
