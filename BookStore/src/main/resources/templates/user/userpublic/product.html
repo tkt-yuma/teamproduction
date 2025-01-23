@@ -47,6 +47,24 @@
 	</div>
 
 	<span class="recommend1">オススメ</span>
+	<!--Bookリストのデータベースから情報を取ってくる処理-->
+	<tbody>
+		<tr th:each="item : ${itemlist}">
+			<!--IDを隠しフィールドとしてフォームに追加-->
+			<input type="hidden" th:value="${item.itemId}" name="id"/>
+			<!--画像のパス指定をフルパスにする場合の変換-->
+			<a th:href="@{/userpublic/{itemId}/details(itemId=${item.itemId})}">
+<!--			<img th:src="@{${#strings.replace(item.imageaddress, 'C:/Users/3031019/git/teamproduction/BookStore/src/main/resources/static', '')}}" alt="商品画像" style="max-width: 100px; max-height: 200px;">-->
+<!--相対パスの場合の画像のアドレスの指定方法-->
+			<img th:src="@{/images/user/book/{filename}(filename=${item.imageaddress})}" alt="商品画像" style="max-width: 100px; max-height: 200px;">
+<!--			<input type="file" th:id="'file_' + ${item.itemId}" name="file" style="display: none;">-->
+			</a>
+			<td th:text="${item.itemName}"></td>
+			<td th:text="${item.itemSaleprice}"></td>
+			<div></div>
+			
+		</tr>
+	</tbody>
 	<div class="image-container">
 		<button class="arrow left-arrow" id="recommendPrevBtn">◀</button>
 		<div class="product-wrapper" id="recommendWrapper">

@@ -79,21 +79,22 @@ public class UserController {
 		return "user/userpublic/user-login"; //user-login.htmlを返す
 	}
 
-	
-	@GetMapping("/userpublic/product") //ログアウト処理
-	public String logout2(Model model) { //ログアウト処理（セッション無効化など）
+	//商品一覧画面へ遷移処理
+	@GetMapping("/userpublic/product") 
+	public String getProduct(Model model) { 
 		List<ItemId> list = bookService.findAll();
 //		for(ItemId i : list) {
 //			System.out.println(i.getItemName());
 //		}
 		model.addAttribute("itemlist", list);
-		return "user/userpublic/product"; //トップページへリダイレクト
+		return "user/userpublic/product"; 
 	}
-	@PostMapping("/userpublic/product") //ログアウト処理
-	public String logout() { //ログアウト処理（セッション無効化など）
-		return "user/userpublic/product"; //トップページへリダイレクト
+	@PostMapping("/userpublic/product") 
+	public String postProduct() { 
+		return "user/userpublic/product";
 	}
 
+	
 	@GetMapping("/mypage") //マイページ画面の表示
 	public String showMypage(Model model) {
 		UserInfo user = userService.getUserInfoById(Utils.getUserId());
