@@ -15,6 +15,8 @@ public class UserService {
 	
 	@Autowired
 	private UserInfoMapper userInfoMapper;
+	
+	@Autowired
 	private UserLoginMapper userLoginMapper;
 	
 	private boolean result = false;

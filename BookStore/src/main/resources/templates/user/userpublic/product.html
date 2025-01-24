@@ -25,7 +25,7 @@
 				id="menuToggle">
 		</div>
 		<div class="book-container">
-				  		    <a href="product.html" class="book">Book Super Market</a>
+				  		    <a th:href="@{/user/userpublic/product}" class="book">Book Super Market</a>
 				  		</div>	
 		<nav class="menu-list" id="menuList">
 			<ul>
@@ -33,7 +33,7 @@
 											<li><a href="history.html">履歴</a></li>
 											<li><a href="wishlist.html">ほしいものリスト</a></li>
 											<li><a href="amend.html">登録情報の変更・修正</a></li>
-											<li><a href="cart.html">カート</a></li>
+											<li><a th:href="@{/user/userprivate/cart}">カート</a></li>
 											<li><a href="logout.html">ログアウト</a></li>
 										</ul>
 		</nav>

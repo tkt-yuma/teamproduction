@@ -28,7 +28,7 @@
 <!--		</update>-->
 		
 	<!-- userloginテーブルからユーザーIDをt取る -->
-	<select id = "findUserId" resultMap="UserLoginMap">
+	<select id = "findUserId" resultType="java.lang.Integer">
 		select user_id from userlogin where user_mail = #{username}
 	</select>
 	

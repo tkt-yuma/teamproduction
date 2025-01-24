@@ -13,6 +13,6 @@ public interface UserLoginMapper {
 	Optional<UserLogin> findByUserMail(String username);
 	UserLogin updatePass(Integer integer, UserDto userDto);
 	UserLogin addUserLogin(UserDto userDto);
-	int findUserId(String username);
+	Integer findUserId(String username);
 	
 }

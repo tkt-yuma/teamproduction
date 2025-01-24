@@ -54,10 +54,6 @@ public class UserController {
 	@Autowired
 	private WantService wantService;
 
-//	@PostMapping("/userpublic/product") //topページへ移動(商品一覧画面が今回のtopページ)
-//	public String goToTopPage() {
-//		return "user/userpublic/product";
-//	}
 
 	@GetMapping("/register") //新規登録画面の表示
 	public String showRegister() {
@@ -84,9 +80,6 @@ public class UserController {
 	@GetMapping("/userpublic/product") 
 	public String getProduct(Model model) { 
 		List<ItemId> list = bookService.findAll();
-//		for(ItemId i : list) {
-//			System.out.println(i.getItemName());
-//		}
 		model.addAttribute("itemlist", list);
 		return "user/userpublic/product"; 
 	}
@@ -234,7 +227,7 @@ public class UserController {
 
 	//以下Cart関連
 
-	@GetMapping("/cart") //カート画面を表示
+	@GetMapping("/userprivate/cart") //カート画面を表示
 	public String showCart(Model model,@AuthenticationPrincipal UserDetails userDetails) {
 		Integer id = userService.getUserId(userDetails.getUsername());
 		List<CartInfo> cartItems = cartService.getCartItems(id);
