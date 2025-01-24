@@ -7,8 +7,10 @@
 
 <!--入力内容反映-->
 
+<!--タイムリーフ追加　小野-->
+
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
 
 <head>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/mypage.css}">
@@ -30,22 +32,22 @@
 	
 	<main>
 	        <h1 class="mypage-title">マイページ</h1>
-	        <div class="user-info">
-	            <div class="user-info-label">名前</div>
-	            <div><span class="user-info-value">登録された名前</span></div>
-	            <div class="user-info-label">パスワード</div>
-	            <div><span class="user-info-value">登録されたパスワード</span></div>
-	            <div class="user-info-label">メールアドレス</div>
-	            <div><span class="user-info-value">登録されたメールアドレス</span></div>
-	            <div class="user-info-label">住所</div>
-	            <div><span class="user-info-value">登録された住所</span></div>
-	            <div class="user-info-label">電話番号</div>
-	            <div><span class="user-info-value">登録された電話番号</span></div>
-	            <div class="user-info-label">生年月日</div>
-	            <div><span class="user-info-value">登録された生年月日</span></div>
-	            <div class="user-info-label">クレジットカード情報</div>
-	            <div><span class="user-info-value">登録されたクレジットカード情報</span></div>
-	        </div>
+			<div class="user-info" th:object="${userInfo}">
+				<div class="user-info-label">名前</div>
+				<div><span class="user-info-value" th:text="*{userRealName}"></span></div>
+				<div class="user-info-label">パスワード</div>
+				<div><span class="user-info-value" th:text="'********'"></span></div>
+				<div class="user-info-label">メールアドレス</div>
+				<div><span class="user-info-value" th:text="*{userMail}"></span></div>
+				<div class="user-info-label">住所</div>
+				<div><span class="user-info-value" th:text="*{userAddress}"></span></div>
+				<div class="user-info-label">電話番号</div>
+				<div><span class="user-info-value" th:text="*{userTel}"></span></div>
+				<div class="user-info-label">生年月日</div>
+				<div><span class="user-info-value" th:text="*{#temporals.format(userBirthday, 'yyyy年MM月dd日')}"></span></div>
+				<div class="user-info-label">クレジットカード情報</div>
+				<div><span class="user-info-value" th:text="*{userCreditnum}"></span></div>
+			</div>		 	
 			<div class="button-container">
 						    <a href="product.html" class="button top-page">トップページへ</a>
 						    <a href="amend.html" class="button edit-info">登録内容を修正</a>
