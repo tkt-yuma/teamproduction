@@ -17,7 +17,7 @@ public class CartService {
 	
 	public List<CartInfo> getCartItems(Integer UserId) {
 		// TODO 自動生成されたメソッド・スタブ
-		return cartInfoMapper.cartById();
+		return cartInfoMapper.findById(UserId);
 	}
 
 

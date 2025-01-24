@@ -9,13 +9,32 @@
 		<result column="item_id"   jdbcType="INTEGER"   property="itemId"    />
 		<result column="item_name" jdbcType="VARCHAR" property="itemName" />
 		<result column="quantity"  jdbcType="INTEGER"   property="quantity"  />
-		
+		<association property="itemIdDetails" javaType="com.example.demo.user.entity.ItemId">
+            <result property="itemSaleprice" column="item_saleprice" />
+            <result property="imageAddress" column="imageaddress" />
+        </association>
 	</resultMap>
 	
-	<!-- カート内情報に登録されている商品をカートに登録した順番に全件表示するSQL文-->
-	<select id = "selectAll" resultMap="CartInfoMap">
-		select * from cartinfo order by num asc
+	<select id="findById" resultMap="CartInfoMap">
+	SELECT
+	c.num AS num, 
+	c.user_id AS user_id, 
+	c.item_id AS item_id, 
+	c.item_name AS item_name, 
+	c.quantity AS quantity, 
+	i.item_saleprice AS item_saleprice, 
+	i.imageaddress AS imageaddress 
+	FROM cartinfo AS c
+	LEFT JOIN item_id AS i ON c.item_id = i.item_id
+	WHERE c.user_id = #{userId}
+	ORDER BY c.num;
+
 	</select>
+	
+<!--	 カート内情報に登録されている商品をカートに登録した順番に全件表示するSQL文-->
+<!--	<select id = "selectAll" resultMap="CartInfoMap">-->
+<!--		select * from cartinfo order by num asc-->
+<!--	</select>-->
 	
 <!--	<select id = "selectById" resultMap="CartInfoMap">-->
 <!--		select * from cartinfo where id = #{id} order by num asc-->

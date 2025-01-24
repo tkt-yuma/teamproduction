@@ -229,8 +229,7 @@ public class UserController {
 
 	@GetMapping("/userprivate/cart") //カート画面を表示
 	public String showCart(Model model,@AuthenticationPrincipal UserDetails userDetails) {
-		Integer id = userService.getUserId(userDetails.getUsername());
-		List<CartInfo> cartItems = cartService.getCartItems(id);
+		List<CartInfo> cartItems = cartService.getCartItems(userService.getUserId(userDetails.getUsername()));
 
 		model.addAttribute("cartItems", cartItems);
 		return "user/userprivate/cart";

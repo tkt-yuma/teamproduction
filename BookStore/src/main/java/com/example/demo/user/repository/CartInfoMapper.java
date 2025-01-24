@@ -11,7 +11,7 @@ import com.example.demo.user.entity.CartInfo;
 public interface CartInfoMapper {
 	List<CartInfo> selectAll();
 
-	List<CartInfo> cartById();
+	List<CartInfo> findById(Integer id);
 
 	void addToCart(Integer userId, Integer itemId, CartDto cartDto);
 

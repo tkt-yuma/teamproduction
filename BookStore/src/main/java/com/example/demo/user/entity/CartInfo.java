@@ -9,5 +9,6 @@ public class CartInfo {
 	private Integer itemId ;
 	private String itemName ;
 	private Integer quantity;
+	private ItemId itemIdDetails;
 	
 }
