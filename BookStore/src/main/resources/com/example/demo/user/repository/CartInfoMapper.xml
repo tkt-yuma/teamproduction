@@ -11,7 +11,7 @@
 		<result column="quantity"  jdbcType="INTEGER"   property="quantity"  />
 		<association property="itemIdDetails" javaType="com.example.demo.user.entity.ItemId">
             <result property="itemSaleprice" column="item_saleprice" />
-            <result property="imageAddress" column="imageaddress" />
+            <result property="imageaddress" column="imageaddress" />
         </association>
 	</resultMap>
 	

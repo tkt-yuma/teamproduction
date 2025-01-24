@@ -25,6 +25,7 @@ import com.example.demo.user.entity.SaleManagement;
 import com.example.demo.user.entity.UserInfo;
 import com.example.demo.user.entity.UserLogin;
 import com.example.demo.user.entity.Wishlist;
+import com.example.demo.user.repository.CartInfoMapper;
 import com.example.demo.user.service.BookService;
 import com.example.demo.user.service.CartService;
 import com.example.demo.user.service.OrderService;
@@ -53,7 +54,9 @@ public class UserController {
 
 	@Autowired
 	private WantService wantService;
-
+	
+	@Autowired
+	private CartInfoMapper cartInfoMapper;
 
 	@GetMapping("/register") //新規登録画面の表示
 	public String showRegister() {
@@ -229,8 +232,11 @@ public class UserController {
 
 	@GetMapping("/userprivate/cart") //カート画面を表示
 	public String showCart(Model model,@AuthenticationPrincipal UserDetails userDetails) {
-		List<CartInfo> cartItems = cartService.getCartItems(userService.getUserId(userDetails.getUsername()));
-
+		List<CartInfo> cartItems = cartInfoMapper.findById(userService.getUserId(userDetails.getUsername()));
+//		System.out.println(cartItems.size());
+//		for(int i = 0; i < cartItems.size(); i++) {
+//		System.out.println(cartItems.get(0).getItemIdDetails().getImageaddress());
+//		}
 		model.addAttribute("cartItems", cartItems);
 		return "user/userprivate/cart";
 	}
