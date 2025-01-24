@@ -3,6 +3,8 @@ package com.example.demo.user.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +31,6 @@ import com.example.demo.user.service.OrderService;
 import com.example.demo.user.service.ReviewService;
 import com.example.demo.user.service.UserService;
 import com.example.demo.user.service.WantService;
-import com.example.demo.utils.Utils;
 
 @Controller
 @RequestMapping("/user")
@@ -96,24 +97,27 @@ public class UserController {
 
 	
 	@GetMapping("/mypage") //マイページ画面の表示
-	public String showMypage(Model model) {
-		UserInfo user = userService.getUserInfoById(Utils.getUserId());
+	public String showMypage(Model model,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		UserInfo user = userService.getUserInfoById(id);
 		model.addAttribute("userInfo", user);
 		return "user/userprivate/mypage";
 	}
 
 	@GetMapping("/history") //購入履歴画面の表示
-	public String showPurchaseHistory(Model model) {
-		List<SaleManagement> purchaseHistory = orderService.getPurchaseHistoryForUser(Utils.getUserId());
+	public String showPurchaseHistory(Model model,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		List<SaleManagement> purchaseHistory = orderService.getPurchaseHistoryForUser(id);
 
 		model.addAttribute("purchaseHistory", purchaseHistory);
 		return "user/userprivate/history"; 
 	}
 
 	@GetMapping("/ordercheck") //購入確認画面の表示
-	public String showOrderCheck(Model model) {
-		List<CartInfo> orderItems = cartService.getCartItems(Utils.getUserId());
-		UserInfo user = userService.getUserInfoById(Utils.getUserId());
+	public String showOrderCheck(Model model,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		List<CartInfo> orderItems = cartService.getCartItems(id);
+		UserInfo user = userService.getUserInfoById(id);
 
 		model.addAttribute("orderItems", orderItems);
 		model.addAttribute("userInfo", user);
@@ -126,8 +130,9 @@ public class UserController {
 	}
 
 	@PostMapping("/confirmation") //購入処理の実行
-	public String processPurchase() {
-		orderService.processOrder(cartService.getCartItems(Utils.getUserId()));
+	public String processPurchase(@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		orderService.processOrder(cartService.getCartItems(id));
 		return "redirect:/user/userprivate/confirmation";
 	}
 
@@ -156,43 +161,47 @@ public class UserController {
 	}
 
 	@PostMapping("/new-reviews") //新しいレビューを作成
-	public String createReview(ReviewDto comment) {
-		Integer userId = Utils.getUserId();
+	public String createReview(ReviewDto comment,@AuthenticationPrincipal UserDetails userDetails) { 
+		Integer userId = userService.getUserId(userDetails.getUsername());
 		reviewService.saveReview(comment,userId); //Commentオブジェクトを保存
 		return "redirect:/user/userprivate/reviews/"; //作成したレビューに基づいてリダイレクト
 	}
 
 	@GetMapping("/wishlist") //欲しいものリストを表示
-	public String showWishList(Model model) {
-		List<Wishlist> wantItems = wantService.getWantItems(Utils.getUserId());
+	public String showWishList(Model model,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		List<Wishlist> wantItems = wantService.getWantItems(id);
 		model.addAttribute("wantItems", wantItems);
 		return "user/userprivate/wishlist";
 	}
 
 	@PostMapping("/{itemId}/wishlist-addToCart") //欲しいものリストからカートに追加
-	public String addToCartWishlist(@RequestParam("itemId") Integer itemId,CartDto cartDto) {
-		cartService.addToCart(Utils.getUserId(), itemId,cartDto);
+	public String addToCartWishlist(@RequestParam("itemId") Integer itemId,CartDto cartDto,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		cartService.addToCart(id, itemId,cartDto);
 		return "redirect:/user/wishlist";
 	}
 
 	@PostMapping("/{itemId}/wishlist-remove") //欲しいものリストから削除
-	public String removeFromWantList(@RequestParam("itemId") Integer itemId) {
-		wantService.deleteWishList(Utils.getUserId(), itemId);
+	public String removeFromWantList(@RequestParam("itemId") Integer itemId,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		wantService.deleteWishList(id, itemId);
 		return "redirect:/user/wishlist";
 	}
 
 	@GetMapping("/amend") //登録修正画面表示
-	public String showAmendForm(Model model) {
-		
-		model.addAttribute("userInfo", userService.getUserInfoById(Utils.getUserId()));
+	public String showAmendForm(Model model,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		model.addAttribute("userInfo", userService.getUserInfoById(id));
 		return "user/userprivate/amend";
 	}
 
 	@PostMapping("/amend") //登録修正処理
-	public String amendUser(UserDto userDto,Model model) {
+	public String amendUser(UserDto userDto,Model model,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
 
 		UserInfo userInfo = userService.updateInfo(userDto) ;
-		UserLogin userLogin = userService.updatePass(Utils.getUserId(), userDto);
+		UserLogin userLogin = userService.updatePass(id, userDto);
 		model.addAttribute("amend/user", userInfo);
 		model.addAttribute("amend/pass", userLogin);
 		return "redirect:/user/userprivate/mypage";
@@ -217,30 +226,34 @@ public class UserController {
 	}
 
 	@PostMapping("/{itemId}/details-addToCart") //商品詳細ページからカートに追加
-	public String addToCartDetails(@RequestParam("itemId") Integer itemId,CartDto cartDto) {
-		cartService.addToCart(Utils.getUserId(), itemId, cartDto);
+	public String addToCartDetails(@RequestParam("itemId") Integer itemId,CartDto cartDto,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		cartService.addToCart(id, itemId, cartDto);
 		return "redirect:/user/details";
 	}
 
 	//以下Cart関連
 
 	@GetMapping("/cart") //カート画面を表示
-	public String showCart(Model model) {
-		List<CartInfo> cartItems = cartService.getCartItems(Utils.getUserId());
+	public String showCart(Model model,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		List<CartInfo> cartItems = cartService.getCartItems(id);
 
 		model.addAttribute("cartItems", cartItems);
 		return "user/userprivate/cart";
 	}
 
 	@PostMapping("/{itemId}/cart-update") //カートの商品の数量を変更
-	public String updateQuantity(@RequestParam("itemId") Integer itemId, CartDto cartDto) {
-		cartService.updateItemQuantity(Utils.getUserId(), itemId, cartDto);
+	public String updateQuantity(@RequestParam("itemId") Integer itemId, CartDto cartDto,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		cartService.updateItemQuantity(id, itemId, cartDto);
 		return "redirect:/user/cart";
 	}
 
 	@PostMapping("/{itemId}/cart-remove") //カートから削除
-	public String removeItem(@RequestParam("itemId") Integer itemId) {
-		cartService.deleteItemCart(Utils.getUserId(), itemId);
+	public String removeItem(@RequestParam("itemId") Integer itemId,@AuthenticationPrincipal UserDetails userDetails) {
+		Integer id = userService.getUserId(userDetails.getUsername());
+		cartService.deleteItemCart(id, itemId);
 		return "redirect:/user/cart";
 	}
 

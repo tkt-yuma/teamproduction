@@ -19,11 +19,11 @@ public class Utils {
 		return null;
 	}
 
-	public static int getUserId() {
-		UserService userService = new UserService();
-		return userService.getUserID();
-		
-		
-	}
+//	public static int getUserId() {
+//		UserService userService = new UserService();
+//		return userService.getUserID();
+//		
+//		
+//	}
 
 }
