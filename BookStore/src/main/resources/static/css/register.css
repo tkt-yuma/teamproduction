@@ -102,14 +102,81 @@ form {
 	cursor: pointer;
 }
 
-/*キャンセルボタン*/
-#cancel-button {
-	background-color: #f44336;
-	color: white;
+
+/*ボタン*/
+.button-group {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-top: 10px;
+	margin-bottom: 20px; /* ボタングループと新規登録リンクの間隔を開ける */
 }
 
-/*登録ボタン*/
-#submit-button {
+
+button {
+	margin-top: 10px;
+	padding: 5px 15px;
+}
+
+input,
+button {
+	margin: 10px 0;
+}
+
+/* キャンセルとログインボタンのスタイル */
+.cancel-button,
+.login-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    min-width: 120px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: bold;
+	margin-top: 30px; /* 20pxから30pxに増やす */
+}
+
+
+.cancel-button {
+	background-color: #ccc;
+	color: #333;
+}
+
+.login-button {
 	background-color: #4CAF50;
 	color: white;
+	margin-left: 30px; /* 左側に少し余白を追加 */
+}
+
+/* ボタンのホバー効果 */
+.cancel-button:hover,
+.login-button:hover{
+	opacity: 0.8;
+}
+
+.new-botton a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.2s;
+    display: inline-block;
+}
+
+/* ホバー時のエフェクト */
+.new-botton a:hover {
+    color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* クリック時のエフェクト */
+.new-botton a:active {
+    transform: scale(0.98);
+}
+
+
+/* ホバー時のエフェクト */
+.cancel-button:hover,
+.login-button:hover {
+    transform: translateY(-2px);
 }

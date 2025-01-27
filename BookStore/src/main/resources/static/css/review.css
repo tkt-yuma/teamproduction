@@ -41,7 +41,6 @@ body {
 	position: relative;
 }
 
-/*メニューリストの画像*/
 .header-img {
 	width: 100px;
 	height: auto;
@@ -49,11 +48,31 @@ body {
 	padding: 10px
 }
 
+/*メニューボタン*/
+.menu-container {
+	height: 100%;
+	  padding: 32.5px 20px;
+	  line-height: 60px;
+  background-color: rgb(255, 255, 255);
+  color: white;
+  text-decoration: none;
+ 
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  width: 72px; /* ボタンの横幅を設定 */
+  position: relative; /* 相対位置指定を追加 */
+    top: -20px; /* 上に10px移動 */
+}
+
+/*メニューリスト*/
 .menu-container {
 	cursor: pointer;
 }
 
-/*mrニューリスト*/
 .menu-list {
   position: absolute;
   top: 100%;
@@ -96,9 +115,34 @@ body {
 .menu-list li a:hover {
   color: rgb(0, 128, 255);
   cursor: pointer;
-
-
 }
+
+/*閉じるボタンスタイル追加*/
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.close-btn span {
+    position: absolute;
+    left: 14px;
+    height: 25px;
+    width: 3px;
+    background-color: black;
+}
+
+.close-btn span:first-child {
+    transform: rotate(45deg);
+}
+
+.close-btn span:last-child {
+    transform: rotate(-45deg);
+}
+
 
 /*レビュー*/
 
@@ -167,9 +211,9 @@ textarea {
 	border-radius: 8px;
 	cursor: pointer;
 	transition: background-color 0.3s, transform 0.2s;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	width: 300px;
 	flex-shrink: 0;
+	font-weight: bold; /* この行を追加 */
 }
 
 .purchase-button:hover {
@@ -188,13 +232,16 @@ textarea {
 	display: flex;
 	justify-content: center;
 	gap: 40px;
+	
 }
 
 /*キャンセルボタン*/
 .cancel-button {
-	background-color: #007bff;
+	background-color: #ccc;
+	color: #333;
 }
 
 .cancel-button:hover {
-	background-color: #0056b3;
+	background-color: rgb(192, 192, 192);
 }
+

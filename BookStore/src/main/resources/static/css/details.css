@@ -47,6 +47,26 @@ body {
 	padding: 10px
 }
 
+/*メニューボタン*/
+.menu-container {
+	height: 100%;
+	  padding: 32.5px 20px;
+	  line-height: 60px;
+  background-color: rgb(255, 255, 255);
+  color: white;
+  text-decoration: none;
+ 
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  width: 72px; /* ボタンの横幅を設定 */
+  position: relative; /* 相対位置指定を追加 */
+    top: -20px; /* 上に10px移動 */
+}
+
 /*メニューリスト*/
 .menu-container {
 	cursor: pointer;
@@ -95,6 +115,33 @@ body {
   color: rgb(0, 128, 255);
   cursor: pointer;
 }
+
+/*閉じるボタンスタイル追加*/
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.close-btn span {
+    position: absolute;
+    left: 14px;
+    height: 25px;
+    width: 3px;
+    background-color: black;
+}
+
+.close-btn span:first-child {
+    transform: rotate(45deg);
+}
+
+.close-btn span:last-child {
+    transform: rotate(-45deg);
+}
+
 
 /*検索*/
 .search-container {
@@ -248,43 +295,49 @@ input[type="submit"]:hover {
 /*ボタン*/
 .action-button {
   height: 80px;
-  flex-grow: 1; /* ボタンを横長に */
-  max-width: 300px; /* ボタンの最大幅を設定（必要に応じて調整） */
+  flex-grow: 1;
+  max-width: 300px;
   padding: 0 20px;
-  font-size: 18px; /* フォントサイズを少し大きく */
+  font-size: 24px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border: 2px solid;
-  border-radius: 4px;
+  border: none; /* ボーダーを削除 */
+  border-radius: 8px; /* 角の丸みを増加 */
   color: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s; /* トランジションを追加 */
+   font-size: 20px; /* 文字サイズを20pxに設定 */
+  font-weight: bold;
 }
 
-/*カートに追加ボタン*/
 .add-to-cart {
-  background-color: #4CAF50;
-  border-color: #4CAF50;
+  background-color: rgb(102, 189, 106);
 }
 
 .add-to-cart:hover {
   background-color: #45a049;
-  border-color: #45a049;
+  transform: scale(1.05);
 }
 
-/*ほしいものリストボタン*/
+.add-to-cart:active {
+  transform: scale(0.98);
+}
+
 .add-to-wishlist {
-  background-color: #2196F3;
-  border-color: #2196F3;
+  background-color: rgb(255, 53, 154);
 }
 
 .add-to-wishlist:hover {
-  background-color: #1e87db;
-  border-color: #1e87db;
+  background-color: rgb(227, 0, 114);
+  transform: scale(1.05);
+}
+
+.add-to-wishlist:active {
+  transform: scale(0.98);
 }
 
 /*レビュー*/

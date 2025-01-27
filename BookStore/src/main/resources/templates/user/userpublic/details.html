@@ -28,17 +28,23 @@
 				id="menuToggle">
 		</div>
 		<div class="book-container">
-				    <a th:href="@{/user/userpublic/product}" class="book">Book Super Market</a>
-				</div>	
+			<a th:href="@{/user/userpublic/product}" class="book">Book Super Market</a>
+		</div>
 		<nav class="menu-list" id="menuList">
+			
+			<!--閉じるボタンを追加-->
+									<div class="close-btn" id="close-btn">
+										<span></span>
+										<span></span>
+									</div>
 			<ul>
-							<li><a href="mypage.html">マイページ</a></li>
-							<li><a href="history.html">履歴</a></li>
-							<li><a href="wishlist.html">ほしいものリスト</a></li>
-							<li><a href="amend.html">登録情報の変更・修正</a></li>
-							<li><a th:href="@{/user/userprivate/cart}">カート</a></li>
-							<li><a href="logout.html">ログアウト</a></li>
-						</ul>
+				<li><a href="mypage.html">マイページ</a></li>
+				<li><a href="history.html">履歴</a></li>
+				<li><a href="wishlist.html">ほしいものリスト</a></li>
+				<li><a href="amend.html">登録情報の変更・修正</a></li>
+				<li><a th:href="@{/user/userprivate/cart}">カート</a></li>
+				<li><a href="logout.html">ログアウト</a></li>
+			</ul>
 		</nav>
 	</header>
 
@@ -50,21 +56,21 @@
 	</div>
 
 	<!-- 商品詳細情報 -->
-	   <div class="center-container">
-	       <div class="book-details">
-	           <!-- 商品名 -->
-	           <h2 class="book-title" th:text="${item.itemName}">商品名</h2>
-	           <!-- 商品画像 -->
-	           <img th:src="@{/images/user/book/{filename}(filename=${item.imageaddress})}" alt="本の表紙" class="book-image">
-	           <!-- 商品価格 -->
-	           <p class="book-price" th:text="'¥' + ${item.itemSaleprice}">価格</p>
-	           <!-- 商品詳細 -->
-	           <div class="book-description">
-	               <h4 class="description-title">詳細</h4>
-	               <p class="description-content" th:text="${item.iteminfo}">商品説明</p>
-	           </div>
-	       </div>
-	   </div>
+	<div class="center-container">
+		<div class="book-details">
+			<!-- 商品名 -->
+			<h2 class="book-title" th:text="${item.itemName}">商品名</h2>
+			<!-- 商品画像 -->
+			<img th:src="@{/images/user/book/{filename}(filename=${item.imageaddress})}" alt="本の表紙" class="book-image">
+			<!-- 商品価格 -->
+			<p class="book-price" th:text="'¥' + ${item.itemSaleprice}">価格</p>
+			<!-- 商品詳細 -->
+			<div class="book-description">
+				<h4 class="description-title">詳細</h4>
+				<p class="description-content" th:text="${item.iteminfo}">商品説明</p>
+			</div>
+		</div>
+	</div>
 	<!--top画面で押した商品を表示するように変更-->
 	<div class="product-actions">
 		<div class="quantity-container">
@@ -78,8 +84,8 @@
 			</div>
 		</div>
 		<button class="action-button add-to-cart" onclick="addToCart(productId)">カートに追加</button>
-			    <button class="action-button add-to-wishlist" onclick="addToWishlist(productId)">ほしいものリスト</button>
-				
+		<button class="action-button add-to-wishlist" onclick="addToWishlist(productId)">ほしいものリスト</button>
+
 	</div>
 
 	<!-- 新しく追加するレビューセクション -->
@@ -166,15 +172,22 @@
 	<!--Javascript-->
 	<!--メニューリスト-->
 	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			const menuToggle = document.getElementById('menuToggle');
-			const menuList = document.getElementById('menuList');
+				document.addEventListener('DOMContentLoaded', function () {
+					const menuToggle = document.getElementById('menuToggle');
+					const menuList = document.getElementById('menuList');
+					const closeBtn = document.getElementById("close-btn");
 
-			menuToggle.addEventListener('click', function () {
-				menuList.classList.toggle('show');
-			});
-		});
-	</script>
+					menuToggle.addEventListener('click', function () {
+						menuList.classList.toggle('show');
+						menuToggle.style.display = "none";
+					});
+
+					closeBtn.addEventListener('click', () => {
+						menuList.classList.remove('show');
+						menuToggle.style.display = "block";
+					});
+				});
+			</script>
 
 	<!--数量変更-->
 	<script>
@@ -207,16 +220,15 @@
 
 	<!--レビュー書き込みボタン-->
 	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			const writeReviewBtn = document.querySelector('.write-review-btn');
-			writeReviewBtn.addEventListener('click', function (e) {
-				e.preventDefault();
-				// ここにレビューを書くページへのリンクを追加します
-				// 例: window.location.href = 'write-review.html';
-				alert('レビューを書くページは現在準備中です。');
-			});
-		});
-	</script>
+		    document.addEventListener('DOMContentLoaded', function () {
+		        const writeReviewBtn = document.querySelector('.write-review-btn');
+		        writeReviewBtn.addEventListener('click', function (e) {
+		            e.preventDefault();
+		            window.location.href = 'review.html';
+		        });
+		    });
+		</script>
+
 
 	<!--ダイアログ-->
 	<script>
@@ -278,57 +290,57 @@
 			});
 		});
 	</script>
-	
-	<script>
-			// カートに商品を追加する関数
-			function addToCart(productId) {
-			    // カートに商品を追加するロジック
-			    // 例: APIリクエストを送信してサーバー側でカートを更新
-			    fetch('/api/cart/add', {
-			        method: 'POST',
-			        headers: {
-			            'Content-Type': 'application/json',
-			        },
-			        body: JSON.stringify({ productId: productId })
-			    })
-			    .then(response => response.json())
-			    .then(data => {
-			        console.log('カートに追加されました:', data);
-			        // 必要に応じて、ユーザーに通知を表示
-			        alert('商品がカートに追加されました');
-			    })
-			    .catch((error) => {
-			        console.error('エラー:', error);
-			    });
-			}
 
-			// ほしいものリストに商品を追加する関数
-			function addToWishlist(productId) {
-			    // ほしいものリストに商品を追加するロジック
-			    // 例: APIリクエストを送信してサーバー側でほしいものリストを更新
-			    fetch('/api/wishlist/add', {
-			        method: 'POST',
-			        headers: {
-			            'Content-Type': 'application/json',
-			        },
-			        body: JSON.stringify({ productId: productId })
-			    })
-			    .then(response => response.json())
-			    .then(data => {
-			        console.log('ほしいものリストに追加されました:', data);
-			        // 必要に応じて、ユーザーに通知を表示
-			        alert('商品がほしいものリストに追加されました');
-			    })
-			    .catch((error) => {
-			        console.error('エラー:', error);
-			    });
-			}
-			/*↑		この実装では、ボタンがクリックされると対応する関数が呼び出され、
-			サーバーにリクエストを送信して商品をカートまたはほしいものリストに追加します。
-			サーバー側では、受け取ったリクエストに基づいて適切なデータベース操作を行い、カートやほしいものリストを更新します。
-			実際の実装では、セキュリティ対策やエラーハンドリング、ユーザー認証などの追加の考慮が必要です。
-			また、サーバーサイドの実装も必要となります。*/
-		</script>
+	<script>
+		// カートに商品を追加する関数
+		function addToCart(productId) {
+			// カートに商品を追加するロジック
+			// 例: APIリクエストを送信してサーバー側でカートを更新
+			fetch('/api/cart/add', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({productId: productId})
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log('カートに追加されました:', data);
+					// 必要に応じて、ユーザーに通知を表示
+					alert('商品がカートに追加されました');
+				})
+				.catch((error) => {
+					console.error('エラー:', error);
+				});
+		}
+
+		// ほしいものリストに商品を追加する関数
+		function addToWishlist(productId) {
+			// ほしいものリストに商品を追加するロジック
+			// 例: APIリクエストを送信してサーバー側でほしいものリストを更新
+			fetch('/api/wishlist/add', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({productId: productId})
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log('ほしいものリストに追加されました:', data);
+					// 必要に応じて、ユーザーに通知を表示
+					alert('商品がほしいものリストに追加されました');
+				})
+				.catch((error) => {
+					console.error('エラー:', error);
+				});
+		}
+		/*↑		この実装では、ボタンがクリックされると対応する関数が呼び出され、
+		サーバーにリクエストを送信して商品をカートまたはほしいものリストに追加します。
+		サーバー側では、受け取ったリクエストに基づいて適切なデータベース操作を行い、カートやほしいものリストを更新します。
+		実際の実装では、セキュリティ対策やエラーハンドリング、ユーザー認証などの追加の考慮が必要です。
+		また、サーバーサイドの実装も必要となります。*/
+	</script>
 </body>
 
 </html>
