@@ -26,6 +26,11 @@
 				    <a href="product.html" class="book">Book Super Market</a>
 				</div>	
 	<nav class="menu-list" id="menuList">
+		<!--閉じるボタンを追加-->
+				<div class="close-btn" id="close-btn">
+					<span></span>
+					<span></span>
+				</div>
 		<ul>
 			<li><a href="mypage.html">マイページ</a></li>
 			<li><a href="history">履歴</a></li>
@@ -90,13 +95,31 @@
 	document.addEventListener('DOMContentLoaded', function () {
 		const menuToggle = document.getElementById('menuToggle');
 		const menuList = document.getElementById('menuList');
+		const closeBtn = document.getElementById("close-btn");
 
 		menuToggle.addEventListener('click', function () {
 			menuList.classList.toggle('show');
+			menuToggle.style.display = "none";
+		});
+
+		closeBtn.addEventListener('click', () => {
+			menuList.classList.remove('show');
+			menuToggle.style.display = "block";
 		});
 	});
-
 </script>
+
+<!--<script>-->
+<!--	document.addEventListener('DOMContentLoaded', function () {-->
+<!--		const menuToggle = document.getElementById('menuToggle');-->
+<!--		const menuList = document.getElementById('menuList');-->
+
+<!--		menuToggle.addEventListener('click', function () {-->
+<!--			menuList.classList.toggle('show');-->
+<!--		});-->
+<!--	});-->
+
+<!--</script>-->
 
 <!--ダイアログボックス-->
 <script>

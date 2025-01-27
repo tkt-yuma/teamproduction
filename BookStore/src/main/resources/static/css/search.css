@@ -50,6 +50,27 @@ body {
 	padding: 10px
 }
 
+/*メニューボタン*/
+.menu-container {
+	height: 100%;
+	  padding: 32.5px 20px;
+	  line-height: 60px;
+  background-color: rgb(255, 255, 255);
+  color: white;
+  text-decoration: none;
+ 
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  width: 72px; /* ボタンの横幅を設定 */
+  position: relative; /* 相対位置指定を追加 */
+    top: -20px; /* 上に10px移動 */
+}
+
+
 /*メニューリスト*/
 .menu-container {
 	cursor: pointer;
@@ -97,6 +118,16 @@ body {
 .menu-list li a:hover {
 	color: rgb(0, 128, 255);
 	cursor: pointer;
+}
+
+/*閉じるボタンスタイル追加*/
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
 
 /*一覧のブロック*/

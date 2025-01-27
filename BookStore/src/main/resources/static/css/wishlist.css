@@ -49,6 +49,26 @@ body {
 	padding: 10px
 }
 
+/*メニューボタン*/
+.menu-container {
+	height: 100%;
+	  padding: 32.5px 20px;
+	  line-height: 60px;
+  background-color: rgb(255, 255, 255);
+  color: white;
+  text-decoration: none;
+ 
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  width: 72px; /* ボタンの横幅を設定 */
+  position: relative; /* 相対位置指定を追加 */
+    top: -20px; /* 上に10px移動 */
+}
+
 /*メニューリスト*/
 .menu-container {
 	cursor: pointer;
@@ -97,6 +117,33 @@ body {
 	color: rgb(0, 128, 255);
 	cursor: pointer;
 }
+
+/*閉じるボタンスタイル追加*/
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.close-btn span {
+    position: absolute;
+    left: 14px;
+    height: 25px;
+    width: 3px;
+    background-color: black;
+}
+
+.close-btn span:first-child {
+    transform: rotate(45deg);
+}
+
+.close-btn span:last-child {
+    transform: rotate(-45deg);
+}
+
 
 /*商品画像*/
 .book-image {
@@ -158,7 +205,23 @@ body {
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	transition: all 0.3s ease;
+	   font-weight: bold;
 }
+
+/* ホバー時のエフェクト */
+.add-to-cart:hover,
+.remove-from-list:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+/* クリック時のエフェクト */
+.add-to-cart:active,
+.remove-from-list:active {
+    transform: scale(0.98);
+}
+
 
 .add-to-cart {
 	background-color: #4CAF50;
@@ -169,6 +232,7 @@ body {
 	background-color: #f44336;
 	color: white;
 }
+
 
 /*配置*/
 .book-info {
@@ -186,27 +250,37 @@ body {
 }
 
 /*トップページへボタン*/
+.purchase-container {
+	max-width: 800px;
+	margin: 20px auto;
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+	text-align: center;
 
-.top-page-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
 }
 
-.top-page-button {
-    display: inline-block;
-    background-color: skyblue;
-    color: white;
-    font-size: 24px;
-    padding: 15px 30px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+.purchase-button {
+	background-color: rgb(0, 128, 255);
+	color: white;
+	padding: 15px 50px;
+	font-size: 24px;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.3s, transform 0.2s;
+	width: 300px;
+	flex-shrink: 0;
+	 font-weight: bold;
 }
 
-.top-page-button:hover {
-    background-color: deepskyblue;
+.purchase-button:hover {
+	background-color: rgb(0, 98, 196);
+	transform: scale(1.05);
+}
+
+.purchase-button:active {
+	transform: scale(0.98);
 }
 
 /*ダイアログ*/

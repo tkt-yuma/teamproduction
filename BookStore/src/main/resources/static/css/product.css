@@ -33,10 +33,7 @@ body {
     cursor: pointer;
 }
 
-.img {
-	max-width: 100%;
-	height: auto;
-}
+
 
 /*ヘッダー*/
 .header {
@@ -123,6 +120,33 @@ body {
 	color: rgb(0, 128, 255);
 	cursor: pointer;
 }
+
+/*閉じるボタンスタイル追加*/
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.close-btn span {
+    position: absolute;
+    left: 14px;
+    height: 25px;
+    width: 3px;
+    background-color: black;
+}
+
+.close-btn span:first-child {
+    transform: rotate(45deg);
+}
+
+.close-btn span:last-child {
+    transform: rotate(-45deg);
+}
+
 
 
 /*検索*/

@@ -73,8 +73,8 @@ form {
 	display: flex;
 	justify-content: center;
 	gap: 20px;
-	/* 間隔を10pxから20pxに増やしました */
 	margin-top: 10px;
+	margin-bottom: 20px; /* ボタングループと新規登録リンクの間隔を開ける */
 }
 
 
@@ -88,28 +88,60 @@ button {
 	margin: 10px 0;
 }
 
+
+/* キャンセルとログインボタンのスタイル */
 .cancel-button,
 .login-button {
-	padding: 5px 15px;
-	border: none;
-	border-radius: 3px;
-	cursor: pointer;
-	min-width: 100px;
-	/* ボタンの最小幅を設定 */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    min-width: 120px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: bold;
 }
 
+
 .cancel-button {
-	background-color: #ccc;
-	color: #333;
+    background-color: #ccc;
+    color: #333;
 }
 
 .login-button {
-	background-color: #4CAF50;
-	color: white;
+    background-color: #4CAF50;
+    color: white;
 }
 
 /* ボタンのホバー効果 */
 .cancel-button:hover,
-.login-button:hover {
+.login-button:hover{
 	opacity: 0.8;
+	  transform: translateY(-2px);
 }
+
+
+
+/* 新規登録リンクのスタイル */
+.new-botton a {
+	    color: #007bff;
+	    text-decoration: underline; /* 下線を追加 */
+	    transition: all 0.3s ease;
+	    display: inline-block;
+	    padding: 5px 10px;
+	    border-radius: 3px;
+}
+
+/* 新規登録リンクのホバー時のエフェクト */
+.new-botton a:hover {
+    color: rgb(255, 0, 0);
+    transform: scale(1.05);
+}
+
+/* クリック時のエフェクト */
+.new-botton a:active {
+    transform: scale(0.98);
+}
+
+

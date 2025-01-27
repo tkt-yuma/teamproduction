@@ -219,6 +219,10 @@ body {
 	gap: 40px;
 }
 
+.purchase-container a {
+    text-decoration: none;
+}
+
 .purchase-button {
 	background-color: orange;
 	color: white;
@@ -228,9 +232,9 @@ body {
 	border-radius: 8px;
 	cursor: pointer;
 	transition: background-color 0.3s, transform 0.2s;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	width: 300px;
 	flex-shrink: 0;
+	font-weight: bold; /* この行を追加 */
 }
 
 .purchase-button:hover {
@@ -245,9 +249,11 @@ body {
 
 /*キャンセルボタン*/
 .cancel-button {
-	background-color: #007bff;
+	background-color: #ccc;
+	color: #333;
 }
 
 .cancel-button:hover {
-	background-color: #0056b3;
+	background-color: rgb(192, 192, 192);
 }
+

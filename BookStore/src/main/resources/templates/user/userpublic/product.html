@@ -25,17 +25,22 @@
 				id="menuToggle">
 		</div>
 		<div class="book-container">
-				  		    <a th:href="@{/user/userpublic/product}" class="book">Book Super Market</a>
-				  		</div>	
+			<a th:href="@{/user/userpublic/product}" class="book">Book Super Market</a>
+		</div>
 		<nav class="menu-list" id="menuList">
+			<!--閉じるボタンを追加-->
+			<div class="close-btn" id="close-btn">
+				<span></span>
+				<span></span>
+			</div>
 			<ul>
-								<li><a href="mypage.html">マイページ</a></li>
-											<li><a href="history.html">履歴</a></li>
-											<li><a href="wishlist.html">ほしいものリスト</a></li>
-											<li><a href="amend.html">登録情報の変更・修正</a></li>
-											<li><a th:href="@{/user/userprivate/cart}">カート</a></li>
-											<li><a href="logout.html">ログアウト</a></li>
-										</ul>
+				<li><a href="mypage.html">マイページ</a></li>
+				<li><a href="history.html">履歴</a></li>
+				<li><a href="wishlist.html">ほしいものリスト</a></li>
+				<li><a href="amend.html">登録情報の変更・修正</a></li>
+				<li><a th:href="@{/user/userprivate/cart}">カート</a></li>
+				<li><a href="logout.html">ログアウト</a></li>
+			</ul>
 		</nav>
 	</header>
 
@@ -51,210 +56,211 @@
 	<!--Bookリストのデータベースから情報を取ってくる処理-->
 	<tbody>
 		<div class="image-slider">
-		
-		  <div class="image-container">
-		    <div class="image-track">
-		<div th:each="item : ${itemlist}"class="image-item">
-			<!--IDを隠しフィールドとしてフォームに追加-->
-			<input type="hidden" th:value="${item.itemId}" name="id"class="img"/>
-			<!--相対パスの場合の画像のアドレスの指定方法-->
-			<a th:href="@{{itemId}/details(itemId=${item.itemId})}">
-			<img th:src="@{/images/user/book/{filename}(filename=${item.imageaddress})}" alt="商品画像" style="max-width: 100px; max-height: 200px;">
-			</a>
-			<a th:href="@{{itemId}/details(itemId=${item.itemId})}">			
-			<td  th:text="${item.itemName}"></td>
-			</a>
-			<td th:text="${item.itemSaleprice}+円"></td>
-			</div>
-			      </div>
-			    </div>
-				<button class="arrow left" onclick="moveLeft()">◁</button>
-				  <button class="arrow right" onclick="moveRight()">▷</button>
-			  </div>
-	
-			</div>
-	</tbody>
-<!--	<div class="image-container">-->
-<!--		<button class="arrow left-arrow" id="recommendPrevBtn">◀</button>-->
-<!--		<div class="product-wrapper" id="recommendWrapper">-->
-<!--			<div class="product-container">-->
-<!--				<div th:each="item : ${itemlist}">-->
-<!--							IDを隠しフィールドとしてフォームに追加-->
-<!--							<input type="hidden" th:value="${item.itemId}" name="id"class="img"/>-->
-<!--							相対パスの場合の画像のアドレスの指定方法-->
-<!--							<a th:href="@{{itemId}/details(itemId=${item.itemId})}">-->
-<!--							<img th:src="@{/images/user/book/{filename}(filename=${item.imageaddress})}" alt="商品画像" style="max-width: 100px; max-height: 200px;">-->
-<!--							</a>-->
-<!--							<a th:href="@{{itemId}/details(itemId=${item.itemId})}">			-->
-<!--							<p class="product-title"></p><td  th:text="${item.itemName}"></td>-->
-<!--							</a>-->
-<!--							<p class="product-price"></p><td th:text="${item.itemSaleprice}+円"></td>-->
-<!--							<div></div>-->
-							
-<!--						</div>-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--										</div>-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--			</div>-->
 
-<!--			 必要に応じて追加の商品コンテナをここに追加 -->
-<!--		</div>-->
-<!--		<button class="arrow right-arrow" id="recommendNextBtn">▶</button>-->
-<!--		</div>-->
+			<div class="image-container">
+				<div class="image-track">
+					<div th:each="item : ${itemlist}" class="image-item">
+						<!--IDを隠しフィールドとしてフォームに追加-->
+						<input type="hidden" th:value="${item.itemId}" name="id" class="img" />
+						<!--相対パスの場合の画像のアドレスの指定方法-->
+						<a th:href="@{{itemId}/details(itemId=${item.itemId})}">
+							<img th:src="@{/images/user/book/{filename}(filename=${item.imageaddress})}" alt="商品画像"
+								style="max-width: 100px; max-height: 200px;">
+						</a>
+						<a th:href="@{{itemId}/details(itemId=${item.itemId})}">
+							<td th:text="${item.itemName}"></td>
+						</a>
+						<td th:text="${item.itemSaleprice}+円"></td>
+					</div>
+				</div>
+			</div>
+			<button class="arrow left" onclick="moveLeft()">◁</button>
+			<button class="arrow right" onclick="moveRight()">▷</button>
+		</div>
+
+		</div>
+	</tbody>
+	<!--	<div class="image-container">-->
+	<!--		<button class="arrow left-arrow" id="recommendPrevBtn">◀</button>-->
+	<!--		<div class="product-wrapper" id="recommendWrapper">-->
+	<!--			<div class="product-container">-->
+	<!--				<div th:each="item : ${itemlist}">-->
+	<!--							IDを隠しフィールドとしてフォームに追加-->
+	<!--							<input type="hidden" th:value="${item.itemId}" name="id"class="img"/>-->
+	<!--							相対パスの場合の画像のアドレスの指定方法-->
+	<!--							<a th:href="@{{itemId}/details(itemId=${item.itemId})}">-->
+	<!--							<img th:src="@{/images/user/book/{filename}(filename=${item.imageaddress})}" alt="商品画像" style="max-width: 100px; max-height: 200px;">-->
+	<!--							</a>-->
+	<!--							<a th:href="@{{itemId}/details(itemId=${item.itemId})}">			-->
+	<!--							<p class="product-title"></p><td  th:text="${item.itemName}"></td>-->
+	<!--							</a>-->
+	<!--							<p class="product-price"></p><td th:text="${item.itemSaleprice}+円"></td>-->
+	<!--							<div></div>-->
+
+	<!--						</div>-->
+	<!--			</div>-->
+	<!--			<div class="product-container">-->
+	<!--			</div>-->
+	<!--			<div class="product-container">-->
+	<!--			</div>-->
+	<!--			<div class="product-container">-->
+	<!--			</div>-->
+	<!--			<div class="product-container">-->
+	<!--			</div>-->
+	<!--			<div class="product-container">-->
+	<!--			</div>-->
+	<!--			<div class="product-container">-->
+	<!--										</div>-->
+	<!--			</div>-->
+	<!--			<div class="product-container">-->
+	<!--			</div>-->
+
+	<!--			 必要に応じて追加の商品コンテナをここに追加 -->
+	<!--		</div>-->
+	<!--		<button class="arrow right-arrow" id="recommendNextBtn">▶</button>-->
+	<!--		</div>-->
 
 	<span class="recommend2">新着</span>
 	<div class="image-container">
-<!--		<button class="arrow left-arrow" id="newPrevBtn">◀</button>-->
-<!--			<div class="product-wrapper" id="productWrapper">-->
-<!--			 最初の4つの商品を表示 -->
-<!--			<div class="product-container">-->
-<!--				<img src="https://th.bing.com/th/id/OIP.I8nPTuOlChDlmVvZHegdcQAAAA?w=171&h=209&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
-<!--					alt="リスト" class="img">-->
-<!--				<p class="product-title">スイミー</p>-->
-<!--				<p class="product-price">￥800円</p>-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--				<img src="https://th.bing.com/th/id/OIP.m86AlqJ4jFDzXQViHKl-RQHaIn?w=167&h=194&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
-<!--					alt="リスト" class="img">-->
-<!--				<p class="product-title">ねずみくんのチョッキ</p>-->
-<!--				<p class="product-price">￥600円</p>-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--				<img src="https://th.bing.com/th/id/OIP.yIAIpp238AJjZWaAKtp95gHaJE?w=164&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
-<!--					alt="リスト" class="img">-->
-<!--				<p class="product-title">ごんぎつね</p>-->
-<!--				<p class="product-price">￥500円</p>-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--				<img src="https://th.bing.com/th/id/OIP.92zW5qY__OCXxWNvRmAhQQHaG7?w=180&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
-<!--					alt="リスト" class="img">-->
-<!--				<p class="product-title">じぶんだけのいろ</p>-->
-<!--				<p class="product-price">￥700円</p>-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--				<img src="data:image/jpeg;base64,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"-->
-<!--					alt="リスト" class="img">-->
-<!--				<p class="product-title">しろくまのおるすばん</p>-->
-<!--				<p class="product-price">￥500円</p>-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--				<img src="https://th.bing.com/th/id/OIP.H0qHdWN2wQa7n2AT7tgl3wHaI0?w=176&h=210&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
-<!--					alt="リスト" class="img">-->
-<!--				<p class="product-title">きょうりゅうかくれんぼ</p>-->
-<!--				<p class="product-price">￥500円</p>-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--				<img src="https://th.bing.com/th/id/OIP.MnsNpEYnCLcM-ZPadq_Z2QHaIy?w=177&h=210&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
-<!--					alt="リスト" class="img">-->
-<!--				<p class="product-title">ともだちや</p>-->
-<!--				<p class="product-price">￥500円</p>-->
-<!--			</div>-->
-<!--			<div class="product-container">-->
-<!--				<img src="https://th.bing.com/th/id/OIP.IGxpX6OvHaLe2GP3i32a9AHaI9?w=154&h=186&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
-<!--					alt="リスト" class="img">-->
-<!--				<p class="product-title">ノンタンのたんじょうび</p>-->
-<!--				<p class="product-price">￥500円</p>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--		<button class="arrow right-arrow" id="newNextBtn">▶</button>-->
-<!--	</div>-->
+		<!--		<button class="arrow left-arrow" id="newPrevBtn">◀</button>-->
+		<!--			<div class="product-wrapper" id="productWrapper">-->
+		<!--			 最初の4つの商品を表示 -->
+		<!--			<div class="product-container">-->
+		<!--				<img src="https://th.bing.com/th/id/OIP.I8nPTuOlChDlmVvZHegdcQAAAA?w=171&h=209&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
+		<!--					alt="リスト" class="img">-->
+		<!--				<p class="product-title">スイミー</p>-->
+		<!--				<p class="product-price">￥800円</p>-->
+		<!--			</div>-->
+		<!--			<div class="product-container">-->
+		<!--				<img src="https://th.bing.com/th/id/OIP.m86AlqJ4jFDzXQViHKl-RQHaIn?w=167&h=194&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
+		<!--					alt="リスト" class="img">-->
+		<!--				<p class="product-title">ねずみくんのチョッキ</p>-->
+		<!--				<p class="product-price">￥600円</p>-->
+		<!--			</div>-->
+		<!--			<div class="product-container">-->
+		<!--				<img src="https://th.bing.com/th/id/OIP.yIAIpp238AJjZWaAKtp95gHaJE?w=164&h=201&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
+		<!--					alt="リスト" class="img">-->
+		<!--				<p class="product-title">ごんぎつね</p>-->
+		<!--				<p class="product-price">￥500円</p>-->
+		<!--			</div>-->
+		<!--			<div class="product-container">-->
+		<!--				<img src="https://th.bing.com/th/id/OIP.92zW5qY__OCXxWNvRmAhQQHaG7?w=180&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
+		<!--					alt="リスト" class="img">-->
+		<!--				<p class="product-title">じぶんだけのいろ</p>-->
+		<!--				<p class="product-price">￥700円</p>-->
+		<!--			</div>-->
+		<!--			<div class="product-container">-->
+		<!--				<img src="data:image/jpeg;base64,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"-->
+		<!--					alt="リスト" class="img">-->
+		<!--				<p class="product-title">しろくまのおるすばん</p>-->
+		<!--				<p class="product-price">￥500円</p>-->
+		<!--			</div>-->
+		<!--			<div class="product-container">-->
+		<!--				<img src="https://th.bing.com/th/id/OIP.H0qHdWN2wQa7n2AT7tgl3wHaI0?w=176&h=210&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
+		<!--					alt="リスト" class="img">-->
+		<!--				<p class="product-title">きょうりゅうかくれんぼ</p>-->
+		<!--				<p class="product-price">￥500円</p>-->
+		<!--			</div>-->
+		<!--			<div class="product-container">-->
+		<!--				<img src="https://th.bing.com/th/id/OIP.MnsNpEYnCLcM-ZPadq_Z2QHaIy?w=177&h=210&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
+		<!--					alt="リスト" class="img">-->
+		<!--				<p class="product-title">ともだちや</p>-->
+		<!--				<p class="product-price">￥500円</p>-->
+		<!--			</div>-->
+		<!--			<div class="product-container">-->
+		<!--				<img src="https://th.bing.com/th/id/OIP.IGxpX6OvHaLe2GP3i32a9AHaI9?w=154&h=186&c=7&r=0&o=5&dpr=1.3&pid=1.7"-->
+		<!--					alt="リスト" class="img">-->
+		<!--				<p class="product-title">ノンタンのたんじょうび</p>-->
+		<!--				<p class="product-price">￥500円</p>-->
+		<!--			</div>-->
+		<!--		</div>-->
+		<!--		<button class="arrow right-arrow" id="newNextBtn">▶</button>-->
+		<!--	</div>-->
 
-	<span class="recommend3">ランキング</span>
-<!--	<div class="image-container">-->
-	<!--フッター(カテゴリ)-->
-	<footer>
-		<div class="footer-categories">
-			<h3>カテゴリ</h3>
-			<ul>
-				<li><a href="#">ビジネス</a></li>
-				<li><a href="#">経済</a></li>
-				<li><a href="#">自己啓発</a></li>
-				<li><a href="#">歴史</a></li>
-				<li><a href="#">地理</a></li>
-				<li><a href="#">科学</a></li>
-				<li><a href="#">技術</a></li>
-				<li><a href="#">芸術</a></li>
-				<li><a href="#">音楽</a></li>
-				<li><a href="#">料理</a></li>
-				<li><a href="#">グルメ</a></li>
-				<li><a href="#">旅行</a></li>
-				<li><a href="#">アウトドア</a></li>
-				<li><a href="#">スポーツ</a></li>
-				<li><a href="#">健康</a></li>
-				<li><a href="#">趣味</a></li>
-				<li><a href="#">実用</a></li>
-				<li><a href="#">語学</a></li>
-				<li><a href="#">辞書</a></li>
-				<li><a href="#">哲学</a></li>
-				<li><a href="#">思想</a></li>
-				<li><a href="#">宗教</a></li>
-				<li><a href="#">スピリチュアル</a></li>
-				<li><a href="#">政治</a></li>
-				<li><a href="#">社会</a></li>
-				<li><a href="#">医学</a></li>
-				<li><a href="#">看護</a></li>
-				<li><a href="#">コンピューター</a></li>
-				<li><a href="#">IT</a></li>
-				<li><a href="#">法律</a></li>
-				<li><a href="#">外国語書籍</a></li>
-				<!--href属性は"#"に設定されていますが、実際のリンク先を設定する際は適切なURLに変更してください。-->
-			</ul>
-		</div>
-		<!-- 他のフッターコンテンツ -->
-	</footer>
+		<span class="recommend3">ランキング</span>
+		<!--	<div class="image-container">-->
+		<!--フッター(カテゴリ)-->
+		<footer>
+			<div class="footer-categories">
+				<h3>カテゴリ</h3>
+				<ul>
+					<li><a href="#">ビジネス</a></li>
+					<li><a href="#">経済</a></li>
+					<li><a href="#">自己啓発</a></li>
+					<li><a href="#">歴史</a></li>
+					<li><a href="#">地理</a></li>
+					<li><a href="#">科学</a></li>
+					<li><a href="#">技術</a></li>
+					<li><a href="#">芸術</a></li>
+					<li><a href="#">音楽</a></li>
+					<li><a href="#">料理</a></li>
+					<li><a href="#">グルメ</a></li>
+					<li><a href="#">旅行</a></li>
+					<li><a href="#">アウトドア</a></li>
+					<li><a href="#">スポーツ</a></li>
+					<li><a href="#">健康</a></li>
+					<li><a href="#">趣味</a></li>
+					<li><a href="#">実用</a></li>
+					<li><a href="#">語学</a></li>
+					<li><a href="#">辞書</a></li>
+					<li><a href="#">哲学</a></li>
+					<li><a href="#">思想</a></li>
+					<li><a href="#">宗教</a></li>
+					<li><a href="#">スピリチュアル</a></li>
+					<li><a href="#">政治</a></li>
+					<li><a href="#">社会</a></li>
+					<li><a href="#">医学</a></li>
+					<li><a href="#">看護</a></li>
+					<li><a href="#">コンピューター</a></li>
+					<li><a href="#">IT</a></li>
+					<li><a href="#">法律</a></li>
+					<li><a href="#">外国語書籍</a></li>
+					<!--href属性は"#"に設定されていますが、実際のリンク先を設定する際は適切なURLに変更してください。-->
+				</ul>
+			</div>
+			<!-- 他のフッターコンテンツ -->
+		</footer>
 
-	<script>
-		let currentIndex = 0;
-		const itemsPerView = 4; // 一度に表示するアイテム数
-		const imageTrack = document.querySelector('.image-track');
-		const totalItems = document.querySelectorAll('.image-item').length;
+		<script>
+			let currentIndex = 0;
+			const itemsPerView = 4; // 一度に表示するアイテム数
+			const imageTrack = document.querySelector('.image-track');
+			const totalItems = document.querySelectorAll('.image-item').length;
 
-		function moveLeft() {
-		  if (currentIndex > 0) {
-		    currentIndex--;
-		    updateSlider();
-		  }
-		}
+			function moveLeft() {
+				if (currentIndex > 0) {
+					currentIndex--;
+					updateSlider();
+				}
+			}
 
-		function moveRight() {
-		  if (currentIndex < totalItems - itemsPerView) {
-		    currentIndex++;
-		    updateSlider();
-		  }
-		}
+			function moveRight() {
+				if (currentIndex < totalItems - itemsPerView) {
+					currentIndex++;
+					updateSlider();
+				}
+			}
 
-		function updateSlider() {
-		  const offset = currentIndex * -100 / itemsPerView;
-		  imageTrack.style.transform = `translateX(${offset}%)`;
-		}
-	</script>
-	<!--Javascript-->
-	メニューリスト
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			const menuToggle = document.getElementById('menuToggle');
-			const menuList = document.getElementById('menuList');
+			function updateSlider() {
+				const offset = currentIndex * -100 / itemsPerView;
+				imageTrack.style.transform = `translateX(${offset}%)`;
+			}
+		</script>
+		<!--Javascript-->
+		メニューリスト
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+				const menuToggle = document.getElementById('menuToggle');
+				const menuList = document.getElementById('menuList');
 
-			menuToggle.addEventListener('click', function () {
-				menuList.classList.toggle('show');
+				menuToggle.addEventListener('click', function () {
+					menuList.classList.toggle('show');
+				});
 			});
-		});
-	</script>
+		</script>
 
-	<!--商品一覧表示-->
-	<!--	主要な機能
+		<!--商品一覧表示-->
+		<!--	主要な機能
 	カルーセルの設定
 	setupProductCarousel関数が、3つの異なるカルーセル（おすすめ、新着、ランキング）を設定します。
 	各カルーセルは、製品を表示する要素と、前後に移動するためのボタンを持っています。
@@ -262,58 +268,58 @@
 	showProducts関数が、現在のインデックスに基づいて、表示する製品と非表示にする製品を制御します。
 	ナビゲーション
 	nextProductsとprevProducts関数が、「次へ」と「前へ」ボタンのクリックに応じて製品の表示を更新します。-->
-<!--	<script>-->
-<!--		function setupPagination(prevBtn, nextBtn, wrapper, itemsToShow) {-->
-<!--		    const items = Array.from(wrapper.children);-->
-<!--		    let currentIndex = 0;-->
+		<!--	<script>-->
+		<!--		function setupPagination(prevBtn, nextBtn, wrapper, itemsToShow) {-->
+		<!--		    const items = Array.from(wrapper.children);-->
+		<!--		    let currentIndex = 0;-->
 
-<!--		    function updateDisplay() {-->
-<!--		        items.forEach((item, index) => {-->
-<!--		            item.style.display = (index >= currentIndex && index < currentIndex + itemsToShow) ? 'block' : 'none';-->
-<!--		        });-->
-<!--		    }-->
+		<!--		    function updateDisplay() {-->
+		<!--		        items.forEach((item, index) => {-->
+		<!--		            item.style.display = (index >= currentIndex && index < currentIndex + itemsToShow) ? 'block' : 'none';-->
+		<!--		        });-->
+		<!--		    }-->
 
-<!--		    prevBtn.addEventListener('click', () => {-->
-<!--		        if (currentIndex > 0) {-->
-<!--		            currentIndex -= itemsToShow;-->
-<!--		            updateDisplay();-->
-<!--		        }-->
-<!--		    });-->
+		<!--		    prevBtn.addEventListener('click', () => {-->
+		<!--		        if (currentIndex > 0) {-->
+		<!--		            currentIndex -= itemsToShow;-->
+		<!--		            updateDisplay();-->
+		<!--		        }-->
+		<!--		    });-->
 
-<!--		    nextBtn.addEventListener('click', () => {-->
-<!--		        if (currentIndex + itemsToShow < items.length) {-->
-<!--		            currentIndex += itemsToShow;-->
-<!--		            updateDisplay();-->
-<!--		        }-->
-<!--		    });-->
+		<!--		    nextBtn.addEventListener('click', () => {-->
+		<!--		        if (currentIndex + itemsToShow < items.length) {-->
+		<!--		            currentIndex += itemsToShow;-->
+		<!--		            updateDisplay();-->
+		<!--		        }-->
+		<!--		    });-->
 
-<!--		    updateDisplay();-->
-<!--		}-->
+		<!--		    updateDisplay();-->
+		<!--		}-->
 
-<!--		// おすすめセクションの設定-->
-<!--		setupPagination(-->
-<!--		    document.getElementById('recommendPrevBtn'),-->
-<!--		    document.getElementById('recommendNextBtn'),-->
-<!--		    document.getElementById('recommendWrapper'),-->
-<!--		    4-->
-<!--		);-->
+		<!--		// おすすめセクションの設定-->
+		<!--		setupPagination(-->
+		<!--		    document.getElementById('recommendPrevBtn'),-->
+		<!--		    document.getElementById('recommendNextBtn'),-->
+		<!--		    document.getElementById('recommendWrapper'),-->
+		<!--		    4-->
+		<!--		);-->
 
-<!--		// 新着セクションの設定-->
-<!--		setupPagination(-->
-<!--		    document.getElementById('newPrevBtn'),-->
-<!--		    document.getElementById('newNextBtn'),-->
-<!--		    document.getElementById('newWrapper'),-->
-<!--		    4-->
-<!--		);-->
+		<!--		// 新着セクションの設定-->
+		<!--		setupPagination(-->
+		<!--		    document.getElementById('newPrevBtn'),-->
+		<!--		    document.getElementById('newNextBtn'),-->
+		<!--		    document.getElementById('newWrapper'),-->
+		<!--		    4-->
+		<!--		);-->
 
-<!--		// ランキングセクションの設定-->
-<!--		setupPagination(-->
-<!--		    document.getElementById('rankingPrevBtn'),-->
-<!--		    document.getElementById('rankingNextBtn'),-->
-<!--		    document.getElementById('rankingWrapper'),-->
-<!--		    4-->
-<!--		);-->
-<!--	</script>-->
+		<!--		// ランキングセクションの設定-->
+		<!--		setupPagination(-->
+		<!--		    document.getElementById('rankingPrevBtn'),-->
+		<!--		    document.getElementById('rankingNextBtn'),-->
+		<!--		    document.getElementById('rankingWrapper'),-->
+		<!--		    4-->
+		<!--		);-->
+		<!--	</script>-->
 
 
 </body>
