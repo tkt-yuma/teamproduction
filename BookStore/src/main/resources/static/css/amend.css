@@ -1,4 +1,3 @@
-
 @charset "UTF-8";
 
 /*変えない*/
@@ -19,17 +18,17 @@ body {
 }
 
 .book-container a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 
 .book {
-    margin: 0;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 50px;
-    color: white;
-    cursor: pointer;
+	margin: 0;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 50px;
+	color: white;
+	cursor: pointer;
 }
 
 /*登録内容変更・修正*/
@@ -93,34 +92,54 @@ button {
 /* ボタンコンテナのスタイル */
 .button-container {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	width: 100%;
-	max-width: 300px;
-	/* ボタンの最大幅を設定 */
-	margin-top: 20px;
+	max-width: 400px;
+	/* コンテナの最大幅を増やす */
+	margin: 20px auto;
+	gap: 30px;
+	/* ボタン間の間隔を増やす */
+	padding-left: 10px;
+	/* 左側に少しパディングを追加 */
 }
 
-/*ボタン*/
+/* ボタン共通スタイル */
 .button-container button {
-	padding: 10px 20px;
+	padding: 13px 20px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	width: 160px;
+	/* ボタンの幅を固定 */
+	text-decoration: none;
+	display: inline-block;
+	transition: all 0.3s ease;
+	font-weight: bold;
+	font-size: 15px;
+	/* 文字サイズを大きくする */
 }
 
-/*キャンセルボタン*/
+/* キャンセルボタン */
 #cancel-button {
-	background-color: #f44336;
-	color: white;
+	background-color: #ccc;
+	color: #333;
 }
 
-/*変更内容を保存ボタン*/
+/* 変更内容を保存ボタン */
 #submit-button {
-	background-color: #4CAF50;
+	background-color: rgb(255, 0, 0);
 	color: white;
 }
 
-input,
-button {
-	margin: 10px 0;
+/* ホバー時のエフェクト */
+#cancel-button:hover,
+#submit-button:hover {
+	opacity: 0.8;
+	transform: translateY(-2px);
+}
+
+/* クリック時のエフェクト */
+#cancel-button:active,
+#submit-button:active {
+	transform: scale(0.98);
 }
